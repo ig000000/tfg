@@ -1,0 +1,32 @@
+.nav-links {
+  margin-top: 10px;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.nav-links a {
+  text-decoration: none;
+  background: #0078ff;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: 0.2s;
+}
+
+.nav-links a:hover {
+  background: #005bd1;
+}
+
+.sort-box{
+  margin:15px 0;
+  padding:10px;
+  border:1px solid #ddd;
+  border-radius:6px;
+}
+
+.sort-box select,
+.sort-box button{
+  padding:6px;
+  margin-left:5px;
+}

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="css/styles.css">
+  <!--Quill-->
+  <link href="https://cdn.quilljs.com/1.3.7/quill.snow.css" rel="stylesheet">
+
+</head>
+<body>
+
+    <h1 data-i18n="mnglessons"></h1>
+
+     <!-- Idioma -->
+    <div class="tabs">
+      <button class="tab" data-tag="ES">Castellano 🇪🇸</button>
+      <button class="tab" data-tag="EU">Euskera 🟢</button>
+      <button class="tab" data-tag="EN">English 🇬🇧</button>
+    </div>
+
+    <button onclick="logout()">Cerrar sesión</button>
+
+    <h2 data-i18n="addEdit"></h2>
+
+    <!--<input id="id" type="hidden">-->
+
+    <!--Añadir/Editar-->
+    <input type="hidden" id="articleId">
+    <input id="title" data-i18n-placeholder="title"><br>
+    <input id="author" data-i18n-placeholder="author"><br>
+    <input id="date"data-i18n-placeholder="dateYMD"><br>
+    <select id="lang">
+        <option value="" data-i18n="slclanguage"></option>
+        <option value="ES">Castellano (ES)</option>
+        <option value="EU">Euskera (EU)</option>
+        <option value="EN">English (EN)</option>
+        </select>
+    <br>
+    <input id="tags" data-i18n-placeholder="tag"><br>
+
+    <textarea id="summary" data-i18n-placeholder="summary" readonly></textarea><br>
+    <!--<textarea id="content" placeholder="Contenido"></textarea><br>-->
+    <button type="button" id="linkLessonBtn" data-i18n="linlkesson"></button>
+
+    <div id="editor" style="height:300px;"></div>
+
+
+    <!--botones guardar limpiar-->
+    <button id="saveBtn" data-i18n="save"></button>
+    <button id="clearBtn" data-i18n="clear"></button>
+
+    <hr>
+
+    <!--Opción de busqueda de lecciones-->
+    <h2 data-i18n="sasl"></h2>
+
+  <div>
+  <label data-i18n="language"></label>
+  <select id="adminLangFilter">
+    <option value="" data-i18n="all">Todos</option>
+    <option value="ES">ES</option>
+    <option value="EU">EU</option>
+    <option value="EN">EN</option>
+  </select>
+
+  <input id="adminSearchInput" type="text" data-i18n-placeholder="srchLessons">
+
+  <button id="adminSearchBtn" data-i18n="serch"></button>
+    </div>
+
+    <hr>
+
+    <h3 data-i18n="results"></h3>
+    <div id="adminArticlesList"></div>
+
+<!--Quill-->
+<script src="https://cdn.quilljs.com/1.3.7/quill.min.js"></script>
+
+    <script src="js/lang.js"></script>
+    <script src="js/main2.js"></script>
+    <script src="js/admin.js"></script>
+
+<script>
+async function checkSession(){
+  const res = await fetch("/auth/check");
+  if(res.status !== 200){
+    window.location.href = "login.html";
+  }
+}
+checkSession();
+
+async function logout(){
+  await fetch("/auth/logout", { method: "POST" });
+  window.location.href = "login.html";
+}
+</script>
+
+
+</body>
+</html>

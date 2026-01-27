@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Mi Blog Educativo</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <header>
+
+  <!-- Idioma -->
+  <div class="tabs">
+    <button class="tab" data-tag="ES">Castellano 🇪🇸</button>
+    <button class="tab" data-tag="EU">Euskera 🟢</button>
+    <button class="tab" data-tag="EN">English 🇬🇧</button>
+  </div>
+
+  <!--Login-->
+  <a href="/login.html">
+    <button>Login</button>
+  </a>
+
+  <!-- Navegación -->
+  <h1> Project Knowledge</h1>
+
+  <nav class="nav-links">
+    <a href="lesson-index.html" data-i18n="lessonsIndex"></a>
+    <a href="contribution.html" data-i18n="contribution"></a>
+    <a href="license.html" data-i18n="license"></a>
+  </nav>
+
+  <!--buscador-->
+  <div style="margin: 15px 0;">
+    <input 
+      id="searchInput" 
+      type="text" 
+      data-i18n-placeholder= "srchLessons"
+      style="padding:10px;width:300px;border-radius:6px;border:1px solid #ccc;">
+
+    <button id="searchButton" data-i18n="serch"
+      style="padding:10px 14px;border-radius:6px;border:none;background:#0078ff;color:white;cursor:pointer;">
+    </button>
+  </div>
+  <!--Ordenación-->
+  <div class="sort-box">
+    <label data-i18n="sortBy"></label>
+
+    <select id="sortField">
+      <option value="date" data-i18n="date"></option>
+      <option value="title" data-i18n="title"></option>
+      <!--<option value="rating">Valoración</option>-->
+    </select>
+
+    <select id="sortOrder">
+      <option value="asc" data-i18n="asc"></option>
+      <option value="desc" data-i18n="desc"></option>
+    </select>
+
+    <button id="sortBtn" data-i18n="sort"></button>
+  </div>
+
+</header>
+
+
+  <main id="articles"></main>
+
+  <div id="pagination"></div>
+
+  <script src="js/lang.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>
