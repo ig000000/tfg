@@ -2,42 +2,109 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Artículo</title>
+  <title>Project Knowledge · Article</title>
+
   <link rel="stylesheet" href="css/styles.css">
   <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 </head>
 <body>
-<header>
-  <!-- Navegación -->
-  <h1> Project Knowledge </h1>
 
+<!-- ================= HEADER ================= -->
+<header class="header">
+
+  <div class="header-top">
+    <h1 class="logo">📘 Project Knowledge</h1>
+
+    <div class="header-actions">
+      <!-- Idioma -->
+      <div class="tabs">
+        <button class="tab" data-tag="ES">ES</button>
+        <button class="tab" data-tag="EU">EU</button>
+        <button class="tab" data-tag="EN">EN</button>
+      </div>
+
+      <!-- Login -->
+      <a href="/login.html" class="login-btn">Login</a>
+    </div>
+  </div>
+
+  <!-- Navegación -->
   <nav class="nav-links">
     <a href="index.html" data-i18n="home"></a>
     <a href="lesson-index.html" data-i18n="lessonsIndex"></a>
     <a href="contribution.html" data-i18n="contribution"></a>
     <a href="license.html" data-i18n="license"></a>
   </nav>
-        
+
 </header>
 
-  <main id="content"></main>
+<!-- ================= CONTENIDO ================= -->
+<main class="layout">
 
-  <hr>
+  <!-- Artículo -->
+  <article class="articles">
 
-  <!--Comentarios-->
-  <h2>Comentarios</h2>
-  <div id="comments"></div>
+    <!-- Aquí se carga el artículo -->
+    <div id="content" class="article-content"></div>
 
-  <h3>Añadir comentario</h3>
-  <input id="name" placeholder="Tu nombre">
-  <br>
-  <textarea id="comment" placeholder="Escribe tu comentario"></textarea>
-  <br>
-  <button id="sendComment">Enviar</button>
+    <hr>
 
-  <script src="js/article.js"></script>
-  <script src="js/lang.js"></script>
-  <script src="js/main2.js"></script>
+    <!-- ================= COMENTARIOS ================= -->
+    <section class="comments-section">
+
+      <h2 data-i18n="commentsTitle">💬 Comentarios</h2>
+
+      <div id="comments" class="comments-list"></div>
+
+      <h3 data-i18n="addComment">Añadir comentario</h3>
+
+      <div class="comment-form">
+        <input
+          id="name"
+          type="text"
+          data-i18n-placeholder="yourName"
+        >
+
+        <textarea
+          id="comment"
+          rows="4"
+          data-i18n-placeholder="writeComment"
+        ></textarea>
+
+        <button id="sendComment" class="primary-btn" data-i18n="send">
+        </button>
+      </div>
+
+    </section>
+
+  </article>
+
+  <!-- Sidebar -->
+  <aside class="links-of-interest">
+    <h3 data-i18n="linksOfInterest"></h3>
+    <ul>
+      <li><a href="https://aeipro.com/" target="_blank">AEIPRO: Asociación Española de Dirección e Ingeniería de Proyectos</a></li>
+      <li><a href="https://www.pmi.org/" target="_blank">PMI: Project Management Institute</a></li>
+      <li><a href="https://www.inteco.es/" target="_blank">NTECO: Instituto Nacional de Tecnologías de la Comunicación</a></li>
+      <li><a href="https://www.avpd.es/" target="_blank">Datuak Babesteko Euskal Bulegoa / Agencia Vasca de Protección de Datos</a></li>
+      <li><a href="https://www.ali.es/" target="_blank">ALI: Asociación de Titulados Universitarios Oficiales en Informática</a></li>
+      <li><a href="https://www.ati.es/" target="_blank">ATI: Asociación de Técnicos de Informática</a></li>
+      <li><a href="https://www.coiie.org/" target="_blank">Colegio Oficial de Ingenieros en Informática del País Vasco / Euskadiko Informatika Ingeniarien Elkargo Ofiziala</a></li>
+      <li><a href="https://www.acm.org/" target="_blank"></a></li>
+      <li><a href="https://www.acm.org/" target="_blank">ACM: Association for Computing Machinery</a></li>
+      <li><a href="https://www.ieee.org/" target="_blank">IEEE: Institute of Electrical and Electronics Engineers</a></li>
+      <li><a href="https://www.enriquedans.com/" target="_blank">Blog de Enrique Dans</a></li>
+      <li><a href="http://www.mikelnino.com/" target="_blank">Blog de Mikel Niño</a></li>
+      <li><a href="https://www.ibaivalencia.com/" target="_blank">Blog de Ibai Valencia</a></li>
+    </ul>
+  </aside>
+
+</main>
+
+<!-- ================= SCRIPTS ================= -->
+<script src="js/lang.js"></script>
+<script src="js/article.js"></script>
+<script src="js/main2.js"></script>
 
 </body>
 </html>

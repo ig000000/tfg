@@ -1,32 +1,182 @@
+* {
+  box-sizing: border-box;
+  font-family: system-ui, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #f5f6f8;
+  color: #333;
+}
+
+/* HEADER */
+.header {
+  background: #ffffff;
+  border-bottom: 1px solid #ddd;
+  padding: 15px 25px;
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  margin: 0;
+}
+
+.header-actions {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.tabs button {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background: #f0f0f0;
+  cursor: pointer;
+}
+
+.tabs .active {
+  background: #0078ff;
+  color: white;
+}
+
+.login-btn {
+  padding: 6px 12px;
+  border-radius: 6px;
+  background: #0078ff;
+  color: white;
+  text-decoration: none;
+}
+
+/* NAV */
 .nav-links {
   margin-top: 10px;
   display: flex;
   gap: 15px;
-  justify-content: center;
 }
 
 .nav-links a {
   text-decoration: none;
+  color: #0078ff;
+  font-weight: 500;
+}
+
+/* CONTROLS */
+.controls {
+  background: #ffffff;
+  padding: 15px 25px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.search-box input {
+  padding: 10px;
+  width: 250px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.search-box button,
+.sort-box button {
+  padding: 10px 14px;
+  border-radius: 6px;
+  border: none;
   background: #0078ff;
   color: white;
-  padding: 8px 14px;
+  cursor: pointer;
+}
+
+.sort-box select {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+/* LAYOUT */
+.layout {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 25px;
+  padding: 25px;
+}
+
+/* ARTICLES */
+.articles {
+  background: white;
+  padding: 20px;
   border-radius: 8px;
-  transition: 0.2s;
 }
 
-.nav-links a:hover {
-  background: #005bd1;
+/* LINKS OF INTEREST */
+.links-of-interest {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
 }
 
-.sort-box{
-  margin:15px 0;
-  padding:10px;
-  border:1px solid #ddd;
-  border-radius:6px;
+.links-of-interest ul {
+  list-style: none;
+  padding: 0;
 }
 
-.sort-box select,
-.sort-box button{
-  padding:6px;
-  margin-left:5px;
+.links-of-interest li {
+  margin-bottom: 10px;
+}
+
+.links-of-interest a {
+  text-decoration: none;
+  color: #0078ff;
+}
+
+/* PAGINATION */
+.pagination {
+  padding: 20px;
+  text-align: center;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.article-content {
+  line-height: 1.7;
+}
+
+.comments-section {
+  margin-top: 40px;
+}
+
+.comments-list > div {
+  background: #f7f8fa;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.comment-form input,
+.comment-form textarea {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.primary-btn {
+  background: #0078ff;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 6px;
+  cursor: pointer;
 }

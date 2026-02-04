@@ -2,54 +2,58 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Mi Blog Educativo</title>
+  <title>Project Knowledge</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
-  <header>
+<!-- ================= HEADER ================= -->
+<header class="header">
 
-  <!-- Idioma -->
-  <div class="tabs">
-    <button class="tab" data-tag="ES">Castellano 🇪🇸</button>
-    <button class="tab" data-tag="EU">Euskera 🟢</button>
-    <button class="tab" data-tag="EN">English 🇬🇧</button>
+  <div class="header-top">
+    <h1 class="logo">📘 Project Knowledge</h1>
+
+    <div class="header-actions">
+      <!-- Idioma -->
+      <div class="tabs">
+        <button class="tab" data-tag="ES">ES</button>
+        <button class="tab" data-tag="EU">EU</button>
+        <button class="tab" data-tag="EN">EN</button>
+      </div>
+
+      <!-- Login -->
+      <a href="/login.html" class="login-btn">Login</a>
+    </div>
   </div>
 
-  <!--Login-->
-  <a href="/login.html">
-    <button>Login</button>
-  </a>
-
   <!-- Navegación -->
-  <h1> Project Knowledge</h1>
-
   <nav class="nav-links">
     <a href="lesson-index.html" data-i18n="lessonsIndex"></a>
     <a href="contribution.html" data-i18n="contribution"></a>
     <a href="license.html" data-i18n="license"></a>
   </nav>
 
-  <!--buscador-->
-  <div style="margin: 15px 0;">
-    <input 
-      id="searchInput" 
-      type="text" 
-      data-i18n-placeholder= "srchLessons"
-      style="padding:10px;width:300px;border-radius:6px;border:1px solid #ccc;">
+</header>
 
-    <button id="searchButton" data-i18n="serch"
-      style="padding:10px 14px;border-radius:6px;border:none;background:#0078ff;color:white;cursor:pointer;">
-    </button>
+<!-- ================= CONTROLES ================= -->
+<section class="controls">
+
+  <!-- Buscador -->
+  <div class="search-box">
+    <input 
+      id="searchInput"
+      type="text"
+      data-i18n-placeholder="srchLessons">
+    <button id="searchButton" data-i18n="serch"></button>
   </div>
-  <!--Ordenación-->
+
+  <!-- Ordenación -->
   <div class="sort-box">
     <label data-i18n="sortBy"></label>
 
     <select id="sortField">
       <option value="date" data-i18n="date"></option>
       <option value="title" data-i18n="title"></option>
-      <!--<option value="rating">Valoración</option>-->
     </select>
 
     <select id="sortOrder">
@@ -60,15 +64,42 @@
     <button id="sortBtn" data-i18n="sort"></button>
   </div>
 
-</header>
+</section>
 
+<!-- ================= CONTENIDO ================= -->
+<main class="layout">
 
-  <main id="articles"></main>
+  <!-- Lecciones -->
+  <section id="articles" class="articles"></section>
 
-  <div id="pagination"></div>
+  <!-- Links of Interest -->
+  <aside class="links-of-interest">
+    <h3 data-i18n="linksOfInterest"></h3>
+    <ul>
+      <li><a href="https://aeipro.com/" target="_blank">AEIPRO: Asociación Española de Dirección e Ingeniería de Proyectos</a></li>
+      <li><a href="https://www.pmi.org/" target="_blank">PMI: Project Management Institute</a></li>
+      <li><a href="https://www.inteco.es/" target="_blank">NTECO: Instituto Nacional de Tecnologías de la Comunicación</a></li>
+      <li><a href="https://www.avpd.es/" target="_blank">Datuak Babesteko Euskal Bulegoa / Agencia Vasca de Protección de Datos</a></li>
+      <li><a href="https://www.ali.es/" target="_blank">ALI: Asociación de Titulados Universitarios Oficiales en Informática</a></li>
+      <li><a href="https://www.ati.es/" target="_blank">ATI: Asociación de Técnicos de Informática</a></li>
+      <li><a href="https://www.coiie.org/" target="_blank">Colegio Oficial de Ingenieros en Informática del País Vasco / Euskadiko Informatika Ingeniarien Elkargo Ofiziala</a></li>
+      <li><a href="https://www.acm.org/" target="_blank"></a></li>
+      <li><a href="https://www.acm.org/" target="_blank">ACM: Association for Computing Machinery</a></li>
+      <li><a href="https://www.ieee.org/" target="_blank">IEEE: Institute of Electrical and Electronics Engineers</a></li>
+      <li><a href="https://www.enriquedans.com/" target="_blank">Blog de Enrique Dans</a></li>
+      <li><a href="http://www.mikelnino.com/" target="_blank">Blog de Mikel Niño</a></li>
+      <li><a href="https://www.ibaivalencia.com/" target="_blank">Blog de Ibai Valencia</a></li>
+    </ul>
+  </aside>
 
-  <script src="js/lang.js"></script>
-  <script src="js/main.js"></script>
+</main>
+
+<!-- ================= PAGINACIÓN ================= -->
+<div id="pagination" class="pagination"></div>
+
+<!-- ================= SCRIPTS ================= -->
+<script src="js/lang.js"></script>
+<script src="js/main.js"></script>
 
 </body>
 </html>
