@@ -14,6 +14,10 @@ app.use(
     secret: "super_secret_key",
     resave: false,
     saveUninitialized: false,
+    cookie: {
+      httpOnly: true,
+      sameSite: "lax"
+    }
   })
 );
 
@@ -23,6 +27,8 @@ app.use("/api", require("./routes/api"));
 app.use("/api/articles", require("./routes/articles"));
 app.use("/api/articles",  require("./routes/comments"));
 app.use("/auth", require("./routes/auth"));
+app.use("/api/ideas", require("./routes/ideas"));
+
 
 // Servidor
 app.listen(PORT, () => {

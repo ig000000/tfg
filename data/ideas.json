@@ -1,0 +1,24 @@
+[
+  {
+    "id": 1,
+    "title": "Gamificación en el aula con JavaScript",
+    "description": "Idea para una lección sobre cómo usar JS para crear juegos educativos simples.",
+    "author": "Profesor X",
+    "date": "2025-06-20",
+    "tags": [
+      "ES",
+      "gamificación",
+      "javascript"
+    ]
+  },
+  {
+    "id": 1770484006665,
+    "title": "no",
+    "description": "no",
+    "author": "Anónimo",
+    "tags": [
+      ""
+    ],
+    "date": "2026-02-07"
+  }
+]

@@ -18,7 +18,11 @@ router.post("/login", (req, res) => {
     return res.status(401).json({ error: "Usuario o contraseña incorrectos" });
   }
 
-  req.session.user = user.username;
+  //req.session.user = user.username;
+  req.session.user = {
+    username,
+    isAdmin: true
+  }
 
   res.json({ success: true });
 });

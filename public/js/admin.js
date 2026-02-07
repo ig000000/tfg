@@ -282,6 +282,79 @@ document.getElementById("linkLessonBtn").addEventListener("click", async () => {
   quill.format("link", `/article.html?id=${article.id}`);
 });
 
+//Posibles lecciones código
+/* ================= IDEAS ================= */
+
+const ideaTitle = document.getElementById("ideaTitle");
+const ideaDescription = document.getElementById("ideaDescription");
+const ideaAuthor = document.getElementById("ideaAuthor");
+const ideaTags = document.getElementById("ideaTags");
+const addIdeaBtn = document.getElementById("addIdeaBtn");
+const adminIdeasList = document.getElementById("adminIdeasList");
+
+async function loadIdeasAdmin() {
+  const res = await fetch("/api/ideas");
+  const ideas = await res.json();
+
+  adminIdeasList.innerHTML = "";
+
+  ideas.forEach(i => {
+    const div = document.createElement("div");
+    div.className = "idea-card";
+
+    div.innerHTML = `
+      <strong>${i.title}</strong>
+      <p>${i.description}</p>
+      <small>${i.author} · ${i.date}</small>
+      <br>
+      <button data-id="${i.id}" class="deleteIdeaBtn">🗑 Borrar</button>
+    `;
+
+    adminIdeasList.appendChild(div);
+  });
+
+  document.querySelectorAll(".deleteIdeaBtn").forEach(btn => {
+    btn.addEventListener("click", async () => {
+      if (!confirm("¿Borrar esta idea?")) return;
+
+      await fetch(`/api/ideas/${btn.dataset.id}`, {
+        method: "DELETE"
+      });
+
+      loadIdeasAdmin();
+    });
+  });
+}
+
+addIdeaBtn.addEventListener("click", async () => {
+ 
+  if (!ideaTitle.value || !ideaDescription.value) {
+    alert("Título y descripción obligatorios");
+    return;
+  }
+
+  await fetch("/api/ideas", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    credentials: "include",
+    body: JSON.stringify({
+      title: ideaTitle.value,
+      description: ideaDescription.value,
+      author: ideaAuthor.value || "Anónimo",
+      tags: ideaTags.value.split(",").map(t => t.trim())
+    })
+  });
+
+  ideaTitle.value = "";
+  ideaDescription.value = "";
+  ideaAuthor.value = "";
+  ideaTags.value = "";
+
+  loadIdeasAdmin();
+});
+
+//loadIdeasAdmin();
+
 
 //DOM
 document.addEventListener("DOMContentLoaded", () => {
@@ -306,6 +379,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   clearForm();
   loadAdminArticles();
+  loadIdeasAdmin();
 });
 
 //func a ejecutar

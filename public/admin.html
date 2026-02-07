@@ -2,83 +2,127 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <link rel="stylesheet" href="css/styles.css">
-  <!--Quill-->
-  <link href="https://cdn.quilljs.com/1.3.7/quill.snow.css" rel="stylesheet">
+  <title>Project Knowledge · Admin</title>
 
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://cdn.quilljs.com/1.3.7/quill.snow.css" rel="stylesheet">
 </head>
 <body>
 
-    <h1 data-i18n="mnglessons"></h1>
+<!-- ================= HEADER ================= -->
+<header class="header">
 
-     <!-- Idioma -->
-    <div class="tabs">
-      <button class="tab" data-tag="ES">Castellano 🇪🇸</button>
-      <button class="tab" data-tag="EU">Euskera 🟢</button>
-      <button class="tab" data-tag="EN">English 🇬🇧</button>
+  <div class="header-top">
+    <h1 class="logo">📘 Project Knowledge · Admin</h1>
+
+    <div class="header-actions">
+      <!-- Idioma -->
+      <div class="tabs">
+        <button class="tab" data-tag="ES">ES</button>
+        <button class="tab" data-tag="EU">EU</button>
+        <button class="tab" data-tag="EN">EN</button>
+      </div>
+
+      <!-- Logout -->
+      <button onclick="logout()" class="login-btn">Logout</button>
     </div>
+  </div>
 
-    <button onclick="logout()">Cerrar sesión</button>
+</header>
 
-    <h2 data-i18n="addEdit"></h2>
+<!-- ================= CONTENIDO ================= -->
+<main class="layout">
 
-    <!--<input id="id" type="hidden">-->
+  <!-- Panel Admin -->
+  <section class="articles">
 
-    <!--Añadir/Editar-->
+    <h2 data-i18n="mnglessons"></h2>
+
+    <h3 data-i18n="addEdit"></h3>
+
+    <!-- Formulario -->
     <input type="hidden" id="articleId">
-    <input id="title" data-i18n-placeholder="title"><br>
-    <input id="author" data-i18n-placeholder="author"><br>
-    <input id="date"data-i18n-placeholder="dateYMD"><br>
-    <select id="lang">
-        <option value="" data-i18n="slclanguage"></option>
-        <option value="ES">Castellano (ES)</option>
-        <option value="EU">Euskera (EU)</option>
-        <option value="EN">English (EN)</option>
-        </select>
+
+    <input id="title" data-i18n-placeholder="title">
     <br>
-    <input id="tags" data-i18n-placeholder="tag"><br>
+    <input id="author" data-i18n-placeholder="author">
+    <br>
+    <input id="date" data-i18n-placeholder="dateYMD">
+    <br>
 
-    <textarea id="summary" data-i18n-placeholder="summary" readonly></textarea><br>
-    <!--<textarea id="content" placeholder="Contenido"></textarea><br>-->
+    <select id="lang">
+      <option value="" data-i18n="slclanguage"></option>
+      <option value="ES">Castellano (ES)</option>
+      <option value="EU">Euskera (EU)</option>
+      <option value="EN">English (EN)</option>
+    </select>
+    <br>
+    <input id="tags" data-i18n-placeholder="tag">
+    <br>
+    <textarea id="summary" data-i18n-placeholder="summary" readonly></textarea>
+    <br>
     <button type="button" id="linkLessonBtn" data-i18n="linlkesson"></button>
-
+    <br>
     <div id="editor" style="height:300px;"></div>
 
-
-    <!--botones guardar limpiar-->
-    <button id="saveBtn" data-i18n="save"></button>
-    <button id="clearBtn" data-i18n="clear"></button>
-
-    <hr>
-
-    <!--Opción de busqueda de lecciones-->
-    <h2 data-i18n="sasl"></h2>
-
-  <div>
-  <label data-i18n="language"></label>
-  <select id="adminLangFilter">
-    <option value="" data-i18n="all">Todos</option>
-    <option value="ES">ES</option>
-    <option value="EU">EU</option>
-    <option value="EN">EN</option>
-  </select>
-
-  <input id="adminSearchInput" type="text" data-i18n-placeholder="srchLessons">
-
-  <button id="adminSearchBtn" data-i18n="serch"></button>
+    <div class="admin-actions">
+      <button id="saveBtn" data-i18n="save"></button>
+      <button id="clearBtn" data-i18n="clear"></button>
     </div>
 
     <hr>
 
-    <h3 data-i18n="results"></h3>
+    <!-- Buscar lecciones -->
+    <h3 data-i18n="sasl"></h3>
+
+    <div class="admin-search">
+      <label data-i18n="language"></label>
+      <select id="adminLangFilter">
+        <option value="" data-i18n="all"></option>
+        <option value="ES">ES</option>
+        <option value="EU">EU</option>
+        <option value="EN">EN</option>
+      </select>
+
+      <input id="adminSearchInput" data-i18n-placeholder="srchLessons">
+      <button id="adminSearchBtn" data-i18n="serch"></button>
+    </div>
+
+    <h4 data-i18n="results"></h4>
     <div id="adminArticlesList"></div>
 
-<!--Quill-->
-<script src="https://cdn.quilljs.com/1.3.7/quill.min.js"></script>
+  </section>
 
-    <script src="js/lang.js"></script>
-    <script src="js/main2.js"></script>
-    <script src="js/admin.js"></script>
+  <hr>
+
+<!-- ================= POSIBLES LECCIONES ================= -->
+<section class="admin-ideas">
+
+  <h2>💡 Posibles lecciones</h2>
+
+  <h3>Añadir nueva idea</h3>
+
+  <input id="ideaTitle" placeholder="Título de la idea">
+  <textarea id="ideaDescription" rows="4" placeholder="Descripción breve de la idea"></textarea>
+  <input id="ideaAuthor"placeholder="Autor (profesor/a)">
+  <input id="ideaTags" placeholder="Tags separados por coma (ES, tecnología, …)">
+  <button id="addIdeaBtn">Añadir idea</button>
+
+  <hr>
+
+  <h3>Ideas existentes</h3>
+  <div id="adminIdeasList"></div>
+
+</section>
+
+
+</main>
+
+<!-- ================= SCRIPTS ================= -->
+<script src="https://cdn.quilljs.com/1.3.7/quill.min.js"></script>
+<script src="js/lang.js"></script>
+<script src="js/main2.js"></script>
+<script src="js/admin.js"></script>
 
 <script>
 async function checkSession(){
@@ -94,7 +138,6 @@ async function logout(){
   window.location.href = "login.html";
 }
 </script>
-
 
 </body>
 </html>

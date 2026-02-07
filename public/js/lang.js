@@ -19,6 +19,10 @@ const translations = {
     desc:"Descendente",
     sort:"Ordenar",
 
+    //Login
+    username:"Usuario",
+    password:"Contraseña",
+
     //lecciones
     readMore:"Leer más...",
     listlessons: "Lista de lecciones",

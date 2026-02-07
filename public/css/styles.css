@@ -180,3 +180,52 @@ body {
   border-radius: 6px;
   cursor: pointer;
 }
+
+.login-container {
+  max-width: 400px;
+  margin: 80px auto;
+  padding: 30px;
+  background: #f7f8fa;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.error-text {
+  color: red;
+  margin-top: 10px;
+}
+
+.back-home {
+  display: inline-block;
+  margin-top: 20px;
+}
+
+/* Posibles leciones */
+.idea-card {
+  background: #f7f8fa;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+/* Posibles leciones admin.html */
+.admin-ideas input,
+.admin-ideas textarea {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.admin-ideas button {
+  margin-bottom: 15px;
+}
