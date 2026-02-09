@@ -107,13 +107,6 @@ body {
   padding: 25px;
 }
 
-/* ARTICLES */
-.articles {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-}
-
 /* LINKS OF INTEREST */
 .links-of-interest {
   background: white;
@@ -228,4 +221,31 @@ body {
 
 .admin-ideas button {
   margin-bottom: 15px;
+}
+
+/* CSS FLEX RESPONSIVE (limpio) */
+.content-layout {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+/* ARTICLES */
+.lessons-section {
+  flex: 3;
+}
+
+/* MÓVIL */
+@media (max-width: 768px) {
+  .content-layout {
+    flex-direction: column;
+  }
+
+  .links-section {
+    order: 2;
+  }
+
+  .lessons-section {
+    order: 1;
+  }
 }

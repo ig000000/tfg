@@ -5,36 +5,6 @@ let currentSearch = "";
 let currentSort = "date";
 let currentOrder = "desc";
 
-//funciones
-//async function loadArticles() {
-
-//  const url = `/api/articles?tag=${currentLang}&q=${encodeURIComponent(currentSearch)}&sort=${currentSort}&order=${currentOrder}`;
-
-//  const res = await fetch(url);
-//  const articles = await res.json();
-
-//  const container = document.getElementById("articles");
-//  container.innerHTML = "";
-
-//  if (!articles.length) {
-//    container.innerHTML = `<p>${translations[currentLang].noArticles}</p>`;
-//    return;
-//  }
-
-//  articles.forEach(a => {
-//    container.innerHTML += `
-//      <div class="article">
-//        <h3>${a.title}</h3>
-//        <p><em>${a.author}</em></p>
-//        <p>${a.summary || ""}</p>
-//        <p><small>${a.date}</small></p>
-//        <a href="article.html?id=${a.id}">Leer más...</a>
-//      </div>
-//    `;
-//  });
-//}
-
-
 //Buscar lección por título
 async function searchAndShowSingleArticle() {
   const searchValue = document.getElementById("searchInput").value.trim();
@@ -147,10 +117,3 @@ document.addEventListener("DOMContentLoaded", () => {
   applyTranslations();
   //loadArticles();
 });
-
-//Para ordenar
-//document.getElementById("sortBtn").addEventListener("click", () => {
-//  currentSort = document.getElementById("sortField").value;
-//  currentOrder = document.getElementById("sortOrder").value;
-//  loadArticles();
-//});

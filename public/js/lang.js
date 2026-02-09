@@ -67,6 +67,9 @@ const translations = {
     //Lista de lecciones
     listLink:"En esta página se clasifican las lecciones en varias temáticas globales listadas en orden alfabético:",
 
+    //ideas leciones
+    btnIdeas:"💡 Posibles Leciones",
+
     // Contribution page
     contributeTitle: "Cómo contribuir",
     contribute1: "Las aportaciones pueden realizarse en cualquiera de estos tres idiomas: castellano, euskera e inglés. Un/a autor/a puede contribuir con una misma portación traducida a más de uno de dichos idiomas.",
@@ -184,6 +187,9 @@ const translations = {
 
     //Lista de lecciones
     listLink:"Para traducir",
+
+    //ideas leciones
+    btnIdeas:"💡 Possible Lessons",
 
     // Contribution page
     contributeTitle: "How to Contribute",
@@ -303,6 +309,9 @@ const translations = {
 
     //Lista de lecciones
     listLink:"Para traducir",
+
+    //ideas leciones
+    btnIdeas:"💡 Ikasgai posibleak",
 
     // Contribution page
     contributeTitle: "Nola lagundu",

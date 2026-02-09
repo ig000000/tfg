@@ -8,7 +8,7 @@ let currentPage = 1;
 
 //
 const urlParams = new URLSearchParams(window.location.search);
-const selectedTopic = urlParams.get("topic");
+let selectedTopic = urlParams.get("topic");
 
 //funciones
 //async function loadArticles() {
@@ -99,6 +99,10 @@ async function searchAndShowSingleArticle() {
 //Pulsar boton de búsqueda
 document.getElementById("searchButton").addEventListener("click", () => {
   currentSearch = document.getElementById("searchInput").value.trim();
+
+  //Para no filtro doble
+  selectedTopic = "";
+
   loadArticles(1);
 });
 
