@@ -2,24 +2,26 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Mi Blog Educativo</title>
+  <title>Project Knowledge · Login</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
-<form id="loginForm">
-  <input type="text" id="username" placeholder="Usuario" required>
-  <input type="password" id="password" placeholder="Contraseña" required>
-  <button type="submit">Entrar</button>
+<form id="loginForm" class="login-form">
+  <input type="text" id="username" data-i18n-placeholder="username" required>
+  <input type="password" id="password" data-i18n-placeholder="password" required>
+  <button type="submit" data-i18n="login"></button>
 </form>
 
 <p id="error" style="color:red"></p>
 
 <!--Boton de regreso inicio-->
 <a href="/index.html">
-  <button>Volver a Inicio</button>
+  <button data-i18n="backHome"></button>
 </a>
 
+<script src="js/lang.js"></script>
+<script src="js/main2.js"></script>
 <script>
 document.getElementById("loginForm").addEventListener("submit", async (e) => {
   e.preventDefault();

@@ -6,15 +6,11 @@ async function editArticle(id) {
   const res = await fetch(`/api/articles/${id}`);
   const a = await res.json();
 
-  //document.getElementById("id").value = a.id;
   document.getElementById("articleId").value = a.id;
   document.getElementById("title").value = a.title;
   document.getElementById("author").value = a.author;
   document.getElementById("date").value = a.date;
   document.getElementById("summary").value = a.summary;
-  //document.getElementById("content").value = a.content;
-  //document.getElementById("content").innerHTML = a.content;
-  //quill.root.innerHTML = a.content;
   document.getElementById("tags").value = a.tags.join(",");
 }
 
@@ -23,7 +19,6 @@ async function deleteArticle(id) {
 
   await fetch(`/api/articles/${id}`, { method: "DELETE" });
   loadAdminArticles();
-  //loadArticles();
 }
 
 //guardar
@@ -38,7 +33,6 @@ document.getElementById("saveBtn").addEventListener("click", async () => {
 
   //if (!lang || !titleValue || !authorValue || !dateValue || !summaryValue || !contentValue) {
   if (!lang || !titleValue || !authorValue || !dateValue) {
-    //alert("Todos los campos son obligatorios");
     alert(translations[currentLang].mandatory)
     return;
   }
@@ -56,7 +50,6 @@ document.getElementById("saveBtn").addEventListener("click", async () => {
     author: authorValue,
     date: dateValue,
     summary: summaryValue,
-    //content: contentValue,
     content: quill.root.innerHTML,
     tags: finalTags
   };
@@ -79,7 +72,6 @@ document.getElementById("saveBtn").addEventListener("click", async () => {
 
   clearForm();
   loadAdminArticles();
-  //loadArticles();
 });
 
 async function saveArticle() {
@@ -97,11 +89,11 @@ async function saveArticle() {
   };
 
   let res;
-  console.log("#########")
+  //console.log("#########")
 
   if (id) {
     // ✏️ EDITAR
-    console.log(article)
+    //console.log(article)
     res = await fetch(`/api/articles/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
@@ -109,7 +101,7 @@ async function saveArticle() {
     });
   } else {
     // 🆕 CREAR
-    console.log(article)
+    //console.log(article)
     res = await fetch("/api/articles", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -118,12 +110,10 @@ async function saveArticle() {
   }
 
   if (!res.ok) {
-    //alert("Error al guardar");
     alert(translations[currentLang].errsave);
     return;
   }
 
-  //alert("Artículo guardado correctamente");
   alert(translations[currentLang].lsave);
   clearForm();
   loadAdminArticles();
@@ -139,15 +129,12 @@ function getDate(){
 
 //Limpiar Formulario
 function clearForm() {
-  //id.value = "";
   articleId.value = "";
   title.value = "";
   author.value = "";
-  //date.value = "";
   date.value = getDate();
 
   summary.value = "";
-  //content.value = "";
   quill.root.innerHTML = "";
   tags.value = "";
 }
@@ -162,7 +149,6 @@ async function loadAdminArticles() {
   const lang = adminLangFilter.value;
   const search = adminSearchInput.value.trim();
 
-  //let url = "/api/articles?";
   let url = "/api/articles?all=true";
 
   if (lang) url += `tag=${lang}&`;
@@ -177,9 +163,7 @@ async function loadAdminArticles() {
   adminArticlesList.innerHTML = "";
 
   if (!articles.length) {
-    //adminArticlesList.innerHTML = "<p>No se encontraron lecciones.</p>";
     adminArticlesList.innerHTML = `<p>${translations[currentLang].nolessons}</p>`;
-    //translations[currentLang].nolessons
     return;
   }
 
@@ -187,17 +171,13 @@ async function loadAdminArticles() {
     const div = document.createElement("div");
     div.classList.add("admin-article-item");
 
-    console.log(currentLang);
+    //console.log(currentLang);
 
     div.innerHTML = `
       <strong>${article.title}</strong> - ${article.tags.join(", ")}
       <button onclick="selectArticle(${article.id})">${translations[currentLang].select}</button>
       <button onclick="deleteArticle(${article.id})">${translations[currentLang].clear2}</button>
     `;
-    //<button onclick="selectArticle(${article.id})">Seleccionar</button>
-    //<button onclick="deleteArticle(${article.id})">Borrar</button>
-    //<button onclick="selectArticle(${article.id})">${translations[currentLang].select}</button>
-    //<button onclick="deleteArticle(${article.id})">${translations[currentLang].clear2}</button>
     adminArticlesList.appendChild(div);
   });
 }
@@ -210,8 +190,6 @@ document.addEventListener("DOMContentLoaded", loadAdminArticles);
 
 // función al seleccionar para editar/borrar
 function selectArticle(id) {
-  //console.log("Artículo seleccionado:", id);
-
   // Aquí llamas a tu función actual de cargar datos en el formulario
   loadArticleToForm(id);
 }
@@ -221,7 +199,6 @@ async function loadArticleToForm(id) {
   const res = await fetch(`/api/articles/${id}`);
 
   if (!res.ok) {
-    //alert("No se pudo cargar la lección");
     alert(translations[currentLang].noclessons);
     return;
   }
@@ -236,7 +213,6 @@ async function loadArticleToForm(id) {
   document.getElementById("summary").value = article.summary;
 
   // tags
-  //document.getElementById("langSelect").value =
   document.getElementById("lang").value =
     article.tags.find(t => ["ES", "EU", "EN"].includes(t));
 
@@ -252,6 +228,7 @@ async function loadArticleToForm(id) {
 document.querySelectorAll(".tab").forEach(btn => {
   btn.addEventListener("click", () => {
     loadAdminArticles();
+    loadIdeasAdmin();
   });
 });
 
@@ -273,11 +250,9 @@ document.getElementById("linkLessonBtn").addEventListener("click", async () => {
 
   const article = data.articles.find(a => a.id == choice);
   if (!article) return alert(translations[currentLang].invalidLesson);
-  //alert("Lección no válida"); 
 
   const range = quill.getSelection();
   if (!range) return  alert(translations[currentLang].selectTextfirst);
-  //alert("Selecciona texto primero");
 
   quill.format("link", `/article.html?id=${article.id}`);
 });
@@ -315,7 +290,6 @@ async function loadIdeasAdmin() {
 
   document.querySelectorAll(".deleteIdeaBtn").forEach(btn => {
     btn.addEventListener("click", async () => {
-      //if (!confirm("¿Borrar esta idea?")) return;
       if (!confirm(translations[currentLang].deleteIdea)) return;
 
       await fetch(`/api/ideas/${btn.dataset.id}`, {
@@ -355,9 +329,6 @@ addIdeaBtn.addEventListener("click", async () => {
   loadIdeasAdmin();
 });
 
-//loadIdeasAdmin();
-
-
 //DOM
 document.addEventListener("DOMContentLoaded", () => {
   box = document.getElementById("adminArticlesList");
@@ -383,6 +354,3 @@ document.addEventListener("DOMContentLoaded", () => {
   loadAdminArticles();
   loadIdeasAdmin();
 });
-
-//func a ejecutar
-//loadArticles();

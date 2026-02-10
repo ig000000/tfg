@@ -2,14 +2,25 @@ const translations = {
   ES: {
     //navegación
     //appTitle: "📘 Blog Educativo",
-    lessonsIndex: "📚 Índice de lecciones",
-    contribution: "🤝 Contribution Guidelines",
-    license: "📜 License & Quoting Guidelines",
-    home: "🏠 Inicio",
+    lessonsIndex: "Índice de lecciones",
+    contribution: " Contribution Guidelines",
+    license: " License & Quoting Guidelines",
+    home: "Inicio",
 
     //buscador
     srchLessons: "Buscar leciones...",
-    serch: "🔍 Buscar",
+    serch: "Buscar",
+
+    //Comentarios
+    commentsTitle:"Comentarios",
+    addComment:"Añadir Comentario",
+    yourName:"Tu nombre",
+    writeComment: "Escribe el comentario",
+    send: "Enviar",
+
+    //Login
+    username: "Usuario",
+    password: "Contraseña",
 
     //ordenación
     sortBy: "Ordenar Por:",
@@ -22,6 +33,8 @@ const translations = {
     //Login
     username:"Usuario",
     password:"Contraseña",
+    login: "Login",
+    backHome: "Volver a inicio",
 
     //lecciones
     readMore:"Leer más...",
@@ -68,7 +81,7 @@ const translations = {
     listLink:"En esta página se clasifican las lecciones en varias temáticas globales listadas en orden alfabético:",
 
     //ideas leciones
-    btnIdeas:"💡 Posibles Leciones",
+    btnIdeas:"Posibles Leciones",
     textIdeas: "A continuación se incluyen algunas reflexiones que podrían dar lugar a lecciones aprendidas:",
     addNewIdea:"Añadir nueva idea",
     descIdea: "Descripción",
@@ -127,7 +140,7 @@ const translations = {
   </ul>`,
 
     // Lessons index
-    lessonsTitle: "📚 Índice de lecciones",
+    lessonsTitle: "Índice de lecciones",
     lessonclass: "Selecciona una temática para ver sus lecciones:",
     noArticles: "No hay artículos en este idioma."
   },
@@ -135,14 +148,21 @@ const translations = {
   EN: {
     //navegación
     //appTitle: "📘 Educational Blog",
-    lessonsIndex: "📚 Lessons Index",
-    contribution: "🤝 Contribution Guidelines",
-    license: "📜 License & Quoting Guidelines",
-    home: "🏠 Home",
+    lessonsIndex: "Lessons Index",
+    contribution: "Contribution Guidelines",
+    license: "License & Quoting Guidelines",
+    home: "Home",
 
     //buscador
     srchLessons: "Search lessons...",
-    serch: "🔍 Search",
+    serch: "Search",
+
+    //Comentarios
+    commentsTitle:"Comentarios",
+    addComment:"Añadir Comentario",
+    yourName:"Tu nombre",
+    writeComment: "Escribe el comentario",
+    send: "Enviar",
 
     //ordenación
     sortBy: "Sort By:",
@@ -151,6 +171,12 @@ const translations = {
     asc:"Ascending",
     desc:"Descending",
     sort:"Sort",
+
+    //Login
+    username:"Usuario",
+    password:"Contraseña",
+    login: "Login",
+    backHome: "Volver a inicio",
 
     //lecciones
     readMore:"Read more...",
@@ -197,7 +223,7 @@ const translations = {
     listLink:"Para traducir",
 
     //ideas leciones
-    btnIdeas:"💡 Possible Lessons",
+    btnIdeas:"Possible Lessons",
     textIdeas: "Below are some reflections that could lead to lessons learned:",
     addNewIdea: "Add new idea",
     descIdea: "Description",
@@ -257,7 +283,7 @@ const translations = {
 
 
     // Lessons index
-    lessonsTitle: "📚 Lessons Index",
+    lessonsTitle: "Lessons Index",
     lessonclass: "Select a topic to view its lessons:",
     noArticles: "There are no articles in this language."
   },
@@ -265,14 +291,21 @@ const translations = {
   EU: {
     //navegación
     //appTitle: "📘 Hezkuntza Bloga",
-    lessonsIndex: "📚 Ikasgaien Indexa",
-    contribution: "🤝 Ekartze Gidalerroak",
-    license: "📜 Lizentzia eta Aipamen Araudia",
-    home: "🏠 Hasiera",
+    lessonsIndex: "Ikasgaien Indexa",
+    contribution: "Ekartze Gidalerroak",
+    license: "Lizentzia eta Aipamen Araudia",
+    home: "Hasiera",
 
     //buscador
     srchLessons: "Ikasgaiak bilatu...",
-    serch: "🔍 Bilatu",
+    serch: "Bilatu",
+
+    //Comentarios
+    commentsTitle:"Comentarios",
+    addComment:"Añadir Comentario",
+    yourName:"Tu nombre",
+    writeComment: "Escribe el comentario",
+    send: "Enviar",
 
     //ordenación
     sortBy: "Honen arabera ordenatu:",
@@ -281,6 +314,12 @@ const translations = {
     asc:"Goranzkoa",
     desc:"Beheranzkoa",
     sort:"Ordenatu",
+
+    //Login
+    username:"Usuario",
+    password:"Contraseña",
+    login: "Login",
+    backHome: "Volver a inicio",
 
     //lecciones
     readMore:"Irakurri gehiago...",
@@ -327,7 +366,7 @@ const translations = {
     listLink:"Para traducir",
 
     //ideas leciones
-    btnIdeas:"💡 Ikasgai posibleak",
+    btnIdeas:"Ikasgai posibleak",
     textIdeas: "Jarraian, ikasitako lezioak sortzeko baliagarriak izan daitezkeen gogoeta batzuk jasotzen dira:",
     addNewIdea: "Ideia berria gehitu",
     descIdea: "Deskribapena",
@@ -386,7 +425,7 @@ const translations = {
   </ul>`,
 
     // Lessons index
-    lessonsTitle: "📚 Ikasgaien Indexa",
+    lessonsTitle: "Ikasgaien Indexa",
     lessonclass: "Hautatu gai bat bere ikasgaiak ikusteko:",
     noArticles: "Ez dago hizkuntza honetan artikulurik."
   }

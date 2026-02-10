@@ -17,21 +17,17 @@ async function loadArticles(page = 1) {
   //const url = `/api/articles?tag=${currentLang}&q=${encodeURIComponent(currentSearch)}&sort=${currentSort}&order=${currentOrder}`;
   let url = `/api/articles?tag=${currentLang}&q=${encodeURIComponent(currentSearch)}&sort=${currentSort}&order=${currentOrder}`;
 
-  //#####BEGIN
   currentPage = page;
 
   if (selectedTopic) {
     url += `&topic=${encodeURIComponent(selectedTopic)}`;
   }
-
   url += `&page=${currentPage}`;
-  //#####END
 
   const res = await fetch(url);
   const data = await res.json();
 
   const container = document.getElementById("articles");
-  //container.innerHTML = "";
 
   if (!data.articles.length) {
     container.innerHTML = `<p>${translations[currentLang].noArticles}</p>`;
@@ -59,8 +55,6 @@ function renderArticles(articles) {
     `;
   });
 }
-//${translations[currentLang].readMore}
-//<a href="article.html?id=${a.id}">Leer más...</a>
 
 //Buscar lección por título
 async function searchAndShowSingleArticle() {
@@ -109,11 +103,11 @@ document.getElementById("searchButton").addEventListener("click", () => {
 
 // Cambiar idioma
 function changeLanguage(lang) {
-  currentLang = lang;      // 1️⃣ Actualizamos idioma
+  currentLang = lang;      // 1Actualizar idioma
   // Guardar idioma en localStorage
   localStorage.setItem("preferredLanguage", currentLang);
   applyTranslations();
-  loadArticles(1);          // 3️⃣ Cargar las lecciones
+  loadArticles(1);          // Cargar las lecciones
 }
 
 
@@ -131,7 +125,6 @@ function applyTranslations() {
   // PLACEHOLDERS
   document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
     const key = el.dataset.i18nPlaceholder;
-    //if (translations[lang][key]) {
     el.placeholder = t[key] || key;
 
   });
@@ -151,13 +144,12 @@ tabs.forEach(tab => {
     tab.classList.add("active");
 
     // cambiar idioma
-    //currentTag = tab.getAttribute("data-tag");
     currentLang = tab.getAttribute("data-tag");
     loadArticles(1);
   });
 });
 
-//#########
+//idioma
 document.querySelectorAll(".tab").forEach(tab => {
   if (tab.getAttribute("data-tag") === currentLang)
     tab.classList.add("active");
@@ -198,11 +190,11 @@ function renderPagination(pagination) {
 document.addEventListener("DOMContentLoaded", () => {
 
   
-  // 🔹 Recuperar idioma almacenado o usar ES por defecto
+  // Recuperar idioma almacenado o usar ES por defecto
   const savedLang = localStorage.getItem("preferredLanguage");
   currentLang = savedLang || "ES";
 
-  // 🔹 (Opcional) marcar el tab correcto activo
+  // marcar el tab correcto activo
   document.querySelectorAll(".tab").forEach(tab => {
     tab.classList.toggle("active", tab.getAttribute("data-tag") === currentLang);
   });

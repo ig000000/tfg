@@ -41,11 +41,11 @@ async function searchAndShowSingleArticle() {
 
 // Cambiar idioma
 function changeLanguage(lang) {
-  currentLang = lang;      // 1️⃣ Actualizamos idioma
+  currentLang = lang;      // Actualizamos idioma
   // Guardar idioma en localStorage
   localStorage.setItem("preferredLanguage", currentLang);
   applyTranslations();
-  //loadArticles();          // 3️⃣ Cargar las lecciones
+  //loadArticles();          // Cargar las lecciones
 }
 
 
@@ -62,7 +62,6 @@ function applyTranslations() {
   // PLACEHOLDERS
   document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
     const key = el.dataset.i18nPlaceholder;
-    //if (translations[lang][key]) {
     el.placeholder = t[key] || key;
 
   });
@@ -82,13 +81,11 @@ tabs.forEach(tab => {
     tab.classList.add("active");
 
     // cambiar idioma
-    //currentTag = tab.getAttribute("data-tag");
     currentLang = tab.getAttribute("data-tag");
-    //loadArticles();
   });
 });
 
-//#########
+//Idioma
 document.querySelectorAll(".tab").forEach(tab => {
   if (tab.getAttribute("data-tag") === currentLang)
     tab.classList.add("active");
@@ -105,15 +102,14 @@ document.querySelectorAll(".tab").forEach(tab => {
 document.addEventListener("DOMContentLoaded", () => {
 
   
-  // 🔹 Recuperar idioma almacenado o usar ES por defecto
+  // Recuperar idioma almacenado o usar ES por defecto
   const savedLang = localStorage.getItem("preferredLanguage");
   currentLang = savedLang || "ES";
 
-  // 🔹 (Opcional) marcar el tab correcto activo
+  // marcar el tab correcto activo
   document.querySelectorAll(".tab").forEach(tab => {
     tab.classList.toggle("active", tab.getAttribute("data-tag") === currentLang);
   });
   
   applyTranslations();
-  //loadArticles();
 });

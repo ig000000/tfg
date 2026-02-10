@@ -12,11 +12,9 @@ async function loadArticle() {
     <div class="ql-editor">${article.content}</div>
   `;
 }
-//<div>${article.content}</div>
 
 // Cargar comentarios
 async function loadComments() {
-  //const res = await fetch(`/api/articles/${articleId}/comments`);
   const res = await fetch(`/api/articles/${id}/comments`);
   const comments = await res.json();
 
