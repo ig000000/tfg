@@ -307,7 +307,7 @@ async function loadIdeasAdmin() {
       <p>${i.description}</p>
       <small>${i.author} · ${i.date}</small>
       <br>
-      <button data-id="${i.id}" class="deleteIdeaBtn">🗑 Borrar</button>
+      <button data-id="${i.id}" class="deleteIdeaBtn">🗑 ${translations[currentLang].clear2}</button>
     `;
 
     adminIdeasList.appendChild(div);
@@ -315,7 +315,8 @@ async function loadIdeasAdmin() {
 
   document.querySelectorAll(".deleteIdeaBtn").forEach(btn => {
     btn.addEventListener("click", async () => {
-      if (!confirm("¿Borrar esta idea?")) return;
+      //if (!confirm("¿Borrar esta idea?")) return;
+      if (!confirm(translations[currentLang].deleteIdea)) return;
 
       await fetch(`/api/ideas/${btn.dataset.id}`, {
         method: "DELETE"
@@ -329,7 +330,8 @@ async function loadIdeasAdmin() {
 addIdeaBtn.addEventListener("click", async () => {
  
   if (!ideaTitle.value || !ideaDescription.value) {
-    alert("Título y descripción obligatorios");
+    //alert("Título y descripción obligatorios");
+    alert(translations[currentLang].mandatoryIdea);
     return;
   }
 

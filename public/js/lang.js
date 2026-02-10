@@ -69,6 +69,13 @@ const translations = {
 
     //ideas leciones
     btnIdeas:"💡 Posibles Leciones",
+    textIdeas: "A continuación se incluyen algunas reflexiones que podrían dar lugar a lecciones aprendidas:",
+    addNewIdea:"Añadir nueva idea",
+    descIdea: "Descripción",
+    addIdea: "Añadir idea",
+    existIdeas: "Ideas existentes",
+    mandatoryIdea:"Título y descripción obligatorios",
+    deleteIdea: "¿Borrar esta idea?",
 
     // Contribution page
     contributeTitle: "Cómo contribuir",
@@ -121,6 +128,7 @@ const translations = {
 
     // Lessons index
     lessonsTitle: "📚 Índice de lecciones",
+    lessonclass: "Selecciona una temática para ver sus lecciones:",
     noArticles: "No hay artículos en este idioma."
   },
 
@@ -190,6 +198,13 @@ const translations = {
 
     //ideas leciones
     btnIdeas:"💡 Possible Lessons",
+    textIdeas: "Below are some reflections that could lead to lessons learned:",
+    addNewIdea: "Add new idea",
+    descIdea: "Description",
+    addIdea: "Add idea",
+    existIdeas: "Existing ideas",
+    mandatoryIdea:"Title and description required",
+    deleteIdea: "Delete this idea?",
 
     // Contribution page
     contributeTitle: "How to Contribute",
@@ -243,6 +258,7 @@ const translations = {
 
     // Lessons index
     lessonsTitle: "📚 Lessons Index",
+    lessonclass: "Select a topic to view its lessons:",
     noArticles: "There are no articles in this language."
   },
 
@@ -312,6 +328,13 @@ const translations = {
 
     //ideas leciones
     btnIdeas:"💡 Ikasgai posibleak",
+    textIdeas: "Jarraian, ikasitako lezioak sortzeko baliagarriak izan daitezkeen gogoeta batzuk jasotzen dira:",
+    addNewIdea: "Ideia berria gehitu",
+    descIdea: "Deskribapena",
+    addIdea: "Ideia gehitu",
+    existIdeas: "Dauden ideiak",
+    mandatoryIdea:"Izenburua eta deskribapena beharrezkoak",
+    deleteIdea: "Ideia hau ezabatu?",
 
     // Contribution page
     contributeTitle: "Nola lagundu",
@@ -364,6 +387,7 @@ const translations = {
 
     // Lessons index
     lessonsTitle: "📚 Ikasgaien Indexa",
+    lessonclass: "Hautatu gai bat bere ikasgaiak ikusteko:",
     noArticles: "Ez dago hizkuntza honetan artikulurik."
   }
 };
