@@ -40,6 +40,7 @@ const translations = {
     readMore:"Leer más...",
     listlessons: "Lista de lecciones",
     linlkesson: "🔗 Enlazar lección",
+    noComments: "No hay comentarios todavía.",
 
     //Administración
     mnglessons:"Administrar Lecciones",
@@ -157,12 +158,13 @@ const translations = {
     srchLessons: "Search lessons...",
     serch: "Search",
 
-    //Comentarios
-    commentsTitle:"Comentarios",
-    addComment:"Añadir Comentario",
-    yourName:"Tu nombre",
-    writeComment: "Escribe el comentario",
-    send: "Enviar",
+    // Comments
+    commentsTitle: "Comments",
+    addComment: "Add comment",
+    yourName: "Your name",
+    writeComment: "Write a comment",
+    send: "Send",
+
 
     //ordenación
     sortBy: "Sort By:",
@@ -172,16 +174,17 @@ const translations = {
     desc:"Descending",
     sort:"Sort",
 
-    //Login
-    username:"Usuario",
-    password:"Contraseña",
-    login: "Login",
-    backHome: "Volver a inicio",
+    // Login
+    username: "Username",
+    password: "Password",
+    login: "Log in",
+    backHome: "Back to home",
 
     //lecciones
     readMore:"Read more...",
     listlessons: "Lessons list",
     linlkesson: "🔗 Link lesson",
+    noComments: "There are no comments yet.",
 
     //Administración
     mnglessons:"Manage Lessons",
@@ -300,12 +303,13 @@ const translations = {
     srchLessons: "Ikasgaiak bilatu...",
     serch: "Bilatu",
 
-    //Comentarios
-    commentsTitle:"Comentarios",
-    addComment:"Añadir Comentario",
-    yourName:"Tu nombre",
-    writeComment: "Escribe el comentario",
-    send: "Enviar",
+    // Iruzkinak
+    commentsTitle: "Iruzkinak",
+    addComment: "Iruzkina gehitu",
+    yourName: "Zure izena",
+    writeComment: "Idatzi iruzkina",
+    send: "Bidali",
+
 
     //ordenación
     sortBy: "Honen arabera ordenatu:",
@@ -315,16 +319,17 @@ const translations = {
     desc:"Beheranzkoa",
     sort:"Ordenatu",
 
-    //Login
-    username:"Usuario",
-    password:"Contraseña",
-    login: "Login",
-    backHome: "Volver a inicio",
+    // Login
+    username: "Erabiltzailea",
+    password: "Pasahitza",
+    login: "Saioa hasi",
+    backHome: "Hasierara itzuli",
 
     //lecciones
     readMore:"Irakurri gehiago...",
     listlessons: "Ikasgaien zerrenda",
     linlkesson: "🔗 Lotu ikasgaia",
+    noComments: "Oraindik ez dago iruzkinik.",
 
     //Administración
     mnglessons:"Ikasgaiak kudeatu",

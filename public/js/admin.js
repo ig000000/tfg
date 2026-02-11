@@ -224,7 +224,7 @@ async function loadArticleToForm(id) {
   quill.root.innerHTML = article.content;
 }
 
-//
+//idioma
 document.querySelectorAll(".tab").forEach(btn => {
   btn.addEventListener("click", () => {
     loadAdminArticles();
@@ -262,8 +262,8 @@ document.getElementById("linkLessonBtn").addEventListener("click", async () => {
 
 const ideaTitle = document.getElementById("ideaTitle");
 const ideaDescription = document.getElementById("ideaDescription");
-const ideaAuthor = document.getElementById("ideaAuthor");
-const ideaTags = document.getElementById("ideaTags");
+//const ideaAuthor = document.getElementById("ideaAuthor");
+//const ideaTags = document.getElementById("ideaTags");
 const addIdeaBtn = document.getElementById("addIdeaBtn");
 const adminIdeasList = document.getElementById("adminIdeasList");
 
@@ -280,7 +280,7 @@ async function loadIdeasAdmin() {
     div.innerHTML = `
       <strong>${i.title}</strong>
       <p>${i.description}</p>
-      <small>${i.author} · ${i.date}</small>
+      <small>${i.date}</small>
       <br>
       <button data-id="${i.id}" class="deleteIdeaBtn">🗑 ${translations[currentLang].clear2}</button>
     `;
@@ -316,15 +316,15 @@ addIdeaBtn.addEventListener("click", async () => {
     body: JSON.stringify({
       title: ideaTitle.value,
       description: ideaDescription.value,
-      author: ideaAuthor.value || "Anónimo",
-      tags: ideaTags.value.split(",").map(t => t.trim())
+      //author: ideaAuthor.value || "Anónimo",
+      //tags: ideaTags.value.split(",").map(t => t.trim())
     })
   });
 
   ideaTitle.value = "";
   ideaDescription.value = "";
-  ideaAuthor.value = "";
-  ideaTags.value = "";
+  //ideaAuthor.value = "";
+  //ideaTags.value = "";
 
   loadIdeasAdmin();
 });

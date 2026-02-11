@@ -22,9 +22,10 @@ async function loadComments() {
   container.innerHTML = "";
 
   if (!comments.length) {
-    container.innerHTML = "<p>No hay comentarios todavía.</p>";
+    container.innerHTML = `<p>${translations[currentLang].noComments}</p>`;
     return;
   }
+  //<p>No hay comentarios todavía.</p>
 
   comments.forEach(c => {
     container.innerHTML += `
@@ -59,5 +60,13 @@ document.getElementById("sendComment").addEventListener("click", async () => {
   loadComments();
 });
 
+//Idioma
+document.querySelectorAll(".tab").forEach(btn => {
+  btn.addEventListener("click", () => {
+    loadComments();
+  });
+});
+
+//DOM
 loadArticle();
 loadComments();

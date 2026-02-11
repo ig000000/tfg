@@ -25,14 +25,14 @@
   },
   {
     "id": 3,
-    "title": "Sexy",
+    "title": "Test",
     "date": "2025-06-07",
     "author": "Patata Sexy Campos",
-    "summary": "Sexy",
-    "content": "Full text of the article...",
+    "summary": "Full text of the article...",
+    "content": "<p>Full text of the article...</p>",
     "tags": [
       "EN",
-      "Sexy"
+      "test"
     ]
   },
   {
@@ -49,11 +49,11 @@
   },
   {
     "id": 5,
-    "title": "Sitio web pornografico",
+    "title": "Sitio web",
     "date": "2024-12-04",
     "author": "Lola Montero",
-    "summary": "Askotan, nekeak edo gogo faltak",
-    "content": "Texto completo del artículo...",
+    "summary": "Texto completo del artículo...",
+    "content": "<p>Texto completo del artículo...</p>",
     "tags": [
       "ES",
       "sitio web"
@@ -97,39 +97,28 @@
     ]
   },
   {
-    "id": 12,
-    "title": "ni",
-    "date": "2026-01-20",
-    "author": "ni",
-    "summary": "ni naiz.",
-    "content": "<p>ni naiz.</p>",
-    "tags": [
-      "EU",
-      "ni"
-    ]
-  },
-  {
-    "id": 13,
-    "title": "p",
-    "date": "2026-01-20",
-    "author": "p",
-    "summary": "hdfyuiohbfudis judios hufdsohufdsh jbn fjdsnf jfso njgs vjs jvxjvjgs vcjp jxs gjfsp gs hola",
-    "content": "<p>hdfyuiohbfudis judios hufdsohufdsh jbn fjdsnf jfso njgs vjs jvxjvjgs vcjp jxs gjfsp gs hola</p><p>bfhysbfsb</p><p>bgdbgdnhgdnhf gf df </p>",
-    "tags": [
-      "ES",
-      "p"
-    ]
-  },
-  {
     "id": 14,
     "title": "cosa",
     "date": "2026-01-22",
     "author": "cosa",
     "summary": "cosa cosa cosa",
-    "content": "<p>cosa cosa cosa </p><p>cosa cosa cosa cosa cosa cosa cosa cosa cosa cosa cosa cosa cosa cosa cosa cosa</p><p>cosa cosa cosa cosa cosa cosa cosa cosa</p>",
+    "content": "<p>cosa cosa cosa </p><p>cosa cosa cosa cosa cosa cosa cosa cosa cosa cosa cosa cosa cosa cosa cosa cosa</p><p>cosa cosa cosa cosa cosa cosa cosa cosa cosa</p>",
     "tags": [
       "ES",
       "cosa"
+    ]
+  },
+  {
+    "id": 15,
+    "title": "Kalitate tresna on baten abantaila",
+    "date": "2026-02-11",
+    "author": "David Pintado",
+    "summary": "Proiektu handi eta luze batean praktika on bat da kalitateari garrantzi handia ematea. Ezaguna denez, bi motako akats gerta daitezke proiektu batean: barne akatsak, proiektuaren taldeak aurkitutako akatsak; eta kanpo akatsak, erakunde edo taldetik kanpo aurkitutakoak. Azken hauek garestienak dira, bezeroak aurkitzen dituelako, eta erakundearean amaiera ekarri dezaketelako.",
+    "content": "<p>Proiektu handi eta luze batean praktika on bat da kalitateari garrantzi handia ematea. Ezaguna denez, bi motako akats gerta daitezke proiektu batean: barne akatsak, <a href=\"/article.html?id=4\" rel=\"noopener noreferrer\" target=\"_blank\">proiektuaren</a> taldeak aurkitutako akatsak; eta kanpo akatsak, erakunde edo taldetik kanpo aurkitutakoak. Azken hauek garestienak dira, bezeroak aurkitzen dituelako, eta erakundearean amaiera ekarri dezaketelako.</p><p><br></p><p>Hori dela eta, garrantzitsua da kalitate eta plangintzari denbora gehiago eskaintzea. Praktika on bat da entregagai bakoitzean, hau da, lan pakete bakoitzean, kalitatea bermatzea, eta horretarako egokia den kalitate tresna bat eraikitzea. Kalitate tresnari behar bezalako garrantzia ematen bada, asko lagunduko du akatsak aurreikusten, edota hobekuntzak aurkitzen.</p><p><br></p><p class=\"ql-align-justify\">Hortaz, hasiera batean plangintza egin eta gero, lan pakete bakoitzarekin lanean hasi baino lehen, garrantzitsua da kalitate tresna eraikitzea. Kalitate tresna horrek, bi atal eduki dezake, hala nola bai edo bai bete beharreko eskakizunak eta minimotik haratago-ko eskakizunak. Azken hori jarriz, produktuaren kalitatea handitu dezake. Gainera, interesgarria da oharrak atal bat izatea, ebaluatzaileak atal horren inguruko oharrak jartzen baditu, errazagoa izango da komunikatzeko zer den zuzendu behar dena.</p><p><br></p>",
+    "tags": [
+      "EU",
+      "ona",
+      "abantaila"
     ]
   }
 ]
