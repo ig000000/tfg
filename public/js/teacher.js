@@ -15,7 +15,8 @@ async function editArticle(id) {
 }
 
 async function deleteArticle(id) {
-  if (!confirm("¿Borrar lección?")) return;
+  //if (!confirm("¿Borrar lección?")) return;
+  if (!confirm(translations[currentLang].deleteLesson)) return;
 
   await fetch(`/api/articles/${id}`, { method: "DELETE" });
   loadAdminArticles();

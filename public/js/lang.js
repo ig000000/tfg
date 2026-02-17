@@ -47,6 +47,7 @@ const translations = {
     addEdit:"Añadir / Editar",
     save:"Guardar",
     clear:"Limpiar",
+    deleteLesson: "¿Borrar lección?",
 
     //Formulario
     author:"Autor",
@@ -191,6 +192,7 @@ const translations = {
     addEdit:"Add / Edit",
     save:"Save",
     clear:"Clear",
+    deleteLesson: "Delete lesson?",
 
     //Formulario
     author:"Author",
@@ -336,6 +338,7 @@ const translations = {
     addEdit:"Gehitu / Editatu",
     save:"Gorde",
     clear:"Garbitu",
+    deleteLesson: "Ezabatu ikasgaia?",
 
     //Formulario
     author:"Egilea",
