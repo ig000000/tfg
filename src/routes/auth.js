@@ -23,10 +23,14 @@ router.post("/login", (req, res) => {
   //req.session.user = user.username;
   req.session.user = {
     id: user.id,
-    role: user.role
+    roles: user.roles,
+    activeRole :user.roles[0] // por defecto
   }
 
-  res.json({ success: true, role: user.role });
+  //console.log("____________________");
+  //console.log("user.role")
+
+  res.json({ success: true, roles: [user.roles] });
 });
 
 //Logout
@@ -43,9 +47,31 @@ router.get("/check", (req, res) => {
 
   res.json({
     logged: true,
-    role: req.session.user.role
+    id: req.session.user.id,
+    roles: req.session.user.roles,
+    activeRole: req.session.user.activeRole
   });
 });
+
+//Roles
+router.post("/set-role", (req, res) => {
+  const { role } = req.body;
+
+  if (!req.session.user) {
+    return res.sendStatus(401);
+  }
+
+  if (!req.session.user.roles.includes(role)) {
+    return res.sendStatus(403);
+  }
+
+  req.session.user.activeRole = role;
+
+  //console.log(req.session.user);
+
+  res.json({ success: true });
+});
+
 
 
 module.exports = router;

@@ -16,6 +16,9 @@
     <h1 class="logo">Project Knowledge · Teacher</h1>
 
     <div class="header-actions">
+      <!-- Roles-->
+      <select id="roleSwitcher"></select>
+
       <!-- Idioma -->
       <div class="tabs">
         <button class="tab" data-tag="ES">ES</button>
@@ -123,6 +126,7 @@
 <script src="js/lang.js"></script>
 <script src="js/main2.js"></script>
 <script src="js/teacher.js"></script>
+<script src="js/roles.js"></script>
 
 <script>
 async function checkSession(){
@@ -135,7 +139,7 @@ async function checkSession(){
 
   const data = await res.json();
 
-  if(data.role !== "teacher"){
+  if(data.activeRole !== "teacher"){
     alert("No autorizado");
     window.location.href = "index.html";
   }

@@ -7,17 +7,16 @@ function requireAuth(req, res, next) {
 
 function requireRole(role) {
   return (req, res, next) => {
-    if (!req.session.user) {
-      return res.status(401).json({ error: "No autenticado" });
-    }
+    if (!req.session.user) return res.sendStatus(401);
 
-    if (req.session.user.role !== role) {
-      return res.status(403).json({ error: "Sin permisos" });
+    if (req.session.user.activeRole !== role) {
+      return res.sendStatus(403);
     }
 
     next();
   };
 }
+
 
 module.exports = {
   requireAuth,

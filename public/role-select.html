@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Project Knowledge · Lessons</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<h2>Selecciona cómo quieres entrar</h2>
+<div id="roles"></div>
+
+<script>
+async function loadRoles() {
+  const res = await fetch("/auth/check");
+  const data = await res.json();
+
+  const container = document.getElementById("roles");
+
+  data.roles.forEach(role => {
+    const btn = document.createElement("button");
+    btn.innerText = role;
+
+    btn.onclick = async () => {
+      await fetch("/auth/set-role", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ role })
+      });
+
+      if (role === "admin") window.location.href = "admin.html";
+      if (role === "teacher") window.location.href = "teacher.html";
+    };
+
+    container.appendChild(btn);
+  });
+}
+
+loadRoles();
+</script>
+
+
+</body>
+</html>

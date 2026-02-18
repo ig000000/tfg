@@ -26,6 +26,7 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
   const username = document.getElementById("username").value;
   const password = document.getElementById("password").value;
 
+
   const res = await fetch("/auth/login", {
     method: "POST",
     headers: { "Content-Type": "application/json"},
@@ -37,10 +38,13 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
   if (!data.success) {
     document.getElementById("error").innerText = "Login incorrecto";
   } else {
-    if (data.role === "teacher") {
-        window.location.href = "teacher.html";
-    } else if (data.role === "admin") {
-        window.location.href = "admin.html";
+    if (data.roles){
+        //console.log(data.roles.length);
+        //console.log(data);
+        window.location.href ="role-select.html";
+    }
+    else{
+        document.getElementById("error").innerText = "error";
     }
   }
 });
