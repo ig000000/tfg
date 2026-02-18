@@ -13,7 +13,7 @@
 <header class="header">
 
   <div class="header-top">
-    <h1 class="logo">Project Knowledge · Admin</h1>
+    <h1 class="logo">Project Knowledge · Teacher</h1>
 
     <div class="header-actions">
       <!-- Idioma -->
@@ -127,16 +127,26 @@
 <script>
 async function checkSession(){
   const res = await fetch("/auth/check");
+
   if(res.status !== 200){
     window.location.href = "login.html";
+    return;
+  }
+
+  const data = await res.json();
+
+  if(data.role !== "teacher"){
+    alert("No autorizado");
+    window.location.href = "index.html";
   }
 }
 checkSession();
 
-async function logout(){
+//Logout
+window.logout = async function () {
   await fetch("/auth/logout", { method: "POST" });
   window.location.href = "login.html";
-}
+};
 </script>
 
 </body>

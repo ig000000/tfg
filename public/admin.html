@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Project Knowledge · Admin</title>
+
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://cdn.quilljs.com/1.3.7/quill.snow.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="header">
+
+  <div class="header-top">
+    <h1 class="logo">Project Knowledge · Admin</h1>
+
+    <div class="header-actions">
+      <!-- Idioma -->
+      <div class="tabs">
+        <button class="tab" data-tag="ES">ES</button>
+        <button class="tab" data-tag="EU">EU</button>
+        <button class="tab" data-tag="EN">EN</button>
+      </div>
+
+      <!-- Logout -->
+      <button onclick="logout()" class="login-btn">Logout</button>
+    </div>
+  </div>
+
+</header>
+
+<!-- ================= CONTENIDO ================= -->
+
+<h2>ADMIN</h2>
+
+</main>
+
+<!-- ================= SCRIPTS ================= -->
+<!--<script src="https://cdn.quilljs.com/1.3.7/quill.min.js"></script>-->
+<script src="js/lang.js"></script>
+<script src="js/auth.js"></script>
+
+<script>
+async function checkSession(){
+  const res = await fetch("/auth/check");
+
+  if(res.status !== 200){
+    window.location.href = "login.html";
+    return;
+  }
+
+  const data = await res.json();
+
+  if(data.role !== "admin"){
+    alert("No autorizado");
+    window.location.href = "index.html";
+  }
+}
+checkSession();
+
+//Logout
+window.logout = async function () {
+  await fetch("/auth/logout", { method: "POST" });
+  window.location.href = "login.html";
+};
+</script>
+
+</body>
+</html>

@@ -2,6 +2,9 @@ const express = require("express");
 const fs = require("fs");
 const path = require("path");
 
+//middleware
+const { requireRole } = require("../middleware/auth");
+
 const router = express.Router();
 const filePath = path.join(__dirname, "../../data/ideas.json");
 
@@ -20,7 +23,7 @@ router.get("/", (req, res) => {
 });
 
 /* ====== ADMIN ONLY ====== */
-router.post("/", (req, res) => {
+router.post("/", requireRole("teacher"), (req, res) => {
 
   //  console.log("SESSION:", req.session.user);
 

@@ -2,6 +2,9 @@ const express = require("express");
 const fs = require("fs");
 const path = require("path");
 
+//middleware
+const { requireRole } = require("../middleware/auth");
+
 const router = express.Router();
 
 // PATH JSON
@@ -164,7 +167,7 @@ router.get("/:id", (req, res) => {
 
 // Editar, Añadir, Eliminar
 // Crear artículo
-router.post("/", (req, res) => {
+router.post("/", requireRole("teacher"),(req, res) => {
   const data = JSON.parse(fs.readFileSync(articlesPath));
 
   const { title, date, author, content, tags } = req.body;
