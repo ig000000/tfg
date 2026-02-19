@@ -39,9 +39,15 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
     document.getElementById("error").innerText = "Login incorrecto";
   } else {
     if (data.roles){
-        //console.log(data.roles.length);
-        //console.log(data);
+      if (data.roles[0].length ===1){
+        //console.log(data.roles[0][0]);
+        window.location.href=`${data.roles[0][0]}.html`;
+      } else{
         window.location.href ="role-select.html";
+      }
+        //console.log(data.roles[0].length);
+        //console.log(data.roles);
+        //window.location.href ="role-select.html";
     }
     else{
         document.getElementById("error").innerText = "error";
