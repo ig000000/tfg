@@ -2,15 +2,13 @@ const express = require("express");
 const fs = require("fs");
 const path = require("path");
 const router = express.Router();
-const users = require(path.join(__dirname,"../../data/users.js"))
-
+//const users = require(path.join(__dirname,"../../data/users.json"))
+const { getUsers } = require("../utils/usersData");
 //Login
 router.post("/login", (req, res) => {
   const { username, password } = req.body;
 
-  //const users = JSON.parse(
-  //  fs.readFileSync(path.join(__dirname, "../../data/users.json"))
-  //);
+  const users = getUsers();
 
   const user = users.find(
     u => u.username === username && u.password === password

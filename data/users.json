@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "username": "teacher",
+    "password": "1234",
+    "roles": [
+      "teacher"
+    ],
+    "active": false
+  },
+  {
+    "id": 2,
+    "username": "admin",
+    "password": "1234",
+    "roles": [
+      "admin"
+    ],
+    "active": true
+  },
+  {
+    "id": 3,
+    "username": "paquito",
+    "password": "1234",
+    "roles": [
+      "teacher",
+      "admin"
+    ],
+    "active": true
+  }
+]

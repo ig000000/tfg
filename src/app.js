@@ -28,6 +28,7 @@ app.use("/api/articles", require("./routes/articles"));
 app.use("/api/articles",  require("./routes/comments"));
 app.use("/auth", require("./routes/auth"));
 app.use("/api/ideas", require("./routes/ideas"));
+app.use("/users", require("./routes/users"));
 
 
 // Servidor
