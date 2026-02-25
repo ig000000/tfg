@@ -1,24 +1,3 @@
-//document.getElementById("loginForm").addEventListener("submit", async (e) => {
-//  e.preventDefault();
-
-//  const username = document.getElementById("username").value;
-//  const password = document.getElementById("password").value;
-
-//  const res = await fetch("/auth/login", {
-//    method: "POST",
-//    headers: { "Content-Type": "application/json"},
-//    body: JSON.stringify({ username, password })
-//  });
-
-//  const data = await res.json();
-
-//  if (!data.success) {
-//    document.getElementById("error").innerText = "Login incorrecto";
-//  } else {
-//    window.location.href = "teacher.html";
-//  }
-//});
-
 //Login
 document.getElementById("loginForm").addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -30,6 +9,7 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
   const res = await fetch("/auth/login", {
     method: "POST",
     headers: { "Content-Type": "application/json"},
+    credentials: "include",
     body: JSON.stringify({ username, password })
   });
 
@@ -39,9 +19,9 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
     document.getElementById("error").innerText = "Login incorrecto";
   } else {
     if (data.roles){
-      if (data.roles[0].length ===1){
+      if (data.roles.length ===1){
         //console.log(data.roles[0][0]);
-        window.location.href=`${data.roles[0][0]}.html`;
+        window.location.href=`${data.roles[0]}.html`;
       } else{
         window.location.href ="role-select.html";
       }

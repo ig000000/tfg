@@ -42,7 +42,7 @@
 
     <h2 data-i18n="licenseTitle"></h2>
 
-    <p data-i18n="licenseTXT"></p>
+    <p id="licenseTXT"></p>
 
   </section>
 
@@ -70,5 +70,20 @@
 
 <script src="js/lang.js"></script>
 <script src="js/main2.js"></script>
+<script>
+async function loadContent() {
+  const res = await fetch('/content');
+  const data = await res.json();
+  document.getElementById("licenseTXT").innerHTML = data.licencia[currentLang];
+}
+
+//idioma
+document.querySelectorAll(".tab").forEach(btn => {
+  btn.addEventListener("click", () => {
+    loadContent();
+  });
+});
+loadContent();
+</script>
 </body>
 </html>

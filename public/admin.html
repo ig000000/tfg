@@ -5,6 +5,7 @@
   <title>Project Knowledge · Admin</title>
 
   <link rel="stylesheet" href="css/styles.css">
+  <!--Quill-->
   <link href="https://cdn.quilljs.com/1.3.7/quill.snow.css" rel="stylesheet">
 </head>
 <body>
@@ -87,14 +88,27 @@
     </table>
   </section>
 
+  <!--Edición licencia / contribución-->
+  <h2>Editar Licencia</h2>
+<div id="editorLicencia"></div>
+<button onclick="saveLicencia()">Guardar Licencia</button>
+
+<h2>Editar Contribución</h2>
+<div id="editorContribucion"></div>
+<button onclick="saveContribucion()">Guardar Contribución</button>
+
+<!-- Quill -->
+<script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+
   
 <!-- ================= SCRIPTS ================= -->
 <!--<script src="https://cdn.quilljs.com/1.3.7/quill.min.js"></script>-->
 <script src="js/lang.js"></script>
-<script src="js/auth.js"></script>
+<!--<script src="js/auth.js"></script>-->
 <script src="js/roles.js"></script>
-<script src="js/admin.js"></script>
 <script src="js/main2.js"></script>
+<script src="js/admin.js"></script>
+<!--<script src="js/main2.js"></script>-->
 
 <script>
 async function checkSession(){
@@ -116,7 +130,9 @@ checkSession();
 
 //Logout
 window.logout = async function () {
-  await fetch("/auth/logout", { method: "POST" });
+  await fetch("/auth/logout", { 
+    method: "POST",
+    credentials: "include"});
   window.location.href = "login.html";
 };
 </script>

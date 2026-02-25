@@ -7,10 +7,19 @@ function requireAuth(req, res, next) {
 
 function requireRole(role) {
   return (req, res, next) => {
-    if (!req.session.user) return res.sendStatus(401);
 
-    if (req.session.user.activeRole !== role) {
-      return res.sendStatus(403);
+    const sessionUser = req.session.user;
+    console.log(sessionUser);
+    console.log("#############");
+    console.log(req.session);
+    console.log("AAAAAAAAAAAAAAAAAA");
+
+    if (!sessionUser) {
+      return res.status(401).json({ message: "No autenticado" });
+    }
+
+    if (!sessionUser.roles.includes(role)) {
+      return res.status(403).json({ message: "No autorizado" });
     }
 
     next();

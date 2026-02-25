@@ -148,7 +148,9 @@ checkSession();
 
 //Logout
 window.logout = async function () {
-  await fetch("/auth/logout", { method: "POST" });
+  await fetch("/auth/logout", {
+     method: "POST",
+     credentials: "include"});
   window.location.href = "login.html";
 };
 </script>

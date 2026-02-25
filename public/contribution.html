@@ -42,13 +42,7 @@
   <section class="articles">
 
     <h2 data-i18n="contributeTitle"></h2>
-    <p data-i18n="contribute1"></p>
-    <p data-i18n="contribute2"></p>
-    <p data-i18n="contribute3"></p>
-    <ul class="content-list"></ul>
-      <li data-i18n="contribute4"></li>
-      <li data-i18n="contribute5"></li>
-    </ul>
+    <p id="contributeTXT"></p>
 
   </section>
 
@@ -76,5 +70,20 @@
 
 <script src="js/lang.js"></script>
 <script src="js/main2.js"></script>
+<script>
+async function loadContent() {
+  const res = await fetch('/content');
+  const data = await res.json();
+  document.getElementById("contributeTXT").innerHTML = data.contribucion[currentLang];
+}
+
+//idioma
+document.querySelectorAll(".tab").forEach(btn => {
+  btn.addEventListener("click", () => {
+    loadContent();
+  });
+});
+loadContent()
+</script>
 </body>
 </html>

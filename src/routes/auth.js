@@ -28,7 +28,11 @@ router.post("/login", (req, res) => {
   //console.log("____________________");
   //console.log("user.role")
 
-  res.json({ success: true, roles: [user.roles] });
+  //res.json({ success: true, roles: [user.roles] });
+  //res.json({ success: true, roles: user.roles });
+  req.session.save(() => {
+    res.json({ success: true, roles: user.roles });
+  });
 });
 
 //Logout

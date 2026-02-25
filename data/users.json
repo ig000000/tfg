@@ -22,7 +22,7 @@
     "username": "paquito",
     "password": "1234",
     "roles": [
-      "teacher",
+      "profesor",
       "admin"
     ],
     "active": true
