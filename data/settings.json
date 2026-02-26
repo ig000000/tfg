@@ -1,0 +1,19 @@
+{
+  "siteName": "Project Knowledge",
+  "defaultLang": "ES",
+  "articlesPerPage": 4,
+  "logo": "/assets/logo.png",
+  "favicon": "/assets/favicon.ico",
+  "links": [
+    {
+      "title": "Wikipedia",
+      "url": "https://wikipedia.org",
+      "visible": true
+    },
+    {
+      "title": "panza",
+      "url": "https://wikipedia.org",
+      "visible": true
+    }
+  ]
+}

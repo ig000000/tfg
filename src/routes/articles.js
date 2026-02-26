@@ -11,7 +11,9 @@ const router = express.Router();
 const articlesPath = path.join(__dirname, "../../data/articles.json");
 
 // Para paginación
-const { ARTICLES_PER_PAGE } = require("../../config");
+//const { ARTICLES_PER_PAGE } = require("../../config");
+const settingsFIle =  path.join(__dirname, "../../data/settings.json");
+const settings = JSON.parse(fs.readFileSync(settingsFIle));
 
 //generar resumen
 function generateSummaryFromHTML(html, maxWords = 100) {
@@ -58,7 +60,10 @@ router.get("/", (req, res) => {
   //const page = req.query.page;
   const page = parseInt(req.query.page) || 1;
 
-  const limit = ARTICLES_PER_PAGE;
+  //const limit = ARTICLES_PER_PAGE;
+  const limit = settings.articlesPerPage;
+  console.log("BBBBBBBBBBB");
+  console.log(settings);
 
   let filtered = data;
 

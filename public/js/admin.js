@@ -167,6 +167,44 @@ document.querySelectorAll(".tab").forEach(btn => {
   });
 });
 
+//settings
+//Cargar settings
+async function loadSettings() {
+  const res = await fetch("/settings", {
+    credentials: "include"
+  });
+
+  const data = await res.json();
+
+  document.getElementById("siteName").value = data.siteName;
+  document.getElementById("defaultLang").value = data.defaultLang;
+  document.getElementById("articlesPerPage").value = data.articlesPerPage;
+  document.getElementById("logo").value = data.logo;
+  document.getElementById("favicon").value = data.favicon;
+}
+
+//Guardar settings
+async function saveSettings() {
+  const body = {
+    siteName: document.getElementById("siteName").value,
+    defaultLang: document.getElementById("defaultLang").value,
+    articlesPerPage: parseInt(document.getElementById("articlesPerPage").value),
+    logo: document.getElementById("logo").value,
+    favicon: document.getElementById("favicon").value
+  };
+
+  const res = await fetch("/settings", {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    credentials: "include",
+    body: JSON.stringify(body)
+  });
+
+  const data = await res.json();
+  alert(data.message);
+}
+
 //DOM
 loadContent();
 loadUsers();
+loadSettings();

@@ -11,7 +11,7 @@
 <header class="header">
 
   <div class="header-top">
-    <h1 class="logo">Project Knowledge</h1>
+    <h1 class="logo" id="name">Project Knowledge</h1>
 
     <div class="header-actions">
       <!-- Idioma -->
@@ -79,7 +79,7 @@
 
   <!-- Links of Interest -->
   <aside class="links-of-interest">
-    <h3 data-i18n="linksOfInterest"></h3>
+  <!--  <h3 data-i18n="linksOfInterest"></h3>
     <ul>
       <li><a href="https://aeipro.com/" target="_blank">AEIPRO: Asociación Española de Dirección e Ingeniería de Proyectos</a></li>
       <li><a href="https://www.pmi.org/" target="_blank">PMI: Project Management Institute</a></li>
@@ -94,7 +94,10 @@
       <li><a href="https://www.enriquedans.com/" target="_blank">Blog de Enrique Dans</a></li>
       <li><a href="http://www.mikelnino.com/" target="_blank">Blog de Mikel Niño</a></li>
       <li><a href="https://www.ibaivalencia.com/" target="_blank">Blog de Ibai Valencia</a></li>
-    </ul>
+    </ul>-->
+    <h3 data-i18n="linksOfInterest"></h3>
+    <lu><div id="links"></div></lu>
+
   </aside>
 
 </main>
@@ -102,6 +105,10 @@
 <!-- ================= SCRIPTS ================= -->
 <script src="js/lang.js"></script>
 <script src="js/main.js"></script>
+<script src="js/linksOfInterest.js"></script>
+<script>
+  loadPublicLinks();
+</script>
 
 </body>
 </html>

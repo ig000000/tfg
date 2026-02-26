@@ -41,21 +41,6 @@ app.use(
 //  }
 //}));
 
-//Prueba Luego borrar
-app.use((req, res, next) => {
-  console.log("SESSION ID:", req.sessionID);
-  console.log("SESSION USER:", req.session.user);
-  next();
-});
-
-//cors
-//const cors = require("cors");
-
-//app.use(cors({
-//  origin: "http://localhost:3000", // o tu frontend
-//  credentials: true
-//}));
-
 // Rutas
 app.use("/", require("./routes/index"));
 app.use("/api", require("./routes/api"));
@@ -65,6 +50,7 @@ app.use("/auth", require("./routes/auth"));
 app.use("/api/ideas", require("./routes/ideas"));
 app.use("/users", require("./routes/users"));
 app.use("/content", require("./routes/content"));
+app.use("/settings", require("./routes/settings"));
 
 
 // Servidor
