@@ -25,9 +25,10 @@ async function loadUsers() {
 async function createUser() {
   const username = document.getElementById('newUsername').value;
   const password = document.getElementById('newPassword').value;
+  const userNumber = document.getElementById("newUserNumber").value;
 
   const roles = [];
-  if (document.getElementById('roleProfesor').checked) roles.push('profesor');
+  if (document.getElementById('roleProfesor').checked) roles.push('teacher');
   if (document.getElementById('roleAdmin').checked) roles.push('admin');
 
   if (roles.length === 0) {
@@ -35,11 +36,16 @@ async function createUser() {
     return;
   }
 
+  if (!userNumber) {
+    alert("El número de usuario es obligatorio");
+    return;
+  }
+
   await fetch('/users', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     credentials: 'include',
-    body: JSON.stringify({ username, password, roles })
+    body: JSON.stringify({ username, userNumber, password, roles })
   });
 
   loadUsers();
@@ -74,6 +80,9 @@ Admin
       <td>
         <button onclick="toggleStatus(${user.id})">Activar/Desactivar</button>
         <button onclick="deleteUser(${user.id})">Eliminar</button>
+        <button onclick="resetPassword(${user.id})">
+          Reset password
+        </button>
       </td>
     `;
     //<td>${user.roles.join(', ')}</td>
@@ -299,6 +308,30 @@ window.toggleRole = async function(id, role, checked) {
   alert(data.message);
 
   loadUsers();
+};
+
+//reset contraseña
+window.resetPassword = async function(id) {
+
+  const newPassword = prompt("Introduce la nueva contraseña:");
+
+  if (!newPassword) return;
+
+  const res = await fetch(`/users/${id}/password`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    credentials: "include",
+    body: JSON.stringify({
+      password: newPassword
+    })
+  });
+
+  const data = await res.json();
+
+  alert(data.message);
+
 };
 
 //DOM

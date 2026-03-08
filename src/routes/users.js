@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const { getUsers, saveUsers } = require("../utils/usersData");
 const { requireRole } = require("../middleware/auth");
+//bycript
+const bcrypt = require("bcrypt");
 
 // ✅ Obtener usuarios
 //router.get("/", requireRole("admin"), (req, res) => {
@@ -30,10 +32,16 @@ router.get("/", requireRole("admin"), (req, res) => {
 });
 
 // ✅ Crear usuario
-router.post("/", requireRole("admin"), (req, res) => {
+router.post("/", requireRole("admin"), async (req, res) => {
   const users = getUsers();
 
-  const { username, password, roles } = req.body;
+  const { username, password, roles, userNumber} = req.body;
+
+  if (!username || !password || !userNumber) {
+    return res.status(400).json({
+      error: "Username, password y número de usuario son obligatorios"
+    });
+  }
 
   if (!roles || roles.length === 0) {
     return res.status(400).json({
@@ -41,10 +49,13 @@ router.post("/", requireRole("admin"), (req, res) => {
     });
   }
 
+  const hash = await passwordBcript(password);
+
   const newUser = {
     id: users.length ? users[users.length - 1].id + 1 : 1,
     username,
-    password,
+    userNumber,
+    password: hash,
     roles,
     active: true
   };
@@ -54,6 +65,11 @@ router.post("/", requireRole("admin"), (req, res) => {
 
   res.json(newUser);
 });
+
+//bycript password
+async function passwordBcript(password) {
+  return await bcrypt.hash(password, 10);
+}
 
 // ✅ Eliminar usuario (con protección admin)
 router.delete("/:id", requireRole("admin"), (req, res) => {
@@ -148,6 +164,41 @@ router.put("/:id/roles", (req, res) => {
 
   res.json({
     message: "Roles actualizados"
+  });
+
+});
+
+//cambiar contraseña
+router.put("/:id/password", async (req, res) => {
+
+  const id = parseInt(req.params.id);
+  const { password } = req.body;
+
+  if (!password) {
+    return res.status(400).json({
+      error: "Password requerida"
+    });
+  }
+
+  const users = getUsers();
+
+  const user = users.find(u => u.id === id);
+
+  if (!user) {
+    return res.status(404).json({
+      error: "Usuario no encontrado"
+    });
+  }
+
+  const hash = await passwordBcript(password);
+
+  //user.password = password;
+  user.password = hash;
+
+  saveUsers(users);
+
+  res.json({
+    message: "Contraseña actualizada"
   });
 
 });

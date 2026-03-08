@@ -2,6 +2,7 @@
   {
     "id": 1,
     "username": "teacher",
+    "userNumber": "U1001",
     "password": "1234",
     "roles": [
       "teacher"
@@ -11,7 +12,8 @@
   {
     "id": 2,
     "username": "admin",
-    "password": "1234",
+    "userNumber": "U1002",
+    "password": "$2b$10$CsOwBsXwu3AdZy4pVL9wLOkfKXM8DOTpMggGtnp4W3ECUI4Ma0s6K",
     "roles": [
       "admin"
     ],
@@ -20,10 +22,21 @@
   {
     "id": 3,
     "username": "paquito",
-    "password": "1234",
+    "userNumber": "U1003",
+    "password": "$2b$10$Ku3up.tLRo4GJZvedHiCDuFb5qBM2V0YdWW/pumDkNOv8f1dz18fO",
     "roles": [
-      "profesor",
+      "teacher",
       "admin"
+    ],
+    "active": true
+  },
+  {
+    "id": 4,
+    "username": "yo",
+    "userNumber": "66",
+    "password": "$2b$10$I7EYftDD2d.VNDYHPlKC3.osYbJcHPODByfT9Kv9TWdL0AX6ZWyZa",
+    "roles": [
+      "teacher"
     ],
     "active": true
   }

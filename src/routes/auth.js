@@ -2,21 +2,29 @@ const express = require("express");
 const fs = require("fs");
 const path = require("path");
 const router = express.Router();
+//bycript
+const bcrypt = require("bcrypt");
+
+const SALT_ROUNDS = 10;
 //const users = require(path.join(__dirname,"../../data/users.json"))
-const { getUsers } = require("../utils/usersData");
+const { getUsers, saveUsers } = require("../utils/usersData");
 //Login
-router.post("/login", (req, res) => {
+router.post("/login", async (req, res) => {
   const { username, password } = req.body;
 
-  const users = getUsers();
+  //const users = getUsers();
 
-  const user = users.find(
-    u => u.username === username && u.password === password
-  );
+  //const user = users.find(
+  //  u => u.username === username && u.password === password
+  //);
+  const user = await login(username, password);
 
   if (!user) {
     return res.status(401).json({ error: "Usuario o contraseña incorrectos" });
   }
+
+  console.log("PPPPPPPPPPPPPPPPPPPPPPP")
+  console.log(user)
 
   //req.session.user = user.username;
   req.session.user = {
@@ -25,15 +33,52 @@ router.post("/login", (req, res) => {
     activeRole :user.roles[0] // por defecto
   }
 
-  //console.log("____________________");
-  //console.log("user.role")
-
-  //res.json({ success: true, roles: [user.roles] });
-  //res.json({ success: true, roles: user.roles });
   req.session.save(() => {
     res.json({ success: true, roles: user.roles });
   });
 });
+
+//Login bycript
+async function login(username, passwordInput) {
+  console.log("llega aqui");
+
+  const users = getUsers();
+
+  const user = users.find(u => u.username === username)
+  if (!user) return false
+
+  // CASO 1: password ya está en bcrypt
+  if (user.password.startsWith("$2")) {
+
+    const match = await bcrypt.compare(passwordInput, user.password)
+
+    if (!match) return false
+
+    return user
+  }
+
+  // CASO 2: password antigua en texto plano
+  if (user.password === passwordInput) {
+
+    console.log("passwordInput:", passwordInput)
+
+    // migrar a bcrypt automáticamente
+    const hash = await bcrypt.hash(passwordInput, SALT_ROUNDS)
+
+    user.password = hash
+
+    console.log("user.password:", user?.password)
+
+    //saveUsers()
+    saveUsers(users);
+
+    console.log("Password migrada a bcrypt para:", username)
+
+    return user
+  }
+
+  return false
+}
 
 //Logout
 router.post("/logout", (req, res) => {
