@@ -112,18 +112,31 @@
     <option value="EN">EN</option>
   </select>
   <br>
+
   <label>Artículos por página</label>
   <input type="number" id="articlesPerPage">
   <br>
+  <button onclick="saveSettings()">Guardar Configuración</button>
+  <br>
+  <!--
   <label>Logo (URL)</label>
   <input type="text" id="logo">
   <br>
   <label>Favicon (URL)</label>
-  <input type="text" id="favicon">
+  <input type="text" id="favicon">-->
+  <h3>Logo</h3>
+
+  <input type="file" id="logoFile">
+  <button onclick="uploadLogo()">Subir Logo</button>
+
+  <h3>Favicon</h3>
+
+  <input type="file" id="faviconFile">
+  <button onclick="uploadFavicon()">Subir Favicon</button>
+  <!-- guardar -->
   <br>
 
-  <button onclick="saveSettings()">Guardar Configuración</button>
-  <br>
+  
   <h3>Links of Interest</h3>
 
   <div id="linksContainer"></div>

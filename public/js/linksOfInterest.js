@@ -89,3 +89,9 @@ async function loadPublicLinks() {
       `;
     });
 }
+
+//Eliminar link
+ function deleteLink(index) {
+  linksData.splice(index, 1);
+  renderLinks();
+}

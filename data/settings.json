@@ -2,8 +2,8 @@
   "siteName": "Project Knowledge",
   "defaultLang": "ES",
   "articlesPerPage": 4,
-  "logo": "/assets/logo.png",
-  "favicon": "/assets/favicon.ico",
+  "logo": "/uploads/logo/logo.jpg",
+  "favicon": "/uploads/favicon/favicon.jpg",
   "links": [
     {
       "title": "Wikipedia",

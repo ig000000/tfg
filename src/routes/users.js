@@ -35,6 +35,12 @@ router.post("/", requireRole("admin"), (req, res) => {
 
   const { username, password, roles } = req.body;
 
+  if (!roles || roles.length === 0) {
+    return res.status(400).json({
+      error: "El usuario debe tener al menos un rol"
+    });
+  }
+
   const newUser = {
     id: users.length ? users[users.length - 1].id + 1 : 1,
     username,
@@ -88,7 +94,7 @@ router.patch("/:id/status", requireRole("admin"), (req, res) => {
 });
 
 // ✅ Cambiar roles
-router.patch("/:id/roles", requireRole("admin"), (req, res) => {
+/*router.patch("/:id/roles", requireRole("admin"), (req, res) => {
   const users = getUsers();
   const id = parseInt(req.params.id);
   const { roles } = req.body;
@@ -102,6 +108,48 @@ router.patch("/:id/roles", requireRole("admin"), (req, res) => {
 
   saveUsers(users);
   res.json(user);
+});*/
+
+//Cambiar user roles
+router.put("/:id/roles", (req, res) => {
+
+  console.log("posinko");
+/*
+  if (req.session.user.id === id && !roles.includes("admin")) {
+    return res.status(400).json({
+      error: "No puedes quitarte tu propio rol admin"
+    });
+  }*/
+
+  const id = parseInt(req.params.id);
+  const { roles } = req.body;
+
+  if (!roles || roles.length === 0) {
+    return res.status(400).json({
+      error: "Debe tener al menos un rol"
+    });
+  }
+
+  const users = getUsers();
+
+  const user = users.find(u => u.id === id);
+
+  if (!user) {
+    return res.status(404).json({
+      error: "Usuario no encontrado"
+    });
+  }
+
+  user.roles = roles;
+
+  saveUsers(users);
+
+  console.log("posinko");
+
+  res.json({
+    message: "Roles actualizados"
+  });
+
 });
 
 module.exports = router;

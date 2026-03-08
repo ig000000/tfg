@@ -1,6 +1,7 @@
 ///
 const table = document.getElementById('usersTable');
 let data;
+let usersData = [];
 //let currentLang = localStorage.getItem("lang") || "ES";
 //let user;
 ///
@@ -13,7 +14,7 @@ async function loadUsers() {
   const res = await fetch(`/users?search=${search}&role=${role}`);
   const users = await res.json();
 
-  //user = users;
+  usersData = users;
 
   //const table = document.getElementById('usersTable');
   table.innerHTML = '';
@@ -28,6 +29,11 @@ async function createUser() {
   const roles = [];
   if (document.getElementById('roleProfesor').checked) roles.push('profesor');
   if (document.getElementById('roleAdmin').checked) roles.push('admin');
+
+  if (roles.length === 0) {
+    alert("Debes seleccionar al menos un rol");
+    return;
+  }
 
   await fetch('/users', {
     method: 'POST',
@@ -47,13 +53,30 @@ function renderUsers(users){
       
     tr.innerHTML = `
       <td>${user.username}</td>
-      <td>${user.roles.join(', ')}</td>
+      <td>
+
+<label>
+<input type="checkbox"
+${user.roles.includes("teacher") ? "checked" : ""}
+onchange="toggleRole(${user.id}, 'teacher', this.checked)">
+Teacher
+</label>
+
+<label>
+<input type="checkbox"
+${user.roles.includes("admin") ? "checked" : ""}
+onchange="toggleRole(${user.id}, 'admin', this.checked)">
+Admin
+</label>
+
+</td>
       <td>${user.activo ? 'Activo' : 'Inactivo'}</td>
       <td>
         <button onclick="toggleStatus(${user.id})">Activar/Desactivar</button>
         <button onclick="deleteUser(${user.id})">Eliminar</button>
       </td>
     `;
+    //<td>${user.roles.join(', ')}</td>
 
     table.appendChild(tr);
   });
@@ -189,8 +212,8 @@ async function saveSettings() {
     siteName: document.getElementById("siteName").value,
     defaultLang: document.getElementById("defaultLang").value,
     articlesPerPage: parseInt(document.getElementById("articlesPerPage").value),
-    logo: document.getElementById("logo").value,
-    favicon: document.getElementById("favicon").value
+    //logo: document.getElementById("logo").value,
+    //favicon: document.getElementById("favicon").value
   };
 
   const res = await fetch("/settings", {
@@ -203,6 +226,80 @@ async function saveSettings() {
   const data = await res.json();
   alert(data.message);
 }
+
+//Subir logo
+async function uploadLogo() {
+
+  const file = document.getElementById("logoFile").files[0];
+
+  const formData = new FormData();
+  formData.append("image", file);
+
+  const res = await fetch("/upload/logo", {
+    method: "POST",
+    credentials: "include",
+    body: formData
+  });
+
+  const data = await res.json();
+
+  alert("Logo actualizado");
+}
+
+//subir favicon
+async function uploadFavicon() {
+
+  const file = document.getElementById("faviconFile").files[0];
+
+  const formData = new FormData();
+  formData.append("image", file);
+
+  const res = await fetch("/upload/favicon", {
+    method: "POST",
+    credentials: "include",
+    body: formData
+  });
+
+  const data = await res.json();
+
+  alert("Favicon actualizado");
+}
+
+//cambiar roles
+window.toggleRole = async function(id, role, checked) {
+
+  const user = usersData.find(u => u.id === id);
+
+  let roles = [...user.roles];
+
+  if (checked) {
+    roles.push(role);
+  } else {
+    roles = roles.filter(r => r !== role);
+  }
+
+  if (roles.length === 0) {
+    alert("El usuario debe tener al menos un rol");
+    loadUsers();
+    return;
+  }
+  console.log("MMMMMMMMMMMMMMMMMMMMMMMMMMM");
+  console.log(roles);
+  console.log(id);
+
+  const res = await fetch(`/users/${id}/roles`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    credentials: "include",
+    body: JSON.stringify({ roles })
+  });
+
+  const data = await res.json();
+
+  alert(data.message);
+
+  loadUsers();
+};
 
 //DOM
 loadContent();

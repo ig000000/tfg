@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Project Knowledge</title>
   <link rel="stylesheet" href="css/styles.css">
+  <link id="favicon" rel="icon" href="">
 </head>
 <body>
 
@@ -11,6 +12,8 @@
 <header class="header">
 
   <div class="header-top">
+    <!--NO BORRAR poner cuando añada imagen-->
+    <!--<img id="logoimg" src=""/>-->
     <h1 class="logo" id="name">Project Knowledge</h1>
 
     <div class="header-actions">
@@ -108,7 +111,19 @@
 <script src="js/linksOfInterest.js"></script>
 <script>
   loadPublicLinks();
+  //Logo falta poner
+  //-----NO ELIMINAR------
+  async function loadimg() {
+    const res = await fetch("/settings");
+    const settings = await res.json();
+
+    //document.getElementById("logoimg").src = settings.logo;
+    document.getElementById("favicon").href = settings.favicon;
+   }
+   loadimg();
 </script>
+ 
+  
 
 </body>
 </html>
