@@ -7,7 +7,9 @@
     "roles": [
       "teacher"
     ],
-    "active": false
+    "active": true,
+    "deleted": false,
+    "deletedAt": null
   },
   {
     "id": 2,
@@ -17,7 +19,9 @@
     "roles": [
       "admin"
     ],
-    "active": true
+    "active": true,
+    "deleted": false,
+    "deletedAt": null
   },
   {
     "id": 3,
@@ -28,16 +32,20 @@
       "teacher",
       "admin"
     ],
-    "active": true
+    "active": true,
+    "deleted": false,
+    "deletedAt": null
   },
   {
     "id": 4,
     "username": "yo",
-    "userNumber": "66",
-    "password": "$2b$10$I7EYftDD2d.VNDYHPlKC3.osYbJcHPODByfT9Kv9TWdL0AX6ZWyZa",
+    "userNumber": "1234",
+    "password": "$2b$10$6PNUU12s3WmqpTJG67HzG.Tgi52QB3W0xLzw4g99sfk9jdhDfLBpO",
     "roles": [
       "teacher"
     ],
-    "active": true
+    "active": true,
+    "deleted": true,
+    "deletedAt": "2026-03-19T22:32:26.298Z"
   }
 ]

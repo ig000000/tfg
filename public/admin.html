@@ -89,6 +89,33 @@
     </table>
   </section>
 
+  <!-- papelera usuarios-->
+  <section id="trash-section">
+    <h2>🗑️ Papelera de usuarios</h2>
+
+    <div class="trash-controls">
+      <button onclick="loadDeletedUsers()">🔄 Recargar</button>
+    </div>
+
+    <table class="trash-table">
+      <thead>
+        <tr>
+          <th>Usuario</th>
+          <th>Rol</th>
+          <th>Fecha eliminación</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody id="deletedUsersTable">
+        <!-- Aquí se insertan los usuarios -->
+      </tbody>
+    </table>
+
+    <p id="noDeletedUsers" style="display:none;">
+      No hay usuarios en la papelera.
+    </p>
+  </section>
+
   <!--Edición licencia / contribución-->
   <h2>Editar Licencia</h2>
 <div id="editorLicencia"></div>

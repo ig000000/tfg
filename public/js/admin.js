@@ -50,6 +50,7 @@ async function createUser() {
 
   loadUsers();
 }
+
 //render users
 function renderUsers(users){
 
@@ -93,6 +94,12 @@ Admin
 
 //delete
 async function deleteUser(id) {
+
+  //const confirmDelete = confirm("¿Seguro que quieres eliminar este usuario?");
+  const confirmDelete = confirm("¿Seguro que quieres Desactivar este usuario?");
+
+  if (!confirmDelete) return;
+
   const res = await fetch(`/users/${id}`, { 
     method: 'DELETE' });
 
@@ -106,6 +113,56 @@ async function deleteUser(id) {
   // solo parsear si hay JSON
   const data = await res.json();
 
+  loadUsers();
+  loadDeletedUsers();
+}
+
+//usuarios eliminados mostrar
+async function loadDeletedUsers() {
+  const res = await fetch('/users/deleted');
+  const users = await res.json();
+
+  const table = document.getElementById("deletedUsersTable");
+  const emptyMsg = document.getElementById("noDeletedUsers");
+
+  table.innerHTML = "";
+
+  //console.log(users);
+
+  if (users.length === 0) {
+    emptyMsg.style.display = "block";
+    return;
+  }
+
+  emptyMsg.style.display = "none";
+
+  users.forEach(user => {
+    const row = document.createElement("tr");
+
+    row.innerHTML = `
+      <td>${user.username}</td>
+      <td>${user.roles.join(", ")}</td>
+      <td>${user.deletedAt ? new Date(user.deletedAt).toLocaleString() : "-"}</td>
+      <td>
+        <button class="restore-btn" onclick="restoreUser(${user.id})">
+          Restaurar
+        </button>
+      </td>
+    `;
+
+    table.appendChild(row);
+  });
+}
+
+//boton restaurar usuarios
+async function restoreUser(id) {
+  if (!confirm("¿Restaurar este usuario?")) return;
+
+  await fetch(`/users/restore/${id}`, {
+    method: "PUT"
+  });
+
+  loadDeletedUsers();
   loadUsers();
 }
 
@@ -338,3 +395,4 @@ window.resetPassword = async function(id) {
 loadContent();
 loadUsers();
 loadSettings();
+loadDeletedUsers();

@@ -28,7 +28,8 @@ router.get("/", requireRole("admin"), (req, res) => {
     );
   }
 
-  res.json(users);
+  //res.json(users);
+  res.json(users.filter(u => !u.deleted));
 });
 
 // ✅ Crear usuario
@@ -77,6 +78,7 @@ router.delete("/:id", requireRole("admin"), (req, res) => {
   const id = parseInt(req.params.id);
 
   const user = users.find(u => u.id === id);
+  //let user = users.find(u => u.id === id);
   if (!user) {
     return res.status(404).json({ message: "Usuario no encontrado" });
   }
@@ -87,10 +89,37 @@ router.delete("/:id", requireRole("admin"), (req, res) => {
     return res.status(400).json({ message: "No puedes eliminar el último admin" });
   }
 
-  const updatedUsers = users.filter(u => u.id !== id);
-  saveUsers(updatedUsers);
+  user.deleted = true;
+  user.deletedAt = new Date().toISOString();
+
+  //const updatedUsers = users.filter(u => u.id !== id);
+  //saveUsers(updatedUsers);
+  saveUsers(users);
 
   res.json({ message: "Usuario eliminado" });
+});
+
+//Restaurar usuarios eliminados
+router.put('/restore/:id', (req, res) => {
+  const users = getUsers();
+  const user = users.find(u => u.id == req.params.id);
+
+  if (!user) {
+    return res.status(404).json({ message: "Usuario no encontrado" });
+  }
+
+  user.deleted = false;
+  user.deletedAt = null;
+
+  saveUsers(users);
+
+  res.json({ message: "Usuario restaurado" });
+});
+
+//filtrar usuarios en papelera
+router.get('/deleted', (req, res) => {
+  const users = getUsers();
+  res.json(users.filter(u => u.deleted));
 });
 
 // ✅ Activar / desactivar
