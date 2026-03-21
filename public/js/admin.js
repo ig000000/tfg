@@ -24,7 +24,7 @@ async function loadUsers() {
 
 async function createUser() {
   const username = document.getElementById('newUsername').value;
-  const password = document.getElementById('newPassword').value;
+  //const password = document.getElementById('newPassword').value;
   const userNumber = document.getElementById("newUserNumber").value;
 
   const roles = [];
@@ -41,12 +41,25 @@ async function createUser() {
     return;
   }
 
-  await fetch('/users', {
+  const res = await fetch('/users', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     credentials: 'include',
-    body: JSON.stringify({ username, userNumber, password, roles })
+    body: JSON.stringify({ username, userNumber, roles })
+    //body: JSON.stringify({ username, userNumber, password, roles })
   });
+
+  const data = await res.json();
+
+  //console.log(data.tempPassword);
+  alert(`
+    Usuario creado correctamente
+
+    Usuario: ${username}
+    Contraseña temporal: ${data.tempPassword}
+
+    El usuario deberá cambiarla al iniciar sesión.
+  `);
 
   loadUsers();
 }
@@ -268,8 +281,8 @@ async function loadSettings() {
   document.getElementById("siteName").value = data.siteName;
   document.getElementById("defaultLang").value = data.defaultLang;
   document.getElementById("articlesPerPage").value = data.articlesPerPage;
-  document.getElementById("logo").value = data.logo;
-  document.getElementById("favicon").value = data.favicon;
+  document.getElementById("logoFile").value = data.logo;
+  document.getElementById("faviconFile").value = data.favicon;
 }
 
 //Guardar settings
@@ -349,9 +362,9 @@ window.toggleRole = async function(id, role, checked) {
     loadUsers();
     return;
   }
-  console.log("MMMMMMMMMMMMMMMMMMMMMMMMMMM");
-  console.log(roles);
-  console.log(id);
+  //console.log("MMMMMMMMMMMMMMMMMMMMMMMMMMM");
+  //console.log(roles);
+  //console.log(id);
 
   const res = await fetch(`/users/${id}/roles`, {
     method: "PUT",
@@ -370,9 +383,9 @@ window.toggleRole = async function(id, role, checked) {
 //reset contraseña
 window.resetPassword = async function(id) {
 
-  const newPassword = prompt("Introduce la nueva contraseña:");
+  //const newPassword = prompt("Introduce la nueva contraseña:");
 
-  if (!newPassword) return;
+  //if (!newPassword) return;
 
   const res = await fetch(`/users/${id}/password`, {
     method: "PUT",
@@ -380,14 +393,21 @@ window.resetPassword = async function(id) {
       "Content-Type": "application/json"
     },
     credentials: "include",
-    body: JSON.stringify({
-      password: newPassword
-    })
+    //body: JSON.stringify({
+    //  password: newPassword
+    //})
   });
 
   const data = await res.json();
 
-  alert(data.message);
+  //alert(data.message);
+  alert(`
+    ${data.message}
+
+    Contraseña temporal: ${data.tempPassword}
+
+    El usuario deberá cambiarla al iniciar sesión.
+  `);
 
 };
 

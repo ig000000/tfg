@@ -36,9 +36,11 @@ router.get("/", requireRole("admin"), (req, res) => {
 router.post("/", requireRole("admin"), async (req, res) => {
   const users = getUsers();
 
-  const { username, password, roles, userNumber} = req.body;
+  //const { username, password, roles, userNumber} = req.body;
+  const { username, roles, userNumber} = req.body;
 
-  if (!username || !password || !userNumber) {
+  // if (!username || !password || !userNumber) {
+  if (!username || !userNumber) {
     return res.status(400).json({
       error: "Username, password y número de usuario son obligatorios"
     });
@@ -50,21 +52,31 @@ router.post("/", requireRole("admin"), async (req, res) => {
     });
   }
 
-  const hash = await passwordBcript(password);
+  //const hash = await passwordBcript(password);
+  const tempPassword = generateTempPassword();
+  const hashedPassword = await bcrypt.hash(tempPassword, 10);
 
   const newUser = {
     id: users.length ? users[users.length - 1].id + 1 : 1,
     username,
     userNumber,
-    password: hash,
+    password: hashedPassword,
     roles,
-    active: true
+    active: true,
+    deleted: false,
+    mustChangePassword: true,
+    createdAt: new Date().toISOString()
   };
 
   users.push(newUser);
   saveUsers(users);
 
-  res.json(newUser);
+  //res.json(newUser);
+  res.json({
+    message: "Usuario creado",
+    tempPassword: tempPassword
+  });
+
 });
 
 //bycript password
@@ -197,17 +209,22 @@ router.put("/:id/roles", (req, res) => {
 
 });
 
+//Generar contraseña temporal
+function generateTempPassword() {
+  return Math.random().toString(36).slice(-8);
+}
+
 //cambiar contraseña
 router.put("/:id/password", async (req, res) => {
 
   const id = parseInt(req.params.id);
-  const { password } = req.body;
+  //const { password } = req.body;
 
-  if (!password) {
-    return res.status(400).json({
-      error: "Password requerida"
-    });
-  }
+  //if (!password) {
+  //  return res.status(400).json({
+  //    error: "Password requerida"
+  //  });
+  //}
 
   const users = getUsers();
 
@@ -219,17 +236,53 @@ router.put("/:id/password", async (req, res) => {
     });
   }
 
-  const hash = await passwordBcript(password);
+  //const hash = await passwordBcript(password);
+
+  const tempPassword = generateTempPassword();
+  const hashedPassword = await bcrypt.hash(tempPassword, 10);
+
+  user.password = hashedPassword;
 
   //user.password = password;
-  user.password = hash;
+  //user.password = hash;
+  user.mustChangePassword = true;
 
   saveUsers(users);
 
   res.json({
-    message: "Contraseña actualizada"
+    message: "Contraseña actualizada",
+    tempPassword: tempPassword
   });
 
+});
+
+//Cambiar contraseña 2
+router.put('/change-password-first', async (req, res) => {
+  //const { userId, newPassword } = req.body;
+  const { newPassword } = req.body;
+
+  //console.log(userId);
+
+  console.log(req.session);
+
+  const users = getUsers();
+  const user = users.find(u => u.id == req.session.user.id);
+
+  if (!user) {
+    return res.status(404).json({ message: "Usuario no encontrado" });
+  }
+
+  const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+  //user.password = newPassword;
+  user.password = hashedPassword;
+  user.mustChangePassword = false;
+
+  saveUsers(users);
+
+  res.json({ message: "Contraseña actualizada",
+             roles: user.roles,
+   });
 });
 
 module.exports = router;

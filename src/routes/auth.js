@@ -8,6 +8,8 @@ const bcrypt = require("bcrypt");
 const SALT_ROUNDS = 10;
 //const users = require(path.join(__dirname,"../../data/users.json"))
 const { getUsers, saveUsers } = require("../utils/usersData");
+
+//----------------------------
 //Login
 router.post("/login", async (req, res) => {
   const { username, password } = req.body;
@@ -27,8 +29,10 @@ router.post("/login", async (req, res) => {
     return res.status(403).json({ message: "Usuario desactivado" });
   }
 
-  console.log("PPPPPPPPPPPPPPPPPPPPPPP")
-  console.log(user)
+
+
+  console.log("PPPPPPPPPPPPPPPPPPPPPPP");
+  console.log(user);
 
   //req.session.user = user.username;
   req.session.user = {
@@ -38,7 +42,9 @@ router.post("/login", async (req, res) => {
   }
 
   req.session.save(() => {
-    res.json({ success: true, roles: user.roles });
+    res.json({  success: true, 
+                roles: user.roles,
+                mustChangePassword: user.mustChangePassword });
   });
 });
 

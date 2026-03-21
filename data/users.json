@@ -9,18 +9,20 @@
     ],
     "active": true,
     "deleted": false,
+    "mustChangePassword": false,
     "deletedAt": null
   },
   {
     "id": 2,
     "username": "admin",
     "userNumber": "U1002",
-    "password": "$2b$10$CsOwBsXwu3AdZy4pVL9wLOkfKXM8DOTpMggGtnp4W3ECUI4Ma0s6K",
+    "password": "$2b$10$Niytx1Qj9XKp.mkeFleaXek0kz9ukGSZlh6d8GUxfc3ds6d3vm9lC",
     "roles": [
       "admin"
     ],
     "active": true,
     "deleted": false,
+    "mustChangePassword": false,
     "deletedAt": null
   },
   {
@@ -34,18 +36,77 @@
     ],
     "active": true,
     "deleted": false,
+    "mustChangePassword": false,
     "deletedAt": null
   },
   {
     "id": 4,
     "username": "yo",
     "userNumber": "1234",
-    "password": "$2b$10$6PNUU12s3WmqpTJG67HzG.Tgi52QB3W0xLzw4g99sfk9jdhDfLBpO",
+    "password": "$2b$10$qYnxyz6wsAqRpV/Ik/fKFumC1mfoIpVpd3maYSurocL2Pm.EOhYI6",
+    "roles": [
+      "teacher"
+    ],
+    "active": true,
+    "deleted": false,
+    "mustChangePassword": false,
+    "deletedAt": null
+  },
+  {
+    "id": 5,
+    "username": "m",
+    "userNumber": "m1",
+    "password": "$2b$10$DWruJJX0ttcjmeVr.ToQleH/KQoDy8XlB51t6bY73zO0dhexeBPoa",
+    "roles": [
+      "admin"
+    ],
+    "active": true,
+    "deleted": true,
+    "mustChangePassword": true,
+    "createdAt": "2026-03-21T15:33:02.402Z",
+    "deletedAt": "2026-03-21T15:33:58.837Z"
+  },
+  {
+    "id": 6,
+    "username": "m",
+    "userNumber": "m1",
+    "password": "$2b$10$L/mxyru2JjK8YJANobvu3u8UkrMHZ/IV.mEcoODb1MmAije4qDYy6",
+    "roles": [
+      "admin"
+    ],
+    "active": true,
+    "deleted": true,
+    "mustChangePassword": true,
+    "createdAt": "2026-03-21T15:39:18.851Z",
+    "deletedAt": "2026-03-21T15:45:07.480Z"
+  },
+  {
+    "id": 7,
+    "username": "s",
+    "userNumber": "s",
+    "password": "$2b$10$h9hxUG8v82dJH1zwnci2ueYGxbqtOCNyVraRhQ7NsuspDfzQKlz5i",
+    "roles": [
+      "teacher",
+      "admin"
+    ],
+    "active": true,
+    "deleted": true,
+    "mustChangePassword": false,
+    "createdAt": "2026-03-21T15:44:53.480Z",
+    "deletedAt": "2026-03-21T15:46:53.783Z"
+  },
+  {
+    "id": 8,
+    "username": "n",
+    "userNumber": "n",
+    "password": "$2b$10$m1BtvGeUvo0PgV2qHfND4e9o1pjPOgy1bAjPeUhEeCrZ2Ocz/wesq",
     "roles": [
       "teacher"
     ],
     "active": true,
     "deleted": true,
-    "deletedAt": "2026-03-19T22:32:26.298Z"
+    "mustChangePassword": false,
+    "createdAt": "2026-03-21T15:51:07.044Z",
+    "deletedAt": "2026-03-21T15:52:06.441Z"
   }
 ]
