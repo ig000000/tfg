@@ -27,19 +27,6 @@ app.use(
     }
   })
 );
-//const session = require("express-session");
-//const FileStore = require("session-file-store")(session);
-
-//app.use(session({
-//  store: new FileStore({}),
-//  secret: "super_secret_key",
-//  resave: false,
-//  saveUninitialized: false,
-//  cookie: {
-//    httpOnly: true,
-//    sameSite: "lax"
-//  }
-//}));
 
 // Rutas
 app.use("/", require("./routes/index"));

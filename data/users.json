@@ -3,7 +3,7 @@
     "id": 1,
     "username": "teacher",
     "userNumber": "U1001",
-    "password": "1234",
+    "password": "$2b$10$SlScmpsfmnFU483FjT20z.2u/ODfFjHQMuOXwYpTIfPO13SowTLyC",
     "roles": [
       "teacher"
     ],
@@ -29,7 +29,7 @@
     "id": 3,
     "username": "paquito",
     "userNumber": "U1003",
-    "password": "$2b$10$Ku3up.tLRo4GJZvedHiCDuFb5qBM2V0YdWW/pumDkNOv8f1dz18fO",
+    "password": "$2b$10$GxvVoseuxG7rcErpVTDe4eEWjBgsvMiNq9HQLjoIb/aUHnL./8idq",
     "roles": [
       "teacher",
       "admin"
@@ -43,7 +43,7 @@
     "id": 4,
     "username": "yo",
     "userNumber": "1234",
-    "password": "$2b$10$qYnxyz6wsAqRpV/Ik/fKFumC1mfoIpVpd3maYSurocL2Pm.EOhYI6",
+    "password": "$2b$10$cVsl4nRMyIqo.mweZXJ8reC2TtQfpq0LkUo4Bw6hOugi4qWxS9zNe",
     "roles": [
       "teacher"
     ],

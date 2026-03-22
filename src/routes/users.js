@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { getUsers, saveUsers } = require("../utils/usersData");
-const { requireRole } = require("../middleware/auth");
+const { requireRole, requireAuth } = require("../middleware/auth");
 //bycript
 const bcrypt = require("bcrypt");
 
@@ -170,7 +170,7 @@ router.patch("/:id/status", requireRole("admin"), (req, res) => {
 //Cambiar user roles
 router.put("/:id/roles", (req, res) => {
 
-  console.log("posinko");
+  //console.log("posinko");
 /*
   if (req.session.user.id === id && !roles.includes("admin")) {
     return res.status(400).json({
@@ -257,13 +257,13 @@ router.put("/:id/password", async (req, res) => {
 });
 
 //Cambiar contraseña 2
-router.put('/change-password-first', async (req, res) => {
+router.put('/change-password-first', requireAuth, async (req, res) => {
   //const { userId, newPassword } = req.body;
   const { newPassword } = req.body;
 
   //console.log(userId);
 
-  console.log(req.session);
+  //console.log(req.session);
 
   const users = getUsers();
   const user = users.find(u => u.id == req.session.user.id);
@@ -282,6 +282,50 @@ router.put('/change-password-first', async (req, res) => {
 
   res.json({ message: "Contraseña actualizada",
              roles: user.roles,
+   });
+});
+
+//Cambiar contraseña cuando quieras
+router.put('/change-password', requireAuth, async (req, res) => {
+  const { currentPassword, newPassword } = req.body;
+
+  const users = getUsers();
+  const user = users.find(u => u.id == req.session.user.id);
+
+  if (!user) {
+    return res.status(404).json({ message: "Usuario no encontrado" });
+  }
+
+  //testeo contraseña
+  const strongPassword =
+    newPassword.length >= 8 &&
+    /[A-Z]/.test(newPassword) &&
+    /[0-9]/.test(newPassword);
+
+  if (!strongPassword) {
+    return res.status(400).json({
+      message: "Debe tener 8 caracteres, una mayúscula y un número"
+    });
+  }
+
+  // comprobar contraseña actual
+  const validPassword = await bcrypt.compare(currentPassword, user.password);
+
+  if (!validPassword) {
+    return res.status(400).json({ message: "Contraseña actual incorrecta" });
+  }
+
+  // hash nueva contraseña
+  const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+  user.password = hashedPassword;
+
+  saveUsers(users);
+
+  const activeRole = req.session.user.activeRole;
+
+  res.json({ message: "Contraseña cambiada correctamente",
+             activeRole: activeRole
    });
 });
 

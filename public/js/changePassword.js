@@ -1,7 +1,7 @@
 async function changePassword() {
   const newPassword = document.getElementById("newPassword").value;
   const repeatPassword = document.getElementById("repeatPassword").value;
-  const userId = localStorage.getItem("userId");
+  //const userId = localStorage.getItem("userId");
 
   if (newPassword !== repeatPassword) {
     document.getElementById("msg").innerText = "Las contraseñas no coinciden";

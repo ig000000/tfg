@@ -28,6 +28,7 @@
       </div>
 
       <!-- Logout -->
+       <button onclick="changePassword()" class="login-btn">Cambiar contraseña</button>
       <button onclick="logout()" class="login-btn">Logout</button>
     </div>
   </div>
@@ -211,6 +212,11 @@ window.logout = async function () {
     credentials: "include"});
   window.location.href = "login.html";
 };
+
+//cambiar contraseña
+window.changePassword = function() {
+   window.location.href = "change-passwordAll.html";
+}
 
 loadLinks();
 </script>
