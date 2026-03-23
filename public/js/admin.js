@@ -411,8 +411,69 @@ window.resetPassword = async function(id) {
 
 };
 
+//________________________________________________________
+//Leciones cargar
+//filtro
+const adminLangFilter = document.getElementById("adminLangFilter");
+const adminSearchInput = document.getElementById("adminSearchInput");
+const adminSearchBtn = document.getElementById("adminSearchBtn");
+const adminArticlesList = document.getElementById("adminArticlesList");
+
+async function loadAdminArticles() {
+  const lang = adminLangFilter.value;
+  const search = adminSearchInput.value.trim();
+
+  console.log(lang);
+  console.log(search);
+
+  let url = "/api/articles?all=true";
+
+  if (lang) url += `&tag=${lang}&`;
+  if (search) url += `&q=${search}`;
+
+  const res = await fetch(url);
+  const data = await res.json();
+
+  const articles = data.articles;
+  console.log(data);
+
+  adminArticlesList.innerHTML = "";
+
+  if (!articles.length) {
+    adminArticlesList.innerHTML = `<p>${translations[currentLang].nolessons}</p>`;
+    return;
+  }
+
+  articles.forEach(article => {
+    const div = document.createElement("div");
+    div.classList.add("admin-article-item");
+
+    //console.log(currentLang);
+
+    div.innerHTML = `
+      <strong>${article.title}</strong> - ${article.tags.join(", ")}
+      <button onclick="deleteArticle(${article.id})">${translations[currentLang].clear2}</button>
+    `;
+    adminArticlesList.appendChild(div);
+  });
+}
+
+//borrar lecciones
+async function deleteArticle(id) {
+  //if (!confirm("¿Borrar lección?")) return;
+  if (!confirm(translations[currentLang].deleteLesson)) return;
+
+  await fetch(`/api/articles/${id}`, { method: "DELETE" });
+  loadAdminArticles();
+}
+
+// botón buscar
+adminSearchBtn.addEventListener("click", loadAdminArticles);
+
 //DOM
 loadContent();
 loadUsers();
 loadSettings();
 loadDeletedUsers();
+//----
+loadAdminArticles();

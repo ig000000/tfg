@@ -152,8 +152,8 @@ async function loadAdminArticles() {
 
   let url = "/api/articles?all=true";
 
-  if (lang) url += `tag=${lang}&`;
-  if (search) url += `q=${search}`;
+  if (lang) url += `&tag=${lang}&`;
+  if (search) url += `&q=${search}`;
 
   const res = await fetch(url);
   const data = await res.json();
