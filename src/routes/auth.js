@@ -29,11 +29,6 @@ router.post("/login", async (req, res) => {
     return res.status(403).json({ message: "Usuario desactivado" });
   }
 
-
-
-  console.log("PPPPPPPPPPPPPPPPPPPPPPP");
-  console.log(user);
-
   //req.session.user = user.username;
   req.session.user = {
     id: user.id,
@@ -50,7 +45,6 @@ router.post("/login", async (req, res) => {
 
 //Login bycript
 async function login(username, passwordInput) {
-  console.log("llega aqui");
 
   const users = getUsers();
 
@@ -70,19 +64,13 @@ async function login(username, passwordInput) {
   // CASO 2: password antigua en texto plano
   if (user.password === passwordInput) {
 
-    console.log("passwordInput:", passwordInput)
-
     // migrar a bcrypt automáticamente
     const hash = await bcrypt.hash(passwordInput, SALT_ROUNDS)
 
     user.password = hash
 
-    console.log("user.password:", user?.password)
-
     //saveUsers()
     saveUsers(users);
-
-    console.log("Password migrada a bcrypt para:", username)
 
     return user
   }
@@ -123,8 +111,6 @@ router.post("/set-role", (req, res) => {
   }
 
   req.session.user.activeRole = role;
-
-  //console.log(req.session.user);
 
   res.json({ success: true });
 });

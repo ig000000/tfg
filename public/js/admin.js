@@ -66,7 +66,6 @@ async function createUser() {
 
 //render users
 function renderUsers(users){
-
     
   users.forEach(user => {  
     const tr = document.createElement('tr');
@@ -160,11 +159,25 @@ async function loadDeletedUsers() {
         <button class="restore-btn" onclick="restoreUser(${user.id})">
           Restaurar
         </button>
+        <button class="delete-btn" onclick="deletePermanent(${user.id})">
+          Eliminar permanentemente
+        </button>
       </td>
     `;
 
     table.appendChild(row);
   });
+}
+
+//borrar usuarios permanentemente
+async function deletePermanent(id) {
+  if (!confirm("Eliminar permanentemente?")) return;
+
+  await fetch(`/users/permanent/${id}`, {
+    method: "DELETE"
+  });
+
+  loadDeletedUsers();
 }
 
 //boton restaurar usuarios

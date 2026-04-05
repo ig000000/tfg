@@ -14,24 +14,15 @@ router.put("/licencia", requireRole("admin"), (req, res) => {
   const content = getContent();
   const { lang, text } = req.body;
 
-   //console.log("____");
-  //console.log("SESSION:", req.session);
-
   content.licencia[lang] = text;
 
   saveContent(content);
-
-  console.log("____");
-  console.log("SESSION:", req.session);
 
   res.json({ message: "Licencia actualizada" });
 });
 
 // ✏️ Actualizar contribución
 router.put("/contribucion", requireRole("admin"), (req, res) => {
-
-    console.log("____");
-  console.log("SESSION:", req.session);
 
   const content = getContent();
   const { lang, text } = req.body;

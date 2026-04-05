@@ -3,14 +3,29 @@ const id = params.get("id");
 
 // Cargar artículo
 async function loadArticle() {
-  const res = await fetch(`/api/articles/${id}`);
-  const article = await res.json();
+  try{
+    const res = await fetch(`/api/articles/${id}`);
+    const article = await res.json();
 
-  document.getElementById("content").innerHTML = `
-    <h1>${article.title}</h1>
-    <p><em>${article.author} — ${article.date}</em></p>
-    <div class="ql-editor">${article.content}</div>
-  `;
+    console.log(article.id);
+
+
+    if(article.id){
+      document.getElementById("content").innerHTML = `
+      <h1>${article.title}</h1>
+      <p><em>${article.author} — ${article.date}</em></p>
+      <div class="ql-editor">${article.content}</div>
+    `
+    } else{
+      document.getElementById("content").innerHTML = `
+      No se ha encontrado la lección seleccionada.`;
+    }
+    
+  } catch (err) {
+    document.getElementById("content").innerHTML = `
+    No se ha encontrado la lección seleccionada.`;
+  }
+ 
 }
 
 // Cargar comentarios

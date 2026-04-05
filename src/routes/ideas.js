@@ -25,8 +25,6 @@ router.get("/", (req, res) => {
 /* ====== ADMIN ONLY ====== */
 router.post("/", requireRole("teacher"), (req, res) => {
 
-  //  console.log("SESSION:", req.session.user);
-
  // if (!req.session?.user?.isAdmin)
  //   return res.status(403).json({ error: "Unauthorized" });
 

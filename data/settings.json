@@ -6,14 +6,9 @@
   "favicon": "/uploads/favicon/favicon.jpg",
   "links": [
     {
-      "title": "Wikipedia",
-      "url": "https://wikipedia.org",
+      "title": "web",
+      "url": "https://es.wikipedia.org/wiki/Solanum_tuberosum",
       "visible": true
-    },
-    {
-      "title": "panza",
-      "url": "https://wikipedia.org",
-      "visible": false
     }
   ]
 }

@@ -51,9 +51,6 @@ router.get("/", (req, res) => {
     fs.readFileSync(path.join(__dirname, "../../data/articles.json"))
   );
 
-  console.log(req.query);
-  console.log("____");
-
   const tag = req.query.tag;
   //const { tag, topic, q} = req.query;
   const topic = req.query.topic;
@@ -65,11 +62,6 @@ router.get("/", (req, res) => {
 
   //const limit = ARTICLES_PER_PAGE;
   const limit = settings.articlesPerPage;
-  console.log("BBBBBBBBBBB");
-  //console.log(settings);
-  console.log(tag);
-  console.log(topic);
-  console.log(search);
 
   let filtered = data;
 

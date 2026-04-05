@@ -109,6 +109,30 @@ router.delete("/:id", requireRole("admin"), (req, res) => {
   saveUsers(users);
 
   res.json({ message: "Usuario eliminado" });
+  //res.json({ message: "Usuario enviado a la papelera" });
+});
+
+//Eliminar usuario permanentemente
+router.delete("/permanent/:id", requireRole("admin"), (req, res) => {
+  let users = getUsers();
+
+  const user = users.find(u => u.id == req.params.id);
+
+  if (!user) {
+    return res.status(404).json({ message: "Usuario no encontrado" });
+  }
+
+  if (!user.deleted) {
+    return res.status(400).json({
+      message: "Primero debe enviarse a la papelera"
+    });
+  }
+
+  users = users.filter(u => u.id != req.params.id);
+
+  saveUsers(users);
+
+  res.json({ message: "Usuario eliminado permanentemente" });
 });
 
 //Restaurar usuarios eliminados
@@ -170,7 +194,6 @@ router.patch("/:id/status", requireRole("admin"), (req, res) => {
 //Cambiar user roles
 router.put("/:id/roles", (req, res) => {
 
-  //console.log("posinko");
 /*
   if (req.session.user.id === id && !roles.includes("admin")) {
     return res.status(400).json({
@@ -200,8 +223,6 @@ router.put("/:id/roles", (req, res) => {
   user.roles = roles;
 
   saveUsers(users);
-
-  console.log("posinko");
 
   res.json({
     message: "Roles actualizados"
@@ -260,10 +281,6 @@ router.put("/:id/password", async (req, res) => {
 router.put('/change-password-first', requireAuth, async (req, res) => {
   //const { userId, newPassword } = req.body;
   const { newPassword } = req.body;
-
-  //console.log(userId);
-
-  //console.log(req.session);
 
   const users = getUsers();
   const user = users.find(u => u.id == req.session.user.id);

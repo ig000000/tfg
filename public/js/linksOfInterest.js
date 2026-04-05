@@ -41,8 +41,8 @@ function renderLinks() {
 //addLink
 function addLink() {
   linksData.push({
-    title: "",
-    url: "",
+    title: "titulo",
+    url: "url",
     visible: true
   });
 
@@ -71,7 +71,7 @@ async function saveLinks() {
     body: JSON.stringify(settings)
   });
 
-  alert("Links guardados");
+  alert("Los cambios se han guardado");
 }
 
 //4. MOSTRAR LINKS EN LA WEB
@@ -80,18 +80,46 @@ async function loadPublicLinks() {
   const data = await res.json();
 
   const container = document.getElementById("links");
+  const title = document.getElementById("VisibleLinks");
+  const aside = document.querySelector(".links-of-interest");
 
+  container.innerHTML = "";
+
+  const visibleLinks = (data.links || []).filter(link => link.visible);
+
+  // Si no hay links visibles → ocultar todo
+  if (visibleLinks.length === 0) {
+    aside.style.display = "none";
+    return;
+  }
+
+  // Si hay links → mostrar
+  aside.style.display = "block";
+
+  visibleLinks.forEach(link => {
+    container.innerHTML += `
+      <li><a href="${link.url}" target="_blank">${link.title}</a></li>
+    `;
+  });
+  /*
   data.links
     .filter(link => link.visible)
     .forEach(link => {
       container.innerHTML += `
         <li><a href="${link.url}" target="_blank">${link.title}</a></li>
       `;
-    });
+    });*/
 }
+
 
 //Eliminar link
  function deleteLink(index) {
+
+  const confirmDelete = confirm("¿Seguro que quieres Eliminar este link?");
+  if (!confirmDelete) return;
+
   linksData.splice(index, 1);
   renderLinks();
+
+  saveLinks();
 }

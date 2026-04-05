@@ -93,20 +93,6 @@
     "deleted": true,
     "mustChangePassword": false,
     "createdAt": "2026-03-21T15:44:53.480Z",
-    "deletedAt": "2026-03-21T15:46:53.783Z"
-  },
-  {
-    "id": 8,
-    "username": "n",
-    "userNumber": "n",
-    "password": "$2b$10$m1BtvGeUvo0PgV2qHfND4e9o1pjPOgy1bAjPeUhEeCrZ2Ocz/wesq",
-    "roles": [
-      "teacher"
-    ],
-    "active": true,
-    "deleted": true,
-    "mustChangePassword": false,
-    "createdAt": "2026-03-21T15:51:07.044Z",
-    "deletedAt": "2026-03-21T15:52:06.441Z"
+    "deletedAt": "2026-04-05T22:52:54.518Z"
   }
 ]
