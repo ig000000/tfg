@@ -17,6 +17,7 @@ app.use(
        path: "./sessions" 
     }),
     secret: "super_secret_key",
+    //secret: process.env.SESSION_SECRET, Mejor esto en el futuro
     resave: false,
     saveUninitialized: false,
     rolling: true, // 🔥 IMPORTANTE
