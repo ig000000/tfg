@@ -98,18 +98,46 @@ document.querySelectorAll(".tab").forEach(tab => {
   });
 });
 
-// Iniciar
-document.addEventListener("DOMContentLoaded", () => {
-
+//settings poner
+async function settings(lang) {
+  const res = await fetch("/settings");
+  const settings = await res.json();
   
-  // Recuperar idioma almacenado o usar ES por defecto
-  const savedLang = localStorage.getItem("preferredLanguage");
-  currentLang = savedLang || "ES";
+  document.getElementById("name").innerHTML = settings.siteName;
 
-  // marcar el tab correcto activo
+  if (lang) {
+    loadDefaultLang(settings);
+  }
+}
+
+//idioma por defecto
+async function loadDefaultLang(settings) {
+  //currentLang = settings.defaultLang;
+  changeLanguage(settings.defaultLang);
+  aply();
+}
+
+function aply(){
   document.querySelectorAll(".tab").forEach(tab => {
     tab.classList.toggle("active", tab.getAttribute("data-tag") === currentLang);
   });
-  
-  applyTranslations();
+  //applyTranslations();
+  //loadArticles(1);
+}
+
+// Iniciar
+document.addEventListener("DOMContentLoaded", () => {
+  // Recuperar idioma almacenado o usar ES por defecto
+  const savedLang = localStorage.getItem("preferredLanguage");
+  //currentLang = savedLang || loadDefaultLang();
+  console.log(!!savedLang);
+  if (!savedLang){
+    //loadDefaultLang();
+    settings(!savedLang);
+  } else {
+    settings(!savedLang);
+    //currentLang = savedLang;
+    changeLanguage(savedLang);
+    aply()
+  }
 });

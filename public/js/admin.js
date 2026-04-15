@@ -5,6 +5,8 @@ let usersData = [];
 //let currentLang = localStorage.getItem("lang") || "ES";
 //let user;
 ///
+let currentPage = 1;
+const articlesPerPage = 5;
 
 //cargar usuarios
 async function loadUsers() {
@@ -436,8 +438,8 @@ async function loadAdminArticles() {
   const lang = adminLangFilter.value;
   const search = adminSearchInput.value.trim();
 
-  console.log(lang);
-  console.log(search);
+  //console.log(lang);
+  //console.log(search);
 
   let url = "/api/articles?all=true";
 
@@ -448,7 +450,16 @@ async function loadAdminArticles() {
   const data = await res.json();
 
   const articles = data.articles;
-  console.log(data);
+  //console.log(data);
+
+  //paginación
+  const totalPages = Math.ceil(articles.length / articlesPerPage);
+
+  // 🧮 PAGINACIÓN
+  const start = (currentPage - 1) * articlesPerPage;
+  const end = start + articlesPerPage;
+  const visible = articles.slice(start, end);
+  //
 
   adminArticlesList.innerHTML = "";
 
@@ -457,7 +468,8 @@ async function loadAdminArticles() {
     return;
   }
 
-  articles.forEach(article => {
+  //articles.forEach(article => {
+  visible.forEach(article => {
     const div = document.createElement("div");
     div.classList.add("admin-article-item");
 
@@ -468,8 +480,29 @@ async function loadAdminArticles() {
       <button onclick="deleteArticle(${article.id})">${translations[currentLang].clear2}</button>
     `;
     adminArticlesList.appendChild(div);
+
+    // 📄 INFO DE PÁGINA
+    document.getElementById("pageInfo").textContent =
+      `Página ${currentPage} de ${totalPages || 1}`;
+
+    // 🔘 BOTONES
+    document.getElementById("prevBtn").disabled = currentPage === 1;
+    document.getElementById("nextBtn").disabled = currentPage === totalPages;
   });
 }
+
+// ⬅️➡️ EVENTOS
+document.getElementById("prevBtn").addEventListener("click", () => {
+  currentPage--;
+  //renderArticles();
+  loadAdminArticles();
+});
+
+document.getElementById("nextBtn").addEventListener("click", () => {
+  currentPage++;
+  //renderArticles();
+  loadAdminArticles();
+});
 
 //borrar lecciones
 async function deleteArticle(id) {

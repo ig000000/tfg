@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Project Knowledge · Contribution</title>
   <link rel="stylesheet" href="css/styles.css">
+  <link id="favicon" rel="icon" href="">
 </head>
 <body>
 
@@ -11,7 +12,7 @@
 <header class="header">
 
   <div class="header-top">
-    <h1 class="logo">Project Knowledge</h1>
+    <h1 class="logo" id="name">Project Knowledge</h1>
 
     <div class="header-actions">
       <!-- Idioma -->
@@ -46,31 +47,21 @@
 
   </section>
 
-  <!-- Sidebar -->
+   <!-- Links of Interest -->
   <aside class="links-of-interest">
-    <h3 data-i18n="linksOfInterest"></h3>
-   <ul>
-      <li><a href="https://aeipro.com/" target="_blank">AEIPRO: Asociación Española de Dirección e Ingeniería de Proyectos</a></li>
-      <li><a href="https://www.pmi.org/" target="_blank">PMI: Project Management Institute</a></li>
-      <li><a href="https://www.inteco.es/" target="_blank">NTECO: Instituto Nacional de Tecnologías de la Comunicación</a></li>
-      <li><a href="https://www.avpd.es/" target="_blank">Datuak Babesteko Euskal Bulegoa / Agencia Vasca de Protección de Datos</a></li>
-      <li><a href="https://www.ali.es/" target="_blank">ALI: Asociación de Titulados Universitarios Oficiales en Informática</a></li>
-      <li><a href="https://www.ati.es/" target="_blank">ATI: Asociación de Técnicos de Informática</a></li>
-      <li><a href="https://www.coiie.org/" target="_blank">Colegio Oficial de Ingenieros en Informática del País Vasco / Euskadiko Informatika Ingeniarien Elkargo Ofiziala</a></li>
-      <li><a href="https://www.acm.org/" target="_blank"></a></li>
-      <li><a href="https://www.acm.org/" target="_blank">ACM: Association for Computing Machinery</a></li>
-      <li><a href="https://www.ieee.org/" target="_blank">IEEE: Institute of Electrical and Electronics Engineers</a></li>
-      <li><a href="https://www.enriquedans.com/" target="_blank">Blog de Enrique Dans</a></li>
-      <li><a href="http://www.mikelnino.com/" target="_blank">Blog de Mikel Niño</a></li>
-      <li><a href="https://www.ibaivalencia.com/" target="_blank">Blog de Ibai Valencia</a></li>
-    </ul>
+    <h3 id="VisibleLinks" data-i18n="linksOfInterest"></h3>
+    <lu><div id="links"></div></lu>
+
   </aside>
 
 </main>
 
 <script src="js/lang.js"></script>
 <script src="js/main2.js"></script>
+<script src="js/linksOfInterest.js"></script>
 <script>
+loadPublicLinks();
+
 async function loadContent() {
   const res = await fetch('/content');
   const data = await res.json();
@@ -83,7 +74,17 @@ document.querySelectorAll(".tab").forEach(btn => {
     loadContent();
   });
 });
+
 loadContent()
+
+async function loadimg() {
+    const res = await fetch("/settings");
+    const settings = await res.json();
+
+    document.getElementById("favicon").href = settings.favicon;
+    //document.getElementById("logoimg").src = settings.logo;
+   }
+   loadimg();
 </script>
 </body>
 </html>

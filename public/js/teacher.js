@@ -163,7 +163,7 @@ async function loadAdminArticles() {
   const data = await res.json();
 
   const articles = data.articles;
-  console.log(data);
+  //console.log(data);
 
   //paginación
   const totalPages = Math.ceil(articles.length / articlesPerPage);
