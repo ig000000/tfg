@@ -4,12 +4,14 @@
   <meta charset="UTF-8">
   <title>Project Knowledge · Lessons</title>
   <link rel="stylesheet" href="css/styles.css">
+  <link id="favicon" rel="icon" href="">
 </head>
 <body>
 
 <h2>Selecciona cómo quieres entrar</h2>
 <div id="roles"></div>
 
+<script src="js/favicom.js"></script>
 <script>
 async function loadRoles() {
   const res = await fetch("/auth/check");

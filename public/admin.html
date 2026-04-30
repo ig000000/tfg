@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="css/styles.css">
   <!--Quill-->
   <link href="https://cdn.quilljs.com/1.3.7/quill.snow.css" rel="stylesheet">
+  <link id="favicon" rel="icon" href="">
 </head>
 <body>
 
@@ -119,10 +120,22 @@
 
   <!--Edición licencia / contribución-->
   <h2>Editar Licencia</h2>
+        <!-- Idioma -->
+      <div class="tabs">
+        <button class="tab" data-tag="ES">ES</button>
+        <button class="tab" data-tag="EU">EU</button>
+        <button class="tab" data-tag="EN">EN</button>
+      </div>
 <div id="editorLicencia"></div>
 <button onclick="saveLicencia()">Guardar Licencia</button>
 
 <h2>Editar Contribución</h2>
+      <!-- Idioma -->
+      <div class="tabs">
+        <button class="tab" data-tag="ES">ES</button>
+        <button class="tab" data-tag="EU">EU</button>
+        <button class="tab" data-tag="EN">EN</button>
+      </div>
 <div id="editorContribucion"></div>
 <button onclick="saveContribucion()">Guardar Contribución</button>
 
@@ -211,6 +224,7 @@
 <script src="js/main2.js"></script>
 <script src="js/admin.js"></script>
 <script src="js/linksOfInterest.js"></script>
+<script src="js/favicom.js"></script>
 <!--<script src="js/main2.js"></script>-->
 
 <script>

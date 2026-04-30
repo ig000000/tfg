@@ -52,17 +52,9 @@
 <script src="js/lang.js"></script>
 <script src="js/main2.js"></script>
 <script src="js/linksOfInterest.js"></script>
+<script src="js/favicom.js"></script>
 <script>
   loadPublicLinks();
-
-  async function loadimg() {
-    const res = await fetch("/settings");
-    const settings = await res.json();
-
-    document.getElementById("favicon").href = settings.favicon;
-    //document.getElementById("logoimg").src = settings.logo;
-   }
-   loadimg();
 </script>
 
 </body>
