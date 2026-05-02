@@ -8,18 +8,22 @@
 </head>
 <body>
 
-<form id="loginForm" class="login-form">
-  <input type="text" id="username" data-i18n-placeholder="username" required>
-  <input type="password" id="password" data-i18n-placeholder="password" required>
-  <button type="submit" data-i18n="login"></button>
-</form>
+<div class="login-page">
+  <h2>Login</h2>
+  <form id="loginForm" class="login-form">
+    <input type="text" id="username" data-i18n-placeholder="username" required>
+    <input type="password" id="password" data-i18n-placeholder="password" required>
+    <br>
+    <button type="submit" class="login-btn-l" data-i18n="login"></button>
+   
+    <p id="error" style="color:red"></p>
+  </form>
 
-<p id="error" style="color:red"></p>
+  <!--Boton de regreso inicio-->
+  <a href="/index.html" data-i18n="backHome" class="back-btn"></a>
+</div>
 
-<!--Boton de regreso inicio-->
-<a href="/index.html">
-  <button data-i18n="backHome"></button>
-</a>
+
 
 <script src="js/lang.js"></script>
 <script src="js/main2.js"></script>

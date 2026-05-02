@@ -8,8 +8,10 @@
 </head>
 <body>
 
-<h2>Selecciona cómo quieres entrar</h2>
-<div id="roles"></div>
+  <div class="roles-page">
+    <h2>Selecciona cómo quieres entrar</h2>
+    <div id="roles"></div>
+  </div>
 
 <script src="js/favicom.js"></script>
 <script>
@@ -22,6 +24,8 @@ async function loadRoles() {
   data.roles.forEach(role => {
     const btn = document.createElement("button");
     btn.innerText = role;
+
+    btn.classList.add("login-btn");
 
     btn.onclick = async () => {
       await fetch("/auth/set-role", {

@@ -29,7 +29,7 @@
     "id": 3,
     "username": "paquito",
     "userNumber": "U1003",
-    "password": "$2b$10$GxvVoseuxG7rcErpVTDe4eEWjBgsvMiNq9HQLjoIb/aUHnL./8idq",
+    "password": "$2b$10$5134ilpaY9V4Ke9renme9eHFmP7IA5A.CtCpZ0xSzZIDSjyZfkivC",
     "roles": [
       "teacher",
       "admin"

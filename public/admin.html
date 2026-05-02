@@ -41,6 +41,7 @@
 <h2>ADMIN</h2>
 
 </main>
+<!--<section class="admin-section" id="userSection">-->
 <!-- 🔍 Filtros -->
   <section class="filters">
     <input type="text" id="searchUser" placeholder="Buscar usuario...">
@@ -117,8 +118,10 @@
       No hay usuarios en la papelera.
     </p>
   </section>
+<!--</section>-->
 
   <!--Edición licencia / contribución-->
+<section class="admin-section" id="contentSection">
   <h2>Editar Licencia</h2>
         <!-- Idioma -->
       <div class="tabs">
@@ -138,8 +141,10 @@
       </div>
 <div id="editorContribucion"></div>
 <button onclick="saveContribucion()">Guardar Contribución</button>
+</section>
 
 <!--================Configuración Global=================-->
+<section class="admin-section" id="settingsSection">
 <h2>Configuración Global</h2>
 
 <section class="settings">
@@ -187,8 +192,11 @@
   <button onclick="saveLinks()">Guardar Links</button>
 
 </section>
+</section>
 <br>
+
 <!-- Buscar lecciones -->
+  <section class="admin-section" id="lessonsSection">
     <h3 data-i18n="sasl"></h3>
 
     <div class="admin-search">
@@ -213,7 +221,7 @@
       <span id="pageInfo"></span>
       <button id="nextBtn">Siguiente ➡️</button>
     </div>
-  
+</section>
 <!-- ================= SCRIPTS ================= -->
 <!--<script src="https://cdn.quilljs.com/1.3.7/quill.min.js"></script>-->
 <!-- Quill -->
