@@ -4,32 +4,19 @@ const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
 
+const { getSettings, saveSettings } = require("../utils/settingsData");
 const settingsPath = path.join(__dirname, "../../data/settings.json");
 
+/*
 function getSettings() {
   return JSON.parse(fs.readFileSync(settingsPath));
 }
 
 function saveSettings(settings) {
   fs.writeFileSync(settingsPath, JSON.stringify(settings, null, 2));
-}
+}*/
 
-/*
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
 
-    if (req.params.type === "logo") {
-      cb(null, "public/uploads/logo");
-    } else {
-      cb(null, "public/uploads/favicon");
-    }
-
-  },
-  filename: function (req, file, cb) {
-    const ext = path.extname(file.originalname);
-    cb(null, req.params.type + ext);
-  }
-});*/
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
 

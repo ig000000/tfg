@@ -3,13 +3,16 @@ const fs = require("fs");
 const path = require("path");
 
 const router = express.Router();
-const commentsPath = path.join(__dirname, "../../data/comments.json");
+
+const { getComments, saveComments } = require("../utils/commentsData");
+//const commentsPath = path.join(__dirname, "../../data/comments.json");
 
 // Obtener comentarios de un artículo
-router.get("/:id/comments", (req, res) => {
+router.get("/:id/comments", async (req, res) => {
   const articleId = Number(req.params.id);
 
-  const data = JSON.parse(fs.readFileSync(commentsPath));
+  //const data = JSON.parse(fs.readFileSync(commentsPath));
+  const data = getComments();
 
   const filtered = data.filter(c => c.articleId === articleId);
 
@@ -24,7 +27,8 @@ router.post("/:id/comments", (req, res) => {
   if (!name || !comment)
     return res.status(400).json({ error: "Faltan campos" });
 
-  const data = JSON.parse(fs.readFileSync(commentsPath));
+  //const data = JSON.parse(fs.readFileSync(commentsPath));
+  const data = getComments();
 
   const newComment = {
     articleId,
@@ -35,7 +39,8 @@ router.post("/:id/comments", (req, res) => {
 
   data.push(newComment);
 
-  fs.writeFileSync(commentsPath, JSON.stringify(data, null, 2));
+  //fs.writeFileSync(commentsPath, JSON.stringify(data, null, 2));
+  saveComments(data);
 
   res.json({ success: true, comment: newComment });
 });

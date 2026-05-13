@@ -6,8 +6,10 @@ const path = require("path");
 const { requireRole } = require("../middleware/auth");
 
 const router = express.Router();
-const filePath = path.join(__dirname, "../../data/ideas.json");
 
+const { readIdeas, saveIdeas } = require("../utils/ideasData");
+const filePath = path.join(__dirname, "../../data/ideas.json");
+/*
 function readIdeas() {
   if (!fs.existsSync(filePath)) return [];
   return JSON.parse(fs.readFileSync(filePath));
@@ -15,15 +17,15 @@ function readIdeas() {
 
 function saveIdeas(data) {
   fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
-}
+}*/
 
 /* ====== PUBLIC ====== */
-router.get("/", (req, res) => {
+router.get("/",  (req, res) => {
   res.json(readIdeas());
 });
 
 /* ====== ADMIN ONLY ====== */
-router.post("/", requireRole("teacher"), (req, res) => {
+router.post("/", requireRole("teacher"),  (req, res) => {
 
  // if (!req.session?.user?.isAdmin)
  //   return res.status(403).json({ error: "Unauthorized" });
@@ -40,7 +42,7 @@ router.post("/", requireRole("teacher"), (req, res) => {
   res.json(newIdea);
 });
 
-router.delete("/:id", (req, res) => {
+router.delete("/:id", async (req, res) => {
   //if (!req.session?.user?.isAdmin)
   //  return res.status(403).json({ error: "Unauthorized" });
 

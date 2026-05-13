@@ -8,12 +8,15 @@ const { requireRole } = require("../middleware/auth");
 const router = express.Router();
 
 // PATH JSON
-const articlesPath = path.join(__dirname, "../../data/articles.json");
+//const articlesPath = path.join(__dirname, "../../data/articles.json");
+
+const {getArticles, saveArticles}= require("../utils/articlesData");
 
 // Para paginación
-//const { ARTICLES_PER_PAGE } = require("../../config");
-const settingsFIle =  path.join(__dirname, "../../data/settings.json");
-const settings = JSON.parse(fs.readFileSync(settingsFIle));
+const { getSettings, saveSettings } = require("../utils/settingsData");
+//const settingsFIle =  path.join(__dirname, "../../data/settings.json");
+//const settings = JSON.parse(fs.readFileSync(settingsFIle));
+const settings = getSettings();
 
 //generar resumen
 function generateSummaryFromHTML(html, maxWords = 100) {
@@ -171,7 +174,8 @@ router.get("/:id", (req, res) => {
 // Editar, Añadir, Eliminar
 // Crear artículo
 router.post("/", requireRole("teacher"),(req, res) => {
-  const data = JSON.parse(fs.readFileSync(articlesPath));
+  //const data = JSON.parse(fs.readFileSync(articlesPath));
+  const data = getArticles();
 
   const { title, date, author, content, tags } = req.body;
 
@@ -198,7 +202,8 @@ router.post("/", requireRole("teacher"),(req, res) => {
   };
 
   data.push(newArticle);
-  fs.writeFileSync(articlesPath, JSON.stringify(data, null, 2));
+  //fs.writeFileSync(articlesPath, JSON.stringify(data, null, 2));
+  saveArticles(data);
 
   res.json({ success: true, article: newArticle });
 });
@@ -237,7 +242,8 @@ router.put("/:id", (req, res) => {
 
 // Borrar artículo
 router.delete("/:id", (req, res) => {
-  let data = JSON.parse(fs.readFileSync(articlesPath));
+  //let data = JSON.parse(fs.readFileSync(articlesPath));
+  let data = getArticles();
   const id = Number(req.params.id);
 
   const exists = data.some(a => a.id === id);
@@ -245,7 +251,8 @@ router.delete("/:id", (req, res) => {
 
   data = data.filter(a => a.id !== id);
 
-  fs.writeFileSync(articlesPath, JSON.stringify(data, null, 2));
+  //fs.writeFileSync(articlesPath, JSON.stringify(data, null, 2));
+  saveArticles(data);
 
   res.json({ success: true });
 });
