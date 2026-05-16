@@ -40,6 +40,7 @@ app.use("/users", require("./routes/users"));
 app.use("/content", require("./routes/content"));
 app.use("/settings", require("./routes/settings"));
 app.use("/upload", require("./routes/upload"));
+app.use("/backups", require("./routes/backups"));
 
 
 // Servidor

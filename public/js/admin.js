@@ -513,6 +513,50 @@ async function deleteArticle(id) {
   loadAdminArticles();
 }
 
+//backup
+document
+   .getElementById("create-backup-btn")
+   .addEventListener("click", async () => {
+
+      try {
+
+         const response = await fetch(
+            "/backups/create",
+            {
+               method: "POST"
+            }
+         );
+
+         if (!response.ok) {
+            throw new Error("Backup failed");
+         }
+
+         const blob = await response.blob();
+
+         const url = window.URL.createObjectURL(blob);
+
+         const a = document.createElement("a");
+
+         a.href = url;
+
+         a.download = "backup.zip";
+
+         document.body.appendChild(a);
+
+         a.click();
+
+         a.remove();
+
+      } catch (error) {
+
+         console.error(error);
+
+         alert("Error creating backup");
+
+      }
+
+});
+
 // botón buscar
 adminSearchBtn.addEventListener("click", loadAdminArticles);
 

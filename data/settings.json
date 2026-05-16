@@ -9,6 +9,11 @@
       "title": "web",
       "url": "https://es.wikipedia.org/wiki/Solanum_tuberosum",
       "visible": true
+    },
+    {
+      "title": "titulo",
+      "url": "https://es.wikipedia.org/wiki/Solanum_tuberosum",
+      "visible": true
     }
   ]
 }
