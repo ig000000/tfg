@@ -11,6 +11,8 @@ const router = express.Router();
 //const articlesPath = path.join(__dirname, "../../data/articles.json");
 
 const {getArticles, saveArticles}= require("../utils/articlesData");
+//
+const {createTranslationGroupId} = require("../utils/translationGroups");
 
 // Para paginación
 const { getSettings, saveSettings } = require("../utils/settingsData");
@@ -191,6 +193,9 @@ router.post("/", requireRole("teacher"),(req, res) => {
     return res.status(400).json({ error: "No se pudo generar el resumen" });
   }
 
+  //generar trasnlationgroup
+  const finalTranslationGroupId = createTranslationGroupId();
+
   const newArticle = {
     id: data.length ? data[data.length - 1].id + 1 : 1,
     title,
@@ -198,7 +203,8 @@ router.post("/", requireRole("teacher"),(req, res) => {
     author,
     summary,
     content,
-    tags
+    tags,
+    translationGroupId
   };
 
   data.push(newArticle);
@@ -211,8 +217,9 @@ router.post("/", requireRole("teacher"),(req, res) => {
 
 // Editar artículo
 router.put("/:id", (req, res) => {
-  const filePath = path.join(__dirname, "../../data/articles.json");
-  const data = JSON.parse(fs.readFileSync(filePath));
+  //const filePath = path.join(__dirname, "../../data/articles.json");
+  //const data = JSON.parse(fs.readFileSync(filePath));
+  const data = getArticles();
 
   const index = data.findIndex(a => a.id == req.params.id);
   if (index === -1) {
@@ -228,15 +235,47 @@ router.put("/:id", (req, res) => {
       ? generateSummaryFromHTML(newContent)
       : oldArticle.summary;
 
+      
+  if(oldArticle.tags[0] == req.body.tags[0]){
+
+    data[index] = {
+      ...oldArticle,
+      ...req.body,
+      summary,
+      id: oldArticle.id
+    };
+  }
+  else{
+
+    const { title, date, author, content, tags } = req.body;
+    const translationGroupId = oldArticle.translationGroupId;
+
+    const newArticle = {
+      id: data.length ? data[data.length - 1].id + 1 : 1,
+      title,
+      date,
+      author,
+      summary,
+      content,
+      tags,
+      translationGroupId
+    };
+
+    data.push(newArticle);
+  }
+
+  /*
   data[index] = {
     ...oldArticle,
     ...req.body,
     summary,
     id: oldArticle.id
-  };
+  };*/
 
-  fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+  saveArticles(data);
+  //fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
   res.json({ message: "Artículo actualizado" });
+  
 });
 
 

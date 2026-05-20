@@ -1,6 +1,7 @@
 [
   {
     "id": 1,
+    "translationGroupId": "group_001",
     "title": "Accesibilidad por medio de subtítulos",
     "date": "2025-06-18",
     "author": "Ainhoa Inchusta Adot",
@@ -13,6 +14,7 @@
   },
   {
     "id": 2,
+    "translationGroupId": "group_002",
     "title": "Sitios web de calidad con Google Sites",
     "date": "2025-05-21",
     "author": "Diego Allué Vicente",
@@ -25,6 +27,7 @@
   },
   {
     "id": 3,
+    "translationGroupId": "group_003",
     "title": "Test",
     "date": "2025-06-07",
     "author": "Patata Sexy Campos",
@@ -37,11 +40,12 @@
   },
   {
     "id": 4,
+    "translationGroupId": "group_004",
     "title": "Lana gerorako uztearen kaltea",
     "date": "2025-06-04",
     "author": "Aitor Arzalluz",
-    "summary": "Askotan, nekeak edo gogo faltak",
-    "content": "Artikuluaren testu osoa...",
+    "summary": "Artikuluaren testu osoa",
+    "content": "<p>Artikuluaren testu osoa</p>",
     "tags": [
       "EU",
       "Lana"
@@ -49,6 +53,7 @@
   },
   {
     "id": 5,
+    "translationGroupId": "group_005",
     "title": "Sitio web",
     "date": "2024-12-04",
     "author": "Lola Montero",
@@ -61,6 +66,7 @@
   },
   {
     "id": 8,
+    "translationGroupId": "group_008",
     "title": "hi",
     "date": "1999-07-13",
     "author": "me",
@@ -73,6 +79,7 @@
   },
   {
     "id": 9,
+    "translationGroupId": "group_009",
     "title": "Prueba",
     "date": "2026-01-01",
     "author": "Yo mismo",
@@ -86,6 +93,7 @@
   {
     "id": 10,
     "title": "pruena resumen",
+    "translationGroupId": "group_010",
     "date": "2026-01-20",
     "author": "yo",
     "summary": "Esto es una prueba para comprobar que el resumen se genere correctamente. Para ello, escribiré dos párrafos. El primero, este, tendría que aparecer en el resumen. Mientras que es siguiente no.",
@@ -98,6 +106,7 @@
   },
   {
     "id": 14,
+    "translationGroupId": "group_014",
     "title": "cosa",
     "date": "2026-01-22",
     "author": "cosa",
@@ -110,6 +119,7 @@
   },
   {
     "id": 15,
+    "translationGroupId": "group_015",
     "title": "Kalitate tresna on baten abantaila",
     "date": "2026-02-11",
     "author": "David Pintado",
@@ -120,5 +130,18 @@
       "ona",
       "abantaila"
     ]
+  },
+  {
+    "id": 16,
+    "title": "desventajas de dejar el trabajo para el último momento",
+    "date": "2025-06-04",
+    "author": "Aitor Arzalluz",
+    "summary": "Todo el texto del artículo.",
+    "content": "<p>Todo el texto del artículo.</p>",
+    "tags": [
+      "ES",
+      "Trabajo"
+    ],
+    "translationGroupId": "group_004"
   }
 ]
