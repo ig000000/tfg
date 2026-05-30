@@ -19,7 +19,6 @@ async function editArticle(id) {
 }
 
 async function deleteArticle(id) {
-  //if (!confirm("¿Borrar lección?")) return;
   if (!confirm(translations[currentLang].deleteLesson)) return;
 
   await fetch(`/api/articles/${id}`, { method: "DELETE" });
@@ -34,9 +33,7 @@ document.getElementById("saveBtn").addEventListener("click", async () => {
   const authorValue = author.value.trim();
   const dateValue = date.value.trim();
   const summaryValue = summary.value.trim();
-  //const contentValue = content.value.trim();
 
-  //if (!lang || !titleValue || !authorValue || !dateValue || !summaryValue || !contentValue) {
   if (!lang || !titleValue || !authorValue || !dateValue) {
     alert(translations[currentLang].mandatory)
     return;
@@ -94,19 +91,16 @@ async function saveArticle() {
   };
 
   let res;
-  //console.log("#########")
 
   if (id) {
-    // ✏️ EDITAR
-    //console.log(article)
+    // EDITAR
     res = await fetch(`/api/articles/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(article)
     });
   } else {
-    // 🆕 CREAR
-    //console.log(article)
+    // CREAR
     res = await fetch("/api/articles", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -123,7 +117,6 @@ async function saveArticle() {
   clearForm();
   loadAdminArticles();
 }
-
 
 document.getElementById("clearBtn").addEventListener("click", clearForm);
 
@@ -163,16 +156,14 @@ async function loadAdminArticles() {
   const data = await res.json();
 
   const articles = data.articles;
-  //console.log(data);
 
   //paginación
   const totalPages = Math.ceil(articles.length / articlesPerPage);
 
-  // 🧮 PAGINACIÓN
+  // PAGINACIÓN
   const start = (currentPage - 1) * articlesPerPage;
   const end = start + articlesPerPage;
   const visible = articles.slice(start, end);
-  //
 
   adminArticlesList.innerHTML = "";
 
@@ -181,12 +172,10 @@ async function loadAdminArticles() {
     return;
   }
 
-  //articles.forEach(article => {
   visible.forEach(article => {
     const div = document.createElement("div");
     div.classList.add("admin-article-item");
 
-    //console.log(currentLang);
 
     div.innerHTML = `
       <strong>${article.title}</strong> - ${article.tags.join(", ")}
@@ -195,11 +184,11 @@ async function loadAdminArticles() {
     `;
     adminArticlesList.appendChild(div);
 
-    // 📄 INFO DE PÁGINA
+    // INFO DE PÁGINA
     document.getElementById("pageInfo").textContent =
-      `Página ${currentPage} de ${totalPages || 1}`;
+      `${currentPage} / ${totalPages || 1}`;
 
-    // 🔘 BOTONES
+    // BOTONES
     document.getElementById("prevBtn").disabled = currentPage === 1;
     document.getElementById("nextBtn").disabled = currentPage === totalPages;
   });
@@ -208,13 +197,11 @@ async function loadAdminArticles() {
 // ⬅️➡️ EVENTOS
 document.getElementById("prevBtn").addEventListener("click", () => {
   currentPage--;
-  //renderArticles();
   loadAdminArticles();
 });
 
 document.getElementById("nextBtn").addEventListener("click", () => {
   currentPage++;
-  //renderArticles();
   loadAdminArticles();
 });
 
@@ -223,12 +210,6 @@ adminSearchBtn.addEventListener("click", loadAdminArticles);
 
 // cargar todo al entrar
 document.addEventListener("DOMContentLoaded", loadAdminArticles);
-
-// función al seleccionar para editar/borrar
-function selectArticle(id) {
-  // Aquí llamas a tu función actual de cargar datos en el formulario
-  loadArticleToForm(id);
-}
 
 //Función para cargar lecciones
 async function loadArticleToForm(id) {

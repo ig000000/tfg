@@ -17,13 +17,13 @@ async function loadArticle() {
       <div class="ql-editor">${article.content}</div>
     `
     } else{
-      document.getElementById("content").innerHTML = `
-      No se ha encontrado la lección seleccionada.`;
+      document.getElementById("content").innerHTML = 
+      translations[currentLang].noLessonsFound;
     }
     
   } catch (err) {
-    document.getElementById("content").innerHTML = `
-    No se ha encontrado la lección seleccionada.`;
+    document.getElementById("content").innerHTML = 
+    translations[currentLang].noLessonsFound;
   }
  
 }
@@ -79,6 +79,7 @@ document.getElementById("sendComment").addEventListener("click", async () => {
 document.querySelectorAll(".tab").forEach(btn => {
   btn.addEventListener("click", () => {
     loadComments();
+    loadArticle();
   });
 });
 

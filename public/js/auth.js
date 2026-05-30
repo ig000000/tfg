@@ -15,7 +15,7 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
   const data = await res.json();
 
   if (!data.success) {
-    document.getElementById("error").innerText = "Login incorrecto";
+    document.getElementById("error").innerText = translations[currentLang].errorLogin;
   } else {
 
     if (data.mustChangePassword){

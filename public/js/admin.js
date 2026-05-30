@@ -438,9 +438,6 @@ async function loadAdminArticles() {
   const lang = adminLangFilter.value;
   const search = adminSearchInput.value.trim();
 
-  //console.log(lang);
-  //console.log(search);
-
   let url = "/api/articles?all=true";
 
   if (lang) url += `&tag=${lang}&`;
@@ -450,7 +447,6 @@ async function loadAdminArticles() {
   const data = await res.json();
 
   const articles = data.articles;
-  //console.log(data);
 
   //paginación
   const totalPages = Math.ceil(articles.length / articlesPerPage);
@@ -481,11 +477,11 @@ async function loadAdminArticles() {
     `;
     adminArticlesList.appendChild(div);
 
-    // 📄 INFO DE PÁGINA
+    // INFO DE PÁGINA
     document.getElementById("pageInfo").textContent =
-      `Página ${currentPage} de ${totalPages || 1}`;
+      `${currentPage} / ${totalPages || 1}`;
 
-    // 🔘 BOTONES
+    //  BOTONES
     document.getElementById("prevBtn").disabled = currentPage === 1;
     document.getElementById("nextBtn").disabled = currentPage === totalPages;
   });
@@ -494,13 +490,11 @@ async function loadAdminArticles() {
 // ⬅️➡️ EVENTOS
 document.getElementById("prevBtn").addEventListener("click", () => {
   currentPage--;
-  //renderArticles();
   loadAdminArticles();
 });
 
 document.getElementById("nextBtn").addEventListener("click", () => {
   currentPage++;
-  //renderArticles();
   loadAdminArticles();
 });
 
