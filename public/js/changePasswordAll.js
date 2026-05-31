@@ -23,7 +23,6 @@ async function changePassword() {
 
   document.getElementById("msg").innerText = data.message;
   alert(data.message);
-  //console.log(data)
   
   if (data.activeRole){
     window.location.href=`${data.activeRole}.html`;

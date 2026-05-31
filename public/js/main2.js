@@ -112,7 +112,6 @@ async function settings(lang) {
 
 //idioma por defecto
 async function loadDefaultLang(settings) {
-  //currentLang = settings.defaultLang;
   changeLanguage(settings.defaultLang);
   aply();
 }
@@ -121,22 +120,17 @@ function aply(){
   document.querySelectorAll(".tab").forEach(tab => {
     tab.classList.toggle("active", tab.getAttribute("data-tag") === currentLang);
   });
-  //applyTranslations();
-  //loadArticles(1);
 }
 
 // Iniciar
 document.addEventListener("DOMContentLoaded", () => {
   // Recuperar idioma almacenado o usar ES por defecto
   const savedLang = localStorage.getItem("preferredLanguage");
-  //currentLang = savedLang || loadDefaultLang();
   console.log(!!savedLang);
   if (!savedLang){
-    //loadDefaultLang();
     settings(!savedLang);
   } else {
     settings(!savedLang);
-    //currentLang = savedLang;
     changeLanguage(savedLang);
     aply()
   }

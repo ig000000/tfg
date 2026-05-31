@@ -20,7 +20,6 @@ async function loadRoleSwitcher() {
       body: JSON.stringify({ role: select.value })
     });
 
-    //location.reload();
     window.location.href = `${select.value}.html`;
   });
 }

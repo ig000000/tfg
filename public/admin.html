@@ -33,33 +33,29 @@
       <button onclick="logout()" class="login-btn">Logout</button>
     </div>
   </div>
-
 </header>
 
 <!-- ================= CONTENIDO ================= -->
-
 <h2>ADMIN</h2>
 
 </main>
-<!--<section class="admin-section" id="userSection">-->
-<!-- 🔍 Filtros -->
+<!-- Filtros -->
   <section class="filters">
-    <input type="text" id="searchUser" placeholder="Buscar usuario...">
+    <input type="text" id="searchUser" data-i18n-placeholder="userSearch">
 
     <select id="filterRole">
-      <option value="">Todos</option>
-      <option value="teacher">profesor</option>
-      <option value="admin">Admin</option>
+      <option value="" data-i18n="all">Todos</option>
+      <option value="teacher" data-i18n="teacher">profesor</option>
+      <option value="admin" data-i18n="admin">Admin</option>
     </select>
   </section>
 
-  <!-- ➕ Crear usuario -->
+  <!-- Crear usuario -->
   <section class="create-user">
-    <h2>Crear Usuario</h2>
+    <h2 data-i18n="createUser">Crear Usuario</h2>
 
-    <input type="text" id="newUsername" placeholder="Nombre">
-    <!--<input type="password" id="newPassword" placeholder="Contraseña">-->
-    <input type="text" id="newUserNumber" placeholder="Número de usuario">
+    <input type="text" id="newUsername" data-i18n-placeholder="userNamel">
+    <input type="text" id="newUserNumber" data-i18n-placeholder="userNumber">
 
     <label>
       <input type="checkbox" id="roleProfesor"> Profesor
@@ -69,44 +65,43 @@
       <input type="checkbox" id="roleAdmin"> Admin
     </label>
 
-    <button onclick="createUser()">Crear</button>
+    <button onclick="createUser()" data-i18n="createUserl">Crear</button>
   </section>
 
-  <!-- 📋 Lista de usuarios -->
+  <!-- Lista de usuarios -->
   <section>
-    <h2>Usuarios</h2>
+    <h2 data-i18n="usernames">Usuarios</h2>
 
     <table>
       <thead>
         <tr>
-          <th>Nombre</th>
-          <th>Roles</th>
-          <th>Estado</th>
-          <th>Acciones</th>
+          <th data-i18n="userNamel">Nombre</th>
+          <th data-i18n="roles">Roles</th>
+          <th data-i18n="userState">Estado</th>
+          <th data-i18n="acctions">Acciones</th>
         </tr>
       </thead>
 
       <tbody id="usersTable">
-        <!-- Se rellena con JS -->
       </tbody>
     </table>
   </section>
 
   <!-- papelera usuarios-->
   <section id="trash-section">
-    <h2>🗑️ Papelera de usuarios</h2>
+    <h2 data-i18n="userTrash">🗑️ Papelera de usuarios</h2>
 
     <div class="trash-controls">
-      <button onclick="loadDeletedUsers()">🔄 Recargar</button>
+      <button onclick="loadDeletedUsers()" data-i18n="refresh">🔄 Recargar</button>
     </div>
 
     <table class="trash-table">
       <thead>
         <tr>
-          <th>Usuario</th>
-          <th>Rol</th>
-          <th>Fecha eliminación</th>
-          <th>Acciones</th>
+          <th data-i18n="username">Usuario</th>
+          <th data-i18n="rolAdmin">Rol</th>
+          <th data-i18n="dataEliminated">Fecha eliminación</th>
+          <th data-i18n="acctions">Acciones</th>
         </tr>
       </thead>
       <tbody id="deletedUsersTable">
@@ -114,7 +109,7 @@
       </tbody>
     </table>
 
-    <p id="noDeletedUsers" style="display:none;">
+    <p id="noDeletedUsers" style="display:none;" data-i18n="noUsersTrash">
       No hay usuarios en la papelera.
     </p>
   </section>

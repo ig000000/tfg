@@ -28,6 +28,7 @@ const translations = {
 
     //Login
     username:"Usuario",
+    usernames:"Usuarios",
     password:"Contraseña",
     login: "Login",
     backHome: "Volver a inicio",
@@ -114,7 +115,32 @@ const translations = {
 
     //roles
     teacher: "profesor",
-    admin: "administrador"
+    admin: "administrador",
+
+    //contaseña
+    passwdText: "Cambiar contraseña",
+    passwdActual: "Contraseña actual",
+    passwdNwePasswd: "Nueva Contraseña",
+    passwdRepeat: "Repetir nueva contraseña",
+    resetPasswd: "Restablecer contraseña",
+
+    //admin-usuarios
+    userSearch: "Buscar usuario...",
+    createUser: "Crear Usuario",
+    userNamel: "Nombre",
+    userNumber: "Número de usuario",//eliminar más tarde igual
+    createUserl: "Crear",
+    roles: "Roles", 
+    rolAdmin: "Rol",
+    userState: "Estado", //igual eliminar
+    acctions: "Acciones",
+    userTrash: "🗑️ Papelera de usuarios",
+    refresh: "🔄 Recargar",
+    dataEliminated: "Fecha de eliminación",
+    restore: "Restaurar",
+    eliminatedPermanently: "Eliminar permanentemente",
+    noUsersTrash:"No hay usuarios en la papelera.",
+    eliminate: "Eliminar"
   },
 
   EN: {
@@ -147,6 +173,7 @@ const translations = {
 
     // Login
     username: "Username",
+    usernames:"Users",
     password: "Password",
     login: "Log in",
     backHome: "Back to home",
@@ -235,7 +262,32 @@ const translations = {
 
     // roles
     teacher: "teacher",
-    admin: "administrator"
+    admin: "administrator",
+
+    // Password
+    passwdText: "Change password",
+    passwdActual: "Current password",
+    passwdNwePasswd: "New password",
+    passwdRepeat: "Confirm new password",
+    resetPasswd: "Reset password",
+
+    // Admin - Users
+    userSearch: "Search user...",
+    createUser: "Create user",
+    userNamel: "Name",
+    userNumber: "User number", // maybe remove later
+    createUserl: "Create",
+    roles: "Roles",
+    rolAdmin: "Role",
+    userState: "Status", // maybe remove
+    acctions: "Actions",
+    userTrash: "🗑️ Deleted users",
+    refresh: "🔄 Refresh",
+    dataEliminated: "Deletion date",
+    restore: "Restore",
+    eliminatedPermanently: "Permanently delete",
+    noUsersTrash: "There are no users in the trash.",
+    eliminate: "Delete",
   },
 
   EU: {
@@ -268,6 +320,7 @@ const translations = {
 
     // Login
     username: "Erabiltzailea",
+    usernames:"Erabiltzaileak",
     password: "Pasahitza",
     login: "Saioa hasi",
     backHome: "Hasierara itzuli",
@@ -356,5 +409,30 @@ const translations = {
     //roles
     teacher: "irakaslea",
     admin: "administratzailea",
+
+    // Pasahitza
+    passwdText: "Pasahitza aldatu",
+    passwdActual: "Uneko pasahitza",
+    passwdNwePasswd: "Pasahitz berria",
+    passwdRepeat: "Pasahitz berria errepikatu",
+    resetPasswd: "Pasahitza berrezarri ",
+
+    // Admin - Erabiltzaileak
+    userSearch: "Bilatu erabiltzailea...",
+    createUser: "Erabiltzailea sortu",
+    userNamel: "Izena",
+    userNumber: "Erabiltzaile-zenbakia", // gero ezabatu beharbada
+    createUserl: "Sortu",
+    roles: "Rolak",
+    rolAdmin: "Rola",
+    userState: "Egoera", // beharbada ezabatu
+    acctions: "Ekintzak",
+    userTrash: "🗑️ Ezabatutako erabiltzaileak",
+    refresh: "🔄 Birkargatu",
+    dataEliminated: "Ezabatze-data",
+    restore: "Berreskuratu",
+    eliminatedPermanently: "Betiko ezabatu",
+    noUsersTrash: "Ez dago erabiltzailerik zakarrontzian.",
+    eliminate: "Ezabatu"
   }
 };

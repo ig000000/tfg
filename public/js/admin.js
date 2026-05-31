@@ -2,8 +2,6 @@
 const table = document.getElementById('usersTable');
 let data;
 let usersData = [];
-//let currentLang = localStorage.getItem("lang") || "ES";
-//let user;
 ///
 let currentPage = 1;
 const articlesPerPage = 5;
@@ -18,7 +16,6 @@ async function loadUsers() {
 
   usersData = users;
 
-  //const table = document.getElementById('usersTable');
   table.innerHTML = '';
 
   renderUsers(users);
@@ -26,7 +23,6 @@ async function loadUsers() {
 
 async function createUser() {
   const username = document.getElementById('newUsername').value;
-  //const password = document.getElementById('newPassword').value;
   const userNumber = document.getElementById("newUserNumber").value;
 
   const roles = [];
@@ -48,12 +44,10 @@ async function createUser() {
     headers: { 'Content-Type': 'application/json' },
     credentials: 'include',
     body: JSON.stringify({ username, userNumber, roles })
-    //body: JSON.stringify({ username, userNumber, password, roles })
   });
 
   const data = await res.json();
 
-  //console.log(data.tempPassword);
   alert(`
     Usuario creado correctamente
 
@@ -80,27 +74,26 @@ function renderUsers(users){
 <input type="checkbox"
 ${user.roles.includes("teacher") ? "checked" : ""}
 onchange="toggleRole(${user.id}, 'teacher', this.checked)">
-Teacher
+${translations[currentLang].teacher}
 </label>
 
 <label>
 <input type="checkbox"
 ${user.roles.includes("admin") ? "checked" : ""}
 onchange="toggleRole(${user.id}, 'admin', this.checked)">
-Admin
+${translations[currentLang].admin}
 </label>
 
 </td>
       <td>${user.activo ? 'Activo' : 'Inactivo'}</td>
       <td>
         <button onclick="toggleStatus(${user.id})">Activar/Desactivar</button>
-        <button onclick="deleteUser(${user.id})">Eliminar</button>
+        <button onclick="deleteUser(${user.id})">${translations[currentLang].eliminate}</button>
         <button onclick="resetPassword(${user.id})">
-          Reset password
+          ${translations[currentLang].resetPasswd}
         </button>
       </td>
     `;
-    //<td>${user.roles.join(', ')}</td>
 
     table.appendChild(tr);
   });
@@ -141,8 +134,6 @@ async function loadDeletedUsers() {
 
   table.innerHTML = "";
 
-  //console.log(users);
-
   if (users.length === 0) {
     emptyMsg.style.display = "block";
     return;
@@ -159,10 +150,10 @@ async function loadDeletedUsers() {
       <td>${user.deletedAt ? new Date(user.deletedAt).toLocaleString() : "-"}</td>
       <td>
         <button class="restore-btn" onclick="restoreUser(${user.id})">
-          Restaurar
+          ${translations[currentLang].restore}
         </button>
         <button class="delete-btn" onclick="deletePermanent(${user.id})">
-          Eliminar permanentemente
+          ${translations[currentLang].eliminatedPermanently}
         </button>
       </td>
     `;
@@ -281,6 +272,8 @@ function updateEditors() {
 document.querySelectorAll(".tab").forEach(btn => {
   btn.addEventListener("click", () => {
     updateEditors();
+    loadUsers();
+    loadDeletedUsers();
   });
 });
 
