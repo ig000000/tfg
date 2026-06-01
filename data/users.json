@@ -34,7 +34,7 @@
       "teacher",
       "admin"
     ],
-    "active": true,
+    "active": false,
     "deleted": false,
     "mustChangePassword": false,
     "deletedAt": null
@@ -43,7 +43,7 @@
     "id": 4,
     "username": "yo",
     "userNumber": "1234",
-    "password": "$2b$10$cVsl4nRMyIqo.mweZXJ8reC2TtQfpq0LkUo4Bw6hOugi4qWxS9zNe",
+    "password": "$2b$10$a9f7XMvFAsPJEMVaCgDPoer.VLsQwNbRsD/Wgzf1FO5G6AE1MJYMi",
     "roles": [
       "teacher"
     ],
@@ -54,45 +54,14 @@
   },
   {
     "id": 5,
-    "username": "m",
-    "userNumber": "m1",
-    "password": "$2b$10$DWruJJX0ttcjmeVr.ToQleH/KQoDy8XlB51t6bY73zO0dhexeBPoa",
+    "username": "panza",
+    "password": "$2b$10$OZK5pN8lgTgYGbr6vuybX.XQrA21oFfkmOh0IXYw7/zCQZPgVJrX6",
     "roles": [
-      "admin"
+      "teacher"
     ],
     "active": true,
-    "deleted": true,
-    "mustChangePassword": true,
-    "createdAt": "2026-03-21T15:33:02.402Z",
-    "deletedAt": "2026-03-21T15:33:58.837Z"
-  },
-  {
-    "id": 6,
-    "username": "m",
-    "userNumber": "m1",
-    "password": "$2b$10$L/mxyru2JjK8YJANobvu3u8UkrMHZ/IV.mEcoODb1MmAije4qDYy6",
-    "roles": [
-      "admin"
-    ],
-    "active": true,
-    "deleted": true,
-    "mustChangePassword": true,
-    "createdAt": "2026-03-21T15:39:18.851Z",
-    "deletedAt": "2026-03-21T15:45:07.480Z"
-  },
-  {
-    "id": 7,
-    "username": "s",
-    "userNumber": "s",
-    "password": "$2b$10$h9hxUG8v82dJH1zwnci2ueYGxbqtOCNyVraRhQ7NsuspDfzQKlz5i",
-    "roles": [
-      "teacher",
-      "admin"
-    ],
-    "active": true,
-    "deleted": true,
+    "deleted": false,
     "mustChangePassword": false,
-    "createdAt": "2026-03-21T15:44:53.480Z",
-    "deletedAt": "2026-04-05T22:52:54.518Z"
+    "createdAt": "2026-06-01T21:16:17.956Z"
   }
 ]

@@ -23,7 +23,7 @@ async function loadUsers() {
 
 async function createUser() {
   const username = document.getElementById('newUsername').value;
-  const userNumber = document.getElementById("newUserNumber").value;
+  //const userNumber = document.getElementById("newUserNumber").value;
 
   const roles = [];
   if (document.getElementById('roleProfesor').checked) roles.push('teacher');
@@ -34,21 +34,25 @@ async function createUser() {
     return;
   }
 
-  if (!userNumber) {
+  /*if (!userNumber) {
     alert("El número de usuario es obligatorio");
     return;
-  }
+  }*/
 
   const res = await fetch('/users', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     credentials: 'include',
-    body: JSON.stringify({ username, userNumber, roles })
+    //body: JSON.stringify({ username, userNumber, roles })
+    body: JSON.stringify({ username, roles })
   });
 
   const data = await res.json();
 
-  alert(`
+  console.log(data);
+
+  if (data.tempPassword){
+    alert(`
     Usuario creado correctamente
 
     Usuario: ${username}
@@ -56,6 +60,11 @@ async function createUser() {
 
     El usuario deberá cambiarla al iniciar sesión.
   `);
+  }
+  
+  if(data.error){
+    alert(data.error);
+  }
 
   loadUsers();
 }
@@ -85,6 +94,15 @@ ${translations[currentLang].admin}
 </label>
 
 </td>
+      <td>
+        <button onclick="deleteUser(${user.id})">${translations[currentLang].eliminate}</button>
+        <button onclick="resetPassword(${user.id})">
+          ${translations[currentLang].resetPasswd}
+        </button>
+      </td>
+    `;
+  /*
+  </td>
       <td>${user.activo ? 'Activo' : 'Inactivo'}</td>
       <td>
         <button onclick="toggleStatus(${user.id})">Activar/Desactivar</button>
@@ -93,7 +111,7 @@ ${translations[currentLang].admin}
           ${translations[currentLang].resetPasswd}
         </button>
       </td>
-    `;
+  */ 
 
     table.appendChild(tr);
   });
@@ -186,11 +204,12 @@ async function restoreUser(id) {
 }
 
 //??
+/*
 async function toggleStatus(id) {
   await fetch(`/users/${id}/status`, { 
     method: 'PATCH' });
   loadUsers();
-}
+}*/
 
 //eventos sin boton
 document.getElementById("searchUser").addEventListener("input", loadUsers);
@@ -211,9 +230,7 @@ async function loadContent() {
   const res = await fetch('/content');
   data = await res.json();
 
-  updateEditors();
-  //quillLicencia.root.innerHTML = data.licencia.content;
-  //quillContribucion.root.innerHTML = data.contribucion.content;
+  //updateEditors();
 }
 
 //Guardar licencia
@@ -227,7 +244,8 @@ async function saveLicencia() {
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
       body: JSON.stringify({
-        lang: currentLang,
+        //lang: currentLang,
+        lang: document.getElementById("langLicencia").value.trim(),
         text
       })
     });
@@ -236,6 +254,7 @@ async function saveLicencia() {
 
     const data = await res.json();
     console.log("DATA:", data);
+    alert("Licencia guardada correctamente");
 
   } catch (err) {
     console.error("ERROR:", err);
@@ -248,30 +267,51 @@ async function saveLicencia() {
 async function saveContribucion() {
   const text = quillContribucion.root.innerHTML;
 
-  await fetch('/content/contribucion', {
-    method: 'PUT',
-    headers: { 'Content-Type': 'application/json' },
-    credentials: 'include',
-    body: JSON.stringify({
-      lang: currentLang,
-      text
-    })
-  });
+   try {
+      await fetch('/content/contribucion', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify({
+          //lang: currentLang,
+          lang: document.getElementById("langContribution").value.trim(),
+          text
+        })
+      });
+
+    alert("Cotrbución guardada correctamente");
+
+  } catch (err) {
+    console.error("ERROR:", err);
+  }
 
   loadContent();
 }
 
 //Cambiar contenido editor idiomas
-function updateEditors() {
-  //console.log(contentData.licencia)
+/*function updateEditors() {
   quillLicencia.root.innerHTML = data.licencia[currentLang] || "";
-  quillContribucion.root.innerHTML = data.contribucion[currentLang] || "";
+  quillContribucion.root.innerHTML = data.quillContribucion[currentLang] || "";
+}*/
+
+document.getElementById("langLicencia").addEventListener("change", updateEditorLicencia);
+document.getElementById("langContribution").addEventListener("change", updateEditorContribution);
+
+function updateEditorLicencia(event){
+  const lang = event.target.value;
+  console.log(data);
+  quillLicencia.root.innerHTML = data.licencia[lang] || "";
+}
+
+function updateEditorContribution(event){
+  const lang = event.target.value;
+  quillContribucion.root.innerHTML =  data.contribucion[lang] || "";
 }
 
 //idioma
 document.querySelectorAll(".tab").forEach(btn => {
   btn.addEventListener("click", () => {
-    updateEditors();
+    //updateEditors();
     loadUsers();
     loadDeletedUsers();
   });

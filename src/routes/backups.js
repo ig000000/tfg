@@ -9,12 +9,6 @@ const archiver = require("archiver");
 const { requireRole } = require("../middleware/auth");
 
 router.post("/create", requireRole("admin"), async (req, res) => {
-
-   //const archiverModule = await import("archiver");
-
-   //const archiver =
-   //   archiverModule.default || archiverModule;
-
    try {
 
       const backupDir = path.join(__dirname, "../../backups");
@@ -27,7 +21,7 @@ router.post("/create", requireRole("admin"), async (req, res) => {
          .toISOString()
          .replace(/[:.]/g, "-");
 
-      const backupName = `backup-${timestamp}.zip`;
+      const backupName = `ProjectKnowledge-${timestamp}.zip`;
 
       const backupPath = path.join(
          backupDir,
@@ -41,9 +35,7 @@ router.post("/create", requireRole("admin"), async (req, res) => {
       });
 
       output.on("close", () => {
-
          res.download(backupPath);
-
       });
 
       archive.on("error", err => {
@@ -60,15 +52,12 @@ router.post("/create", requireRole("admin"), async (req, res) => {
       await archive.finalize();
 
    } catch (error) {
-
       console.error(error);
 
       res.status(500).json({
          error: "Error creating backup"
       });
-
    }
-
 });
 
 module.exports = router;

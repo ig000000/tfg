@@ -6,19 +6,12 @@ const router = express.Router();
 const bcrypt = require("bcrypt");
 
 const SALT_ROUNDS = 10;
-//const users = require(path.join(__dirname,"../../data/users.json"))
 const { getUsers, saveUsers } = require("../utils/usersData");
 
 //----------------------------
 //Login
 router.post("/login", async (req, res) => {
   const { username, password } = req.body;
-
-  //const users = getUsers();
-
-  //const user = users.find(
-  //  u => u.username === username && u.password === password
-  //);
   const user = await login(username, password);
 
   if (!user) {
@@ -29,7 +22,6 @@ router.post("/login", async (req, res) => {
     return res.status(403).json({ message: "Usuario desactivado" });
   }
 
-  //req.session.user = user.username;
   req.session.user = {
     id: user.id,
     roles: user.roles,
@@ -47,34 +39,28 @@ router.post("/login", async (req, res) => {
 async function login(username, passwordInput) {
 
   const users = getUsers();
-
   const user = users.find(u => u.username === username)
+
   if (!user) return false
 
   // CASO 1: password ya está en bcrypt
   if (user.password.startsWith("$2")) {
-
     const match = await bcrypt.compare(passwordInput, user.password)
 
     if (!match) return false
-
     return user
   }
 
   // CASO 2: password antigua en texto plano
   if (user.password === passwordInput) {
-
     // migrar a bcrypt automáticamente
     const hash = await bcrypt.hash(passwordInput, SALT_ROUNDS)
 
     user.password = hash
-
-    //saveUsers()
     saveUsers(users);
 
     return user
   }
-
   return false
 }
 
@@ -111,7 +97,6 @@ router.post("/set-role", (req, res) => {
   }
 
   req.session.user.activeRole = role;
-
   res.json({ success: true });
 });
 

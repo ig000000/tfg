@@ -9,10 +9,6 @@ function requireRole(role) {
   return (req, res, next) => {
 
     const sessionUser = req.session.user;
-    //console.log(sessionUser);
-    //console.log("#############");
-    //console.log(req.session);
-    //console.log("AAAAAAAAAAAAAAAAAA");
 
     if (!sessionUser) {
       return res.status(401).json({ message: "No autenticado" });
@@ -42,9 +38,4 @@ function requireAnyRole(roles) {
   };
 }
 
-
-module.exports = {
-  requireAuth,
-  requireRole,
-  requireAnyRole
-};
+module.exports = { requireAuth,requireRole, requireAnyRole};

@@ -9,27 +9,14 @@ const router = express.Router();
 
 const { readIdeas, saveIdeas } = require("../utils/ideasData");
 const filePath = path.join(__dirname, "../../data/ideas.json");
-/*
-function readIdeas() {
-  if (!fs.existsSync(filePath)) return [];
-  return JSON.parse(fs.readFileSync(filePath));
-}
 
-function saveIdeas(data) {
-  fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
-}*/
-
-/* ====== PUBLIC ====== */
+//PUBLIC 
 router.get("/",  (req, res) => {
   res.json(readIdeas());
 });
 
-/* ====== ADMIN ONLY ====== */
+//ADMIN ONLY 
 router.post("/", requireRole("teacher"),  (req, res) => {
-
- // if (!req.session?.user?.isAdmin)
- //   return res.status(403).json({ error: "Unauthorized" });
-
   const ideas = readIdeas();
   const newIdea = {
     id: Date.now(),
@@ -43,9 +30,6 @@ router.post("/", requireRole("teacher"),  (req, res) => {
 });
 
 router.delete("/:id", async (req, res) => {
-  //if (!req.session?.user?.isAdmin)
-  //  return res.status(403).json({ error: "Unauthorized" });
-
   const ideas = readIdeas().filter(i => i.id != req.params.id);
   saveIdeas(ideas);
   res.json({ success: true });

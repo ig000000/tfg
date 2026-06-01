@@ -4,27 +4,20 @@ const path = require("path");
 
 //middleware
 const { requireRole } = require("../middleware/auth");
-
 const router = express.Router();
 
 // PATH JSON
-//const articlesPath = path.join(__dirname, "../../data/articles.json");
-
 const {getArticles, saveArticles}= require("../utils/articlesData");
-//
 const {createTranslationGroupId} = require("../utils/translationGroups");
 
 // Para paginación
 const { getSettings, saveSettings } = require("../utils/settingsData");
-//const settingsFIle =  path.join(__dirname, "../../data/settings.json");
-//const settings = JSON.parse(fs.readFileSync(settingsFIle));
 const settings = getSettings();
 
 //generar resumen
 function generateSummaryFromHTML(html, maxWords = 100) {
   if (!html) return "";
 
-  // eliminar scripts y estilos
   html = html
     .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, "")
     .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, "");
@@ -34,13 +27,11 @@ function generateSummaryFromHTML(html, maxWords = 100) {
 
   // eliminar HTML restante
   const text = html.replace(/<[^>]+>/g, "").trim();
-
   if (!text) return "";
 
   // coger primer párrafo real
   const paragraphs = text.split("\n").map(p => p.trim()).filter(Boolean);
   const baseText = paragraphs[0] || text;
-
   const words = baseText.split(/\s+/);
 
   if (words.length <= maxWords) {
@@ -50,27 +41,22 @@ function generateSummaryFromHTML(html, maxWords = 100) {
   return words.slice(0, maxWords).join(" ") + "...";
 }
 
-// ✔️ Obtener artículos con filtro por tag + búsqueda
+// Obtener artículos con filtro por tag + búsqueda
 router.get("/", (req, res) => {
   const data = JSON.parse(
     fs.readFileSync(path.join(__dirname, "../../data/articles.json"))
   );
 
   const tag = req.query.tag;
-  //const { tag, topic, q} = req.query;
   const topic = req.query.topic;
   const search = (req.query.q || "").toLowerCase();
 
   //paginación
-  //const page = req.query.page;
   const page = parseInt(req.query.page) || 1;
-
-  //const limit = ARTICLES_PER_PAGE;
   const limit = settings.articlesPerPage;
-
   let filtered = data;
 
-  // 🔎 filtrar por idioma (tag)
+  // filtrar por idioma (tag)
   if (tag) {
     filtered = filtered.filter(article =>
       article.tags.map(t => t.toLowerCase()).includes(tag.toLowerCase())
@@ -84,7 +70,7 @@ router.get("/", (req, res) => {
     );
   }
 
-  // 🔍 filtrar por texto
+  // filtrar por texto
   if (search) {
     filtered = filtered.filter(a =>
       (a.title || "").toLowerCase().includes(search) ||
@@ -93,10 +79,9 @@ router.get("/", (req, res) => {
     );
   }
 
-  //###############################
   // ORDENACIÓN
-  const sort = req.query.sort;     // title | date | rating (futuro)
-  const order = req.query.order || "asc";  // asc | desc
+  const sort = req.query.sort;     
+  const order = req.query.order || "asc";  
 
   if (sort) {
     filtered.sort((a, b) => {
@@ -127,7 +112,6 @@ router.get("/", (req, res) => {
     });
   }
 
-  //###############################
   //paginación
   if (req.query.all === "true") {
     return res.json({
@@ -142,11 +126,8 @@ router.get("/", (req, res) => {
   const currentPage = Math.max(parseInt(page), 1);
 
   const start = (currentPage - 1) * limit;
-  //const paginatedData = data.slice(start, start + limit);
   const paginatedData = filtered.slice(start, start + limit);
 
-
-  //res.json(filtered);
   res.json({
     articles: paginatedData,
     pagination: {
@@ -159,7 +140,7 @@ router.get("/", (req, res) => {
 });
 
 
-// ✔️ Buscar por ID
+// Buscar por ID
 router.get("/:id", (req, res) => {
   const data = JSON.parse(
     fs.readFileSync(path.join(__dirname, "../../data/articles.json"))
@@ -176,17 +157,15 @@ router.get("/:id", (req, res) => {
 // Editar, Añadir, Eliminar
 // Crear artículo
 router.post("/", requireRole("teacher"),(req, res) => {
-  //const data = JSON.parse(fs.readFileSync(articlesPath));
   const data = getArticles();
 
   const { title, date, author, content, tags } = req.body;
 
-  //if (!title || !date || !author || !summary || !content || !tags || !tags.length) {
   if (!title || !date || !author || !content || !tags || !tags.length) {
     return res.status(400).json({ error: "Todos los campos son obligatorios" });
   }
 
-  // 🧠 generar resumen si no viene
+  // generar resumen si no viene
   const summary = generateSummaryFromHTML(content);
 
   if (!summary) {
@@ -208,7 +187,6 @@ router.post("/", requireRole("teacher"),(req, res) => {
   };
 
   data.push(newArticle);
-  //fs.writeFileSync(articlesPath, JSON.stringify(data, null, 2));
   saveArticles(data);
 
   res.json({ success: true, article: newArticle });
@@ -217,8 +195,6 @@ router.post("/", requireRole("teacher"),(req, res) => {
 
 // Editar artículo
 router.put("/:id", (req, res) => {
-  //const filePath = path.join(__dirname, "../../data/articles.json");
-  //const data = JSON.parse(fs.readFileSync(filePath));
   const data = getArticles();
 
   const index = data.findIndex(a => a.id == req.params.id);
@@ -229,7 +205,7 @@ router.put("/:id", (req, res) => {
   const oldArticle = data[index];
   const newContent = req.body.content;
 
-  // 🧠 regenerar resumen si cambia el contenido
+  // regenerar resumen si cambia el contenido
   const summary =
     newContent && newContent !== oldArticle.content
       ? generateSummaryFromHTML(newContent)
@@ -264,24 +240,13 @@ router.put("/:id", (req, res) => {
     data.push(newArticle);
   }
 
-  /*
-  data[index] = {
-    ...oldArticle,
-    ...req.body,
-    summary,
-    id: oldArticle.id
-  };*/
-
   saveArticles(data);
-  //fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
   res.json({ message: "Artículo actualizado" });
-  
 });
 
 
 // Borrar artículo
 router.delete("/:id", (req, res) => {
-  //let data = JSON.parse(fs.readFileSync(articlesPath));
   let data = getArticles();
   const id = Number(req.params.id);
 
@@ -290,9 +255,7 @@ router.delete("/:id", (req, res) => {
 
   data = data.filter(a => a.id !== id);
 
-  //fs.writeFileSync(articlesPath, JSON.stringify(data, null, 2));
   saveArticles(data);
-
   res.json({ success: true });
 });
 

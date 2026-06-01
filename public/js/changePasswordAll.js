@@ -15,7 +15,8 @@ async function changePassword() {
     },
     body: JSON.stringify({
       currentPassword,
-      newPassword
+      newPassword,
+      repeatPassword
     })
   });
 

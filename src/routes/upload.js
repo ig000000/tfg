@@ -7,15 +7,6 @@ const fs = require("fs");
 const { getSettings, saveSettings } = require("../utils/settingsData");
 const settingsPath = path.join(__dirname, "../../data/settings.json");
 
-/*
-function getSettings() {
-  return JSON.parse(fs.readFileSync(settingsPath));
-}
-
-function saveSettings(settings) {
-  fs.writeFileSync(settingsPath, JSON.stringify(settings, null, 2));
-}*/
-
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -37,7 +28,6 @@ const storage = multer.diskStorage({
   }
 });
 
-//const upload = multer({ storage });
 const upload = multer({
   storage,
   fileFilter: (req, file, cb) => {

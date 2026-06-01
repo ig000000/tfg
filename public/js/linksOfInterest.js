@@ -101,16 +101,7 @@ async function loadPublicLinks() {
       <li><a href="${link.url}" target="_blank">${link.title}</a></li>
     `;
   });
-  /*
-  data.links
-    .filter(link => link.visible)
-    .forEach(link => {
-      container.innerHTML += `
-        <li><a href="${link.url}" target="_blank">${link.title}</a></li>
-      `;
-    });*/
 }
-
 
 //Eliminar link
  function deleteLink(index) {

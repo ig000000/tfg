@@ -3,13 +3,13 @@ const path = require("path");
 
 const filePath = path.join(__dirname, "../../data/content.json");
 
-// 📥 leer
+// leer
 function getContent() {
   const data = fs.readFileSync(filePath, "utf-8");
   return JSON.parse(data);
 }
 
-// 💾 guardar
+// guardar
 function saveContent(content) {
   fs.writeFileSync(filePath, JSON.stringify(content, null, 2));
 }

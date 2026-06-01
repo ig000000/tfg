@@ -55,7 +55,7 @@
     <h2 data-i18n="createUser">Crear Usuario</h2>
 
     <input type="text" id="newUsername" data-i18n-placeholder="userNamel">
-    <input type="text" id="newUserNumber" data-i18n-placeholder="userNumber">
+    <!--<input type="text" id="newUserNumber" data-i18n-placeholder="userNumber">-->
 
     <label>
       <input type="checkbox" id="roleProfesor"> Profesor
@@ -77,7 +77,7 @@
         <tr>
           <th data-i18n="userNamel">Nombre</th>
           <th data-i18n="roles">Roles</th>
-          <th data-i18n="userState">Estado</th>
+          <!--<th data-i18n="userState">Estado</th>-->
           <th data-i18n="acctions">Acciones</th>
         </tr>
       </thead>
@@ -113,27 +113,28 @@
       No hay usuarios en la papelera.
     </p>
   </section>
-<!--</section>-->
 
   <!--Edición licencia / contribución-->
 <section class="admin-section" id="contentSection">
   <h2>Editar Licencia</h2>
         <!-- Idioma -->
-      <div class="tabs">
-        <button class="tab" data-tag="ES">ES</button>
-        <button class="tab" data-tag="EU">EU</button>
-        <button class="tab" data-tag="EN">EN</button>
-      </div>
+  <select id="langLicencia">
+      <option value="" data-i18n="slclanguage"></option>
+      <option value="ES">Castellano (ES)</option>
+      <option value="EU">Euskera (EU)</option>
+      <option value="EN">English (EN)</option>
+  </select>
 <div id="editorLicencia"></div>
 <button onclick="saveLicencia()">Guardar Licencia</button>
 
 <h2>Editar Contribución</h2>
       <!-- Idioma -->
-      <div class="tabs">
-        <button class="tab" data-tag="ES">ES</button>
-        <button class="tab" data-tag="EU">EU</button>
-        <button class="tab" data-tag="EN">EN</button>
-      </div>
+  <select id="langContribution">
+      <option value="" data-i18n="slclanguage"></option>
+      <option value="ES">Castellano (ES)</option>
+      <option value="EU">Euskera (EU)</option>
+      <option value="EN">English (EN)</option>
+  </select>
 <div id="editorContribucion"></div>
 <button onclick="saveContribucion()">Guardar Contribución</button>
 </section>
@@ -160,12 +161,7 @@
   <br>
   <button onclick="saveSettings()">Guardar Configuración</button>
   <br>
-  <!--
-  <label>Logo (URL)</label>
-  <input type="text" id="logo">
-  <br>
-  <label>Favicon (URL)</label>
-  <input type="text" id="favicon">-->
+
   <h3>Logo</h3>
 
   <input type="file" id="logoFile">

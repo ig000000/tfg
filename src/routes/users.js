@@ -5,11 +5,7 @@ const { requireRole, requireAuth } = require("../middleware/auth");
 //bycript
 const bcrypt = require("bcrypt");
 
-// ✅ Obtener usuarios
-//router.get("/", requireRole("admin"), (req, res) => {
-//  const users = getUsers();
-//  res.json(users);
-//});
+// Obtener usuarios
 router.get("/", requireRole("admin"), (req, res) => {
   let users = getUsers();
 
@@ -28,21 +24,21 @@ router.get("/", requireRole("admin"), (req, res) => {
     );
   }
 
-  //res.json(users);
   res.json(users.filter(u => !u.deleted));
 });
 
-// ✅ Crear usuario
+// Crear usuario
 router.post("/", requireRole("admin"), async (req, res) => {
   const users = getUsers();
 
-  //const { username, password, roles, userNumber} = req.body;
-  const { username, roles, userNumber} = req.body;
+  //const { username, roles, userNumber} = req.body;
+  const { username, roles} = req.body;
 
-  // if (!username || !password || !userNumber) {
-  if (!username || !userNumber) {
+  //if (!username || !userNumber) {
+  if (!username) {
     return res.status(400).json({
-      error: "Username, password y número de usuario son obligatorios"
+      //error: "Username, password y número de usuario son obligatorios"
+      error: "Username es obligatorios"
     });
   }
 
@@ -52,17 +48,22 @@ router.post("/", requireRole("admin"), async (req, res) => {
     });
   }
 
-  //const hash = await passwordBcript(password);
+  if(userExists(username)){
+    return res.status(400).json({
+      error: "Ya existe un usuario con ese nombre"
+    });
+  }
+
   const tempPassword = generateTempPassword();
   const hashedPassword = await bcrypt.hash(tempPassword, 10);
 
   const newUser = {
     id: users.length ? users[users.length - 1].id + 1 : 1,
     username,
-    userNumber,
+    //userNumber,
     password: hashedPassword,
     roles,
-    active: true,
+    //active: true,
     deleted: false,
     mustChangePassword: true,
     createdAt: new Date().toISOString()
@@ -71,7 +72,6 @@ router.post("/", requireRole("admin"), async (req, res) => {
   users.push(newUser);
   saveUsers(users);
 
-  //res.json(newUser);
   res.json({
     message: "Usuario creado",
     tempPassword: tempPassword
@@ -79,18 +79,23 @@ router.post("/", requireRole("admin"), async (req, res) => {
 
 });
 
+//Nombre de usuario existe???
+function userExists(username) {
+  const users = getUsers();
+  return users.find(u => u.username === username)
+}
+
 //bycript password
 async function passwordBcript(password) {
   return await bcrypt.hash(password, 10);
 }
 
-// ✅ Eliminar usuario (con protección admin)
+// Eliminar usuario (con protección admin)
 router.delete("/:id", requireRole("admin"), (req, res) => {
   const users = getUsers();
   const id = parseInt(req.params.id);
 
   const user = users.find(u => u.id === id);
-  //let user = users.find(u => u.id === id);
   if (!user) {
     return res.status(404).json({ message: "Usuario no encontrado" });
   }
@@ -104,12 +109,9 @@ router.delete("/:id", requireRole("admin"), (req, res) => {
   user.deleted = true;
   user.deletedAt = new Date().toISOString();
 
-  //const updatedUsers = users.filter(u => u.id !== id);
-  //saveUsers(updatedUsers);
   saveUsers(users);
 
   res.json({ message: "Usuario eliminado" });
-  //res.json({ message: "Usuario enviado a la papelera" });
 });
 
 //Eliminar usuario permanentemente
@@ -158,7 +160,8 @@ router.get('/deleted', (req, res) => {
   res.json(users.filter(u => u.deleted));
 });
 
-// ✅ Activar / desactivar
+// Activar / desactivar
+/*
 router.patch("/:id/status", requireRole("admin"), (req, res) => {
   const users = getUsers();
   const id = parseInt(req.params.id);
@@ -172,35 +175,11 @@ router.patch("/:id/status", requireRole("admin"), (req, res) => {
 
   saveUsers(users);
   res.json(user);
-});
-
-// ✅ Cambiar roles
-/*router.patch("/:id/roles", requireRole("admin"), (req, res) => {
-  const users = getUsers();
-  const id = parseInt(req.params.id);
-  const { roles } = req.body;
-
-  const user = users.find(u => u.id === id);
-  if (!user) {
-    return res.status(404).json({ message: "Usuario no encontrado" });
-  }
-
-  user.roles = roles;
-
-  saveUsers(users);
-  res.json(user);
 });*/
+
 
 //Cambiar user roles
 router.put("/:id/roles", (req, res) => {
-
-/*
-  if (req.session.user.id === id && !roles.includes("admin")) {
-    return res.status(400).json({
-      error: "No puedes quitarte tu propio rol admin"
-    });
-  }*/
-
   const id = parseInt(req.params.id);
   const { roles } = req.body;
 
@@ -237,18 +216,8 @@ function generateTempPassword() {
 
 //cambiar contraseña
 router.put("/:id/password", async (req, res) => {
-
   const id = parseInt(req.params.id);
-  //const { password } = req.body;
-
-  //if (!password) {
-  //  return res.status(400).json({
-  //    error: "Password requerida"
-  //  });
-  //}
-
   const users = getUsers();
-
   const user = users.find(u => u.id === id);
 
   if (!user) {
@@ -257,15 +226,10 @@ router.put("/:id/password", async (req, res) => {
     });
   }
 
-  //const hash = await passwordBcript(password);
-
   const tempPassword = generateTempPassword();
   const hashedPassword = await bcrypt.hash(tempPassword, 10);
 
   user.password = hashedPassword;
-
-  //user.password = password;
-  //user.password = hash;
   user.mustChangePassword = true;
 
   saveUsers(users);
@@ -274,12 +238,19 @@ router.put("/:id/password", async (req, res) => {
     message: "Contraseña actualizada",
     tempPassword: tempPassword
   });
-
 });
+
+//testeo Contraseña
+function strongPasswordfunction(password){
+  return password.length >= 8 &&
+    /[A-Z]/.test(password) &&
+    /[a-z]/.test(password) &&
+    /[0-9]/.test(password) ;
+}
+
 
 //Cambiar contraseña 2
 router.put('/change-password-first', requireAuth, async (req, res) => {
-  //const { userId, newPassword } = req.body;
   const { newPassword } = req.body;
 
   const users = getUsers();
@@ -289,9 +260,16 @@ router.put('/change-password-first', requireAuth, async (req, res) => {
     return res.status(404).json({ message: "Usuario no encontrado" });
   }
 
+  const strongPassword = strongPasswordfunction(newPassword);
+
+  if (!strongPassword) {
+    return res.status(400).json({
+      message: "Debe tener 8 caracteres, una mayúscula, una minúscula y un número"
+    });
+  }
+
   const hashedPassword = await bcrypt.hash(newPassword, 10);
 
-  //user.password = newPassword;
   user.password = hashedPassword;
   user.mustChangePassword = false;
 
@@ -304,8 +282,7 @@ router.put('/change-password-first', requireAuth, async (req, res) => {
 
 //Cambiar contraseña cuando quieras
 router.put('/change-password', requireAuth, async (req, res) => {
-  const { currentPassword, newPassword } = req.body;
-
+  const { currentPassword, newPassword, repeatPassword } = req.body;
   const users = getUsers();
   const user = users.find(u => u.id == req.session.user.id);
 
@@ -313,15 +290,23 @@ router.put('/change-password', requireAuth, async (req, res) => {
     return res.status(404).json({ message: "Usuario no encontrado" });
   }
 
-  //testeo contraseña
-  const strongPassword =
-    newPassword.length >= 8 &&
-    /[A-Z]/.test(newPassword) &&
-    /[0-9]/.test(newPassword);
+  if (newPassword !== repeatPassword) {
+    return res.status(404).json({ message: "Las contraseñas no coinciden"});
+  }
+
+  if(!newPassword || !currentPassword || !repeatPassword){
+    return res.status(404).json({ message: "Hay que completar todas las casillas"});
+  }
+
+  if( newPassword == currentPassword){
+    return res.status(404).json({ message: "No puedes repetir las contraseñas"});
+  }
+
+  const strongPassword = strongPasswordfunction(newPassword);
 
   if (!strongPassword) {
     return res.status(400).json({
-      message: "Debe tener 8 caracteres, una mayúscula y un número"
+    message: "Debe tener 8 caracteres, una mayúscula, una minúscula y un número"
     });
   }
 
@@ -334,7 +319,6 @@ router.put('/change-password', requireAuth, async (req, res) => {
 
   // hash nueva contraseña
   const hashedPassword = await bcrypt.hash(newPassword, 10);
-
   user.password = hashedPassword;
 
   saveUsers(users);

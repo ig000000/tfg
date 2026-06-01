@@ -78,7 +78,6 @@ document.getElementById("saveBtn").addEventListener("click", async () => {
 
 async function saveArticle() {
   const id = document.getElementById("articleId").value;
-
   const contentHTML = quill.root.innerHTML;
 
   const article = {
@@ -194,7 +193,7 @@ async function loadAdminArticles() {
   });
 }
 
-// ⬅️➡️ EVENTOS
+// <- EVENTOS ->
 document.getElementById("prevBtn").addEventListener("click", () => {
   currentPage--;
   loadAdminArticles();
@@ -233,7 +232,6 @@ async function loadArticleToForm(id) {
   document.getElementById("lang").value =
     article.tags.find(t => ["ES", "EU", "EN"].includes(t));
 
-  //document.getElementById("extraTags").value =
   document.getElementById("tags").value =
     article.tags.filter(t => !["ES", "EU", "EN"].includes(t)).join(", ");
 
@@ -279,8 +277,6 @@ document.getElementById("linkLessonBtn").addEventListener("click", async () => {
 
 const ideaTitle = document.getElementById("ideaTitle");
 const ideaDescription = document.getElementById("ideaDescription");
-//const ideaAuthor = document.getElementById("ideaAuthor");
-//const ideaTags = document.getElementById("ideaTags");
 const addIdeaBtn = document.getElementById("addIdeaBtn");
 const adminIdeasList = document.getElementById("adminIdeasList");
 
@@ -321,7 +317,6 @@ async function loadIdeasAdmin() {
 addIdeaBtn.addEventListener("click", async () => {
  
   if (!ideaTitle.value || !ideaDescription.value) {
-    //alert("Título y descripción obligatorios");
     alert(translations[currentLang].mandatoryIdea);
     return;
   }
@@ -333,15 +328,11 @@ addIdeaBtn.addEventListener("click", async () => {
     body: JSON.stringify({
       title: ideaTitle.value,
       description: ideaDescription.value,
-      //author: ideaAuthor.value || "Anónimo",
-      //tags: ideaTags.value.split(",").map(t => t.trim())
     })
   });
 
   ideaTitle.value = "";
   ideaDescription.value = "";
-  //ideaAuthor.value = "";
-  //ideaTags.value = "";
 
   loadIdeasAdmin();
 });
