@@ -20,8 +20,6 @@ async function changePassword() {
 
   const data = await res.json();
 
-  console.log(data);
-
   if (data.roles){
     if (data.roles.length ===1){
          window.location.href=`${data.roles[0]}.html`;

@@ -431,9 +431,6 @@ window.toggleRole = async function(id, role, checked) {
 //reset contraseña
 window.resetPassword = async function(id) {
 
-  //const newPassword = prompt("Introduce la nueva contraseña:");
-
-  //if (!newPassword) return;
 
   const res = await fetch(`/users/${id}/password`, {
     method: "PUT",
