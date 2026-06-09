@@ -49,7 +49,7 @@ async function createUser() {
 
   const data = await res.json();
 
-  console.log(data);
+  //console.log(data);
 
   if (data.tempPassword){
     alert(`
@@ -481,7 +481,7 @@ async function loadAdminArticles() {
   //paginación
   const totalPages = Math.ceil(articles.length / articlesPerPage);
 
-  // 🧮 PAGINACIÓN
+  // PAGINACIÓN
   const start = (currentPage - 1) * articlesPerPage;
   const end = start + articlesPerPage;
   const visible = articles.slice(start, end);
