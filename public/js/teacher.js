@@ -10,12 +10,16 @@ async function editArticle(id) {
   const res = await fetch(`/api/articles/${id}`);
   const a = await res.json();
 
+  //console.log(a);
+
   document.getElementById("articleId").value = a.id;
   document.getElementById("title").value = a.title;
+  document.getElementById("lang").value = a.tags[0]
   document.getElementById("author").value = a.author;
   document.getElementById("date").value = a.date;
   document.getElementById("summary").value = a.summary;
-  document.getElementById("tags").value = a.tags.join(",");
+  document.getElementById("tags").value = a.tags.slice(1).join(",");
+   quill.root.innerHTML = a.content;
 }
 
 async function deleteArticle(id) {
@@ -24,6 +28,56 @@ async function deleteArticle(id) {
   await fetch(`/api/articles/${id}`, { method: "DELETE" });
   loadAdminArticles();
 }
+
+//guardar otro idioma
+document.getElementById("saveOtherlang").addEventListener("click", async () => {
+  const lang = document.getElementById("lang").value.trim();
+  const titleValue = title.value.trim();
+  const authorValue = author.value.trim();
+  const dateValue = date.value.trim();
+  const summaryValue = summary.value.trim();
+
+  if (!lang || !titleValue || !authorValue || !dateValue) {
+    alert(translations[currentLang].mandatory)
+    return;
+  }
+
+   // Procesar tags → añadir idioma como PRIMER tag
+  const extraTags = tags.value
+    .split(",")
+    .map(t => t.trim())
+    .filter(t => t.length > 0);
+
+  const finalTags = [lang, ...extraTags];
+
+  const article = {
+    title: titleValue,
+    author: authorValue,
+    date: dateValue,
+    summary: summaryValue,
+    content: quill.root.innerHTML,
+    tags: finalTags
+  };
+
+  const id = document.getElementById("articleId").value;
+
+  if (id) {
+    await fetch(`/api/articles/lang/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json"},
+      body: JSON.stringify(article)
+    });
+  } else {
+    await fetch(`/api/articles`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json"},
+      body: JSON.stringify(article)
+    });
+  }
+
+  clearForm();
+  loadAdminArticles();
+})
 
 //guardar
 document.getElementById("saveBtn").addEventListener("click", async () => {
@@ -178,8 +232,8 @@ async function loadAdminArticles() {
 
     div.innerHTML = `
       <strong>${article.title}</strong> - ${article.tags.join(", ")}
-      <button onclick="selectArticle(${article.id})">${translations[currentLang].select}</button>
-      <button onclick="deleteArticle(${article.id})">${translations[currentLang].clear2}</button>
+      <button onclick="editArticle(${article.id})">${translations[currentLang].select}</button>
+      <button onclick="deleteArticle(${article.id})" class="delete-btn">${translations[currentLang].clear2}</button>
     `;
     adminArticlesList.appendChild(div);
 

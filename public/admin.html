@@ -116,7 +116,7 @@
 
   <!--Edición licencia / contribución-->
 <section class="admin-section" id="contentSection">
-  <h2>Editar Licencia</h2>
+  <h2 data-i18n="editLicencia">Editar Licencia</h2>
         <!-- Idioma -->
   <select id="langLicencia">
       <option value="" data-i18n="slclanguage"></option>
@@ -125,9 +125,9 @@
       <option value="EN">English (EN)</option>
   </select>
 <div id="editorLicencia"></div>
-<button onclick="saveLicencia()">Guardar Licencia</button>
+<button onclick="saveLicencia()" data-i18n="saveLicencia">Guardar Licencia</button>
 
-<h2>Editar Contribución</h2>
+<h2 data-i18n="editContribution">Editar Contribución</h2>
       <!-- Idioma -->
   <select id="langContribution">
       <option value="" data-i18n="slclanguage"></option>
@@ -136,19 +136,19 @@
       <option value="EN">English (EN)</option>
   </select>
 <div id="editorContribucion"></div>
-<button onclick="saveContribucion()">Guardar Contribución</button>
+<button onclick="saveContribucion()" data-i18n="saveContribution">Guardar Contribución</button>
 </section>
 
 <!--================Configuración Global=================-->
 <section class="admin-section" id="settingsSection">
-<h2>Configuración Global</h2>
+<h2 data-i18n="globalsettings">Configuración Global</h2>
 
 <section class="settings">
 
-  <label>Nombre del sitio</label>
+  <label data-i18n="nameSite">Nombre del sitio</label>
   <input type="text" id="siteName">
   <br>
-  <label>Idioma por defecto</label>
+  <label data-i18n="defaultLanguage">Idioma por defecto</label>
   <select id="defaultLang">
     <option value="ES">ES</option>
     <option value="EU">EU</option>
@@ -156,31 +156,31 @@
   </select>
   <br>
 
-  <label>Artículos por página</label>
+  <label data-i18n="paginator">Artículos por página</label>
   <input type="number" id="articlesPerPage">
   <br>
-  <button onclick="saveSettings()">Guardar Configuración</button>
+  <button onclick="saveSettings()" data-i18n="saveSettings">Guardar Configuración</button>
   <br>
 
-  <h3>Logo</h3>
+  <h3 data-i18n="logo">Logo</h3>
 
   <input type="file" id="logoFile">
-  <button onclick="uploadLogo()">Subir Logo</button>
+  <button onclick="uploadLogo()" data-i18n="saveLogo">Subir Logo</button>
 
-  <h3>Favicon</h3>
+  <h3 data-i18n="Favicon">Favicon</h3>
 
   <input type="file" id="faviconFile">
-  <button onclick="uploadFavicon()">Subir Favicon</button>
+  <button onclick="uploadFavicon()" data-i18n="savefavicon">Subir Favicon</button>
   <!-- guardar -->
   <br>
 
   
-  <h3>Links of Interest</h3>
+  <h3 data-i18n="linksOfInterest">Links of Interest</h3>
 
   <div id="linksContainer"></div>
 
-  <button onclick="addLink()">Añadir link</button>
-  <button onclick="saveLinks()">Guardar Links</button>
+  <button onclick="addLink()" data-i18n="addLink">Añadir link</button>
+  <button onclick="saveLinks()" data-i18n="saveLinks">Guardar Links</button>
 
 </section>
 </section>
@@ -216,7 +216,7 @@
 
 <!-- backup -->
  <section class="admin-section" id="backup">
-    <button id="create-backup-btn" class="login-btn">
+    <button id="create-backup-btn" class="login-btn" data-i18n="backup">
       Descargar copia de seguridad
     </button>
  </section>

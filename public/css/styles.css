@@ -58,6 +58,16 @@ body {
   text-decoration: none;
 }
 
+/*delete*/
+.delete-btn {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  background: #f33d3d;
+  color: white;
+  text-decoration: none;
+}
+
 /* NAV */
 .nav-links {
   margin-top: 10px;

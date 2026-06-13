@@ -56,6 +56,7 @@ const translations = {
     tag: "Tags separados por coma",
     summary: "Resumen",
     dateYMD: "Fecha (YYYY-MM-DD)",
+    saveOthenLag: "guardar en otro idioma",
 
     //Buscar / seleccionar
     language:"idioma:",
@@ -140,7 +141,34 @@ const translations = {
     restore: "Restaurar",
     eliminatedPermanently: "Eliminar permanentemente",
     noUsersTrash:"No hay usuarios en la papelera.",
-    eliminate: "Eliminar"
+    eliminate: "Eliminar",
+
+    //admin-content
+    saveLicencia: "Guardar Licencia",
+    editLicencia: "Editar Licencia",
+    saveContribution: "Guardar Contribución",
+    editContribution: "Editar Contribución",
+
+    //admin-settings
+    globalsettings: "Configuración global",
+    nameSite: "Nombre del sitio",
+    defaultLanguage: "Idioma por defecto",
+    paginator: "Artículos por página",
+    saveSettings: "Guardar Configuración",
+
+    //Admin - links
+    visible: "Visible",
+    addLink: "Añadir Links",
+    saveLinks: "Guardar Links",
+
+    //Admin - backup
+    backup: "Descargar copia de seguridad",
+
+    //Admin -img
+    logo: "Logo",
+    Favicon: "favicon",
+    saveLogo: "subir logo",
+    savefavicon: "subir favicon"
   },
 
   EN: {
@@ -202,6 +230,7 @@ const translations = {
     tag: "Comma-separated tags",
     summary: "Summary",
     dateYMD: "Date (YYYY-MM-DD)",
+    saveOthenLag: "Save in another language",
 
     //Buscar / seleccionar
     language:"Language:",
@@ -288,6 +317,33 @@ const translations = {
     eliminatedPermanently: "Permanently delete",
     noUsersTrash: "There are no users in the trash.",
     eliminate: "Delete",
+
+    // Admin - Content
+    saveLicencia: "Save license",
+    editLicencia: "Edit license",
+    saveContribution: "Save contribution",
+    editContribution: "Edit contribution",
+
+    // Admin - Settings
+    globalsettings: "Global settings",
+    nameSite: "Site name",
+    defaultLanguage: "Default language",
+    paginator: "Articles per page",
+    saveSettings: "Save settings",
+
+    // Admin - Links
+    visible: "Visible",
+    addLink: "Add links",
+    saveLinks: "Save links",
+
+    // Admin - Backup
+    backup: "Download backup",
+
+    // Admin - Images
+    logo: "Logo",
+    Favicon: "Favicon",
+    saveLogo: "Upload logo",
+    savefavicon: "Upload favicon"
   },
 
   EU: {
@@ -348,6 +404,7 @@ const translations = {
     tag: "Komaz bereizitako etiketak",
     summary: "Laburpena",
     dateYMD: "Data (YYYY-MM-DD)",
+    saveOthenLag: "Beste hizkuntza batean gorde",
 
     //Buscar / seleccionar
     language:"Hizkuntza:",
@@ -433,6 +490,33 @@ const translations = {
     restore: "Berreskuratu",
     eliminatedPermanently: "Betiko ezabatu",
     noUsersTrash: "Ez dago erabiltzailerik zakarrontzian.",
-    eliminate: "Ezabatu"
+    eliminate: "Ezabatu",
+
+    // Admin - Edukia
+    saveLicencia: "Lizentzia gorde",
+    editLicencia: "Lizentzia editatu",
+    saveContribution: "Ekarpena gorde",
+    editContribution: "Ekarpena editatu",
+
+    // Admin - Ezarpenak
+    globalsettings: "Konfigurazio orokorra",
+    nameSite: "Gunearen izena",
+    defaultLanguage: "Lehenetsitako hizkuntza",
+    paginator: "Artikuluak orrialde bakoitzeko",
+    saveSettings: "Konfigurazioa gorde",
+
+   // Admin - Estekak
+    visible: "Ikusgai",
+    addLink: "Estekak gehitu",
+    saveLinks: "Estekak gorde",
+
+    // Admin - Babeskopia
+    backup: "Babeskopia deskargatu", 
+
+    // Admin - Irudiak
+    logo: "Logoa",
+    Favicon: "Favicon",
+    saveLogo: "Logoa igo",
+    savefavicon: "Favicon igo",
   }
 };

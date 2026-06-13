@@ -8,7 +8,7 @@ const router = express.Router();
 
 // PATH JSON
 const {getArticles, saveArticles}= require("../utils/articlesData");
-const {createTranslationGroupId} = require("../utils/translationGroups");
+//const {createTranslationGroupId} = require("../utils/translationGroups");
 
 // Para paginación
 const { getSettings, saveSettings } = require("../utils/settingsData");
@@ -173,7 +173,7 @@ router.post("/", requireRole("teacher"),(req, res) => {
   }
 
   //generar trasnlationgroup
-  const finalTranslationGroupId = createTranslationGroupId();
+ // const finalTranslationGroupId = createTranslationGroupId();
 
   const newArticle = {
     id: data.length ? data[data.length - 1].id + 1 : 1,
@@ -183,7 +183,7 @@ router.post("/", requireRole("teacher"),(req, res) => {
     summary,
     content,
     tags,
-    translationGroupId
+ //   translationGroupId
   };
 
   data.push(newArticle);
@@ -195,6 +195,36 @@ router.post("/", requireRole("teacher"),(req, res) => {
 
 // Editar artículo
 router.put("/:id", (req, res) => {
+  const data = getArticles();
+
+  const index = data.findIndex(a => a.id == req.params.id);
+  if (index === -1) {
+    return res.status(404).json({ error: "Artículo no encontrado" });
+  }
+
+  const oldArticle = data[index];
+  const newContent = req.body.content;
+
+  // regenerar resumen si cambia el contenido
+  const summary =
+    newContent && newContent !== oldArticle.content
+      ? generateSummaryFromHTML(newContent)
+      : oldArticle.summary;
+
+
+    data[index] = {
+      ...oldArticle,
+      ...req.body,
+      summary,
+      id: oldArticle.id
+    };
+
+  saveArticles(data);
+  res.json({ message: "Artículo actualizado" });
+});
+
+//guardar otro idioma
+router.put("/lang/:id", (req, res) => {
   const data = getArticles();
 
   const index = data.findIndex(a => a.id == req.params.id);
@@ -224,7 +254,7 @@ router.put("/:id", (req, res) => {
   else{
 
     const { title, date, author, content, tags } = req.body;
-    const translationGroupId = oldArticle.translationGroupId;
+ //   const translationGroupId = oldArticle.translationGroupId;
 
     const newArticle = {
       id: data.length ? data[data.length - 1].id + 1 : 1,
@@ -234,7 +264,7 @@ router.put("/:id", (req, res) => {
       summary,
       content,
       tags,
-      translationGroupId
+ //     translationGroupId
     };
 
     data.push(newArticle);
@@ -243,6 +273,7 @@ router.put("/:id", (req, res) => {
   saveArticles(data);
   res.json({ message: "Artículo actualizado" });
 });
+
 
 
 // Borrar artículo

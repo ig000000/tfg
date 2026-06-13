@@ -60,8 +60,9 @@
       "teacher"
     ],
     "active": true,
-    "deleted": false,
+    "deleted": true,
     "mustChangePassword": false,
-    "createdAt": "2026-06-01T21:16:17.956Z"
+    "createdAt": "2026-06-01T21:16:17.956Z",
+    "deletedAt": "2026-06-13T22:50:03.480Z"
   }
 ]

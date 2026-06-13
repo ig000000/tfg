@@ -26,13 +26,13 @@ function renderLinks() {
         <input value="${link.url}" 
           onchange="updateLink(${i}, 'url', this.value)">
 
-        <label>
+        <label data-i18n="${translations[currentLang].visible}">
           Visible
           <input type="checkbox" ${link.visible ? "checked" : ""} 
             onchange="updateLink(${i}, 'visible', this.checked)">
         </label>
 
-        <button onclick="deleteLink(${i})">Eliminar</button>
+        <button onclick="deleteLink(${i})" data-i18n="${translations[currentLang].eliminate}">Eliminar</button>
       </div>
     `;
   });
