@@ -65,7 +65,7 @@
       <input type="checkbox" id="roleAdmin"> Admin
     </label>
 
-    <button onclick="createUser()" data-i18n="createUserl">Crear</button>
+    <button onclick="createUser()" data-i18n="createUserl" class="login-btn">Crear</button>
   </section>
 
   <!-- Lista de usuarios -->
@@ -77,7 +77,6 @@
         <tr>
           <th data-i18n="userNamel">Nombre</th>
           <th data-i18n="roles">Roles</th>
-          <!--<th data-i18n="userState">Estado</th>-->
           <th data-i18n="acctions">Acciones</th>
         </tr>
       </thead>
@@ -125,7 +124,7 @@
       <option value="EN">English (EN)</option>
   </select>
 <div id="editorLicencia"></div>
-<button onclick="saveLicencia()" data-i18n="saveLicencia">Guardar Licencia</button>
+<button onclick="saveLicencia()" data-i18n="saveLicencia" class="login-btn">Guardar Licencia</button>
 
 <h2 data-i18n="editContribution">Editar Contribución</h2>
       <!-- Idioma -->
@@ -136,7 +135,7 @@
       <option value="EN">English (EN)</option>
   </select>
 <div id="editorContribucion"></div>
-<button onclick="saveContribucion()" data-i18n="saveContribution">Guardar Contribución</button>
+<button onclick="saveContribucion()" data-i18n="saveContribution" class="login-btn">Guardar Contribución</button>
 </section>
 
 <!--================Configuración Global=================-->
@@ -159,18 +158,18 @@
   <label data-i18n="paginator">Artículos por página</label>
   <input type="number" id="articlesPerPage">
   <br>
-  <button onclick="saveSettings()" data-i18n="saveSettings">Guardar Configuración</button>
+  <button onclick="saveSettings()" data-i18n="saveSettings" class="login-btn">Guardar Configuración</button>
   <br>
 
   <h3 data-i18n="logo">Logo</h3>
 
   <input type="file" id="logoFile">
-  <button onclick="uploadLogo()" data-i18n="saveLogo">Subir Logo</button>
+  <button onclick="uploadLogo()" data-i18n="saveLogo" class="login-btn">Subir Logo</button>
 
   <h3 data-i18n="Favicon">Favicon</h3>
 
   <input type="file" id="faviconFile">
-  <button onclick="uploadFavicon()" data-i18n="savefavicon">Subir Favicon</button>
+  <button onclick="uploadFavicon()" data-i18n="savefavicon" class="login-btn">Subir Favicon</button>
   <!-- guardar -->
   <br>
 
@@ -179,8 +178,10 @@
 
   <div id="linksContainer"></div>
 
-  <button onclick="addLink()" data-i18n="addLink">Añadir link</button>
-  <button onclick="saveLinks()" data-i18n="saveLinks">Guardar Links</button>
+ </br>
+
+  <button onclick="addLink()" data-i18n="addLink" class="login-btn">Añadir link</button>
+  <button onclick="saveLinks()" data-i18n="saveLinks" class="login-btn">Guardar Links</button>
 
 </section>
 </section>
@@ -200,7 +201,7 @@
       </select>
 
       <input id="adminSearchInput" data-i18n-placeholder="srchLessons">
-      <button id="adminSearchBtn" data-i18n="serch"></button>
+      <button id="adminSearchBtn" data-i18n="serch" class="login-btn"></button>
     </div>
 
     <h4 data-i18n="results"></h4>

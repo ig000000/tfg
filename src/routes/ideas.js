@@ -29,7 +29,7 @@ router.post("/", requireRole("teacher"),  (req, res) => {
   res.json(newIdea);
 });
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", requireRole("teacher"), async (req, res) => {
   const ideas = readIdeas().filter(i => i.id != req.params.id);
   saveIdeas(ideas);
   res.json({ success: true });

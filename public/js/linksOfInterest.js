@@ -32,7 +32,7 @@ function renderLinks() {
             onchange="updateLink(${i}, 'visible', this.checked)">
         </label>
 
-        <button onclick="deleteLink(${i})" data-i18n="${translations[currentLang].eliminate}">Eliminar</button>
+        <button onclick="deleteLink(${i})" class="delete-btn" data-i18n="${translations[currentLang].eliminate}">Eliminar</button>
       </div>
     `;
   });

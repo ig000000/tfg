@@ -7,9 +7,6 @@ async function loadArticle() {
     const res = await fetch(`/api/articles/${id}`);
     const article = await res.json();
 
-    console.log(article.id);
-
-
     if(article.id){
       document.getElementById("content").innerHTML = `
       <h1>${article.title}</h1>

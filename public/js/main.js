@@ -103,13 +103,12 @@ document.getElementById("searchButton").addEventListener("click", () => {
 
 // Cambiar idioma
 function changeLanguage(lang) {
-  currentLang = lang;      // 1Actualizar idioma
+  currentLang = lang;      // Actualizar idioma
   // Guardar idioma en localStorage
   localStorage.setItem("preferredLanguage", currentLang);
   applyTranslations();
   loadArticles(1);          // Cargar las lecciones
 }
-
 
 
 function applyTranslations() {
@@ -215,7 +214,6 @@ function aply(){
 document.addEventListener("DOMContentLoaded", () => {
   // Recuperar idioma almacenado o usar ES por defecto
   const savedLang = localStorage.getItem("preferredLanguage");
-  console.log(!!savedLang);
   if (!savedLang){
     settings(!savedLang);
   } else {

@@ -312,6 +312,7 @@ body {
 
 .restore-btn {
   background-color: #4CAF50;
+  border-radius: 6px;
   color: white;
   border: none;
   padding: 5px 10px;
@@ -431,7 +432,7 @@ body {
 }
 
 #pagination button {
-  background: #005fcc;
+  background: #0078ff;
   color: white;
   border: none;
   border-radius: 5px;
@@ -442,7 +443,7 @@ body {
 }
 
 #pagination button:hover:not(:disabled) {
-  background: #005fcc;
+  background: #0078ff;
 }
 
 #pagination button:disabled {

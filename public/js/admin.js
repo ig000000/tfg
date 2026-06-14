@@ -1,4 +1,3 @@
-///
 const table = document.getElementById('usersTable');
 let data;
 let usersData = [];
@@ -23,7 +22,6 @@ async function loadUsers() {
 
 async function createUser() {
   const username = document.getElementById('newUsername').value;
-  //const userNumber = document.getElementById("newUserNumber").value;
 
   const roles = [];
   if (document.getElementById('roleProfesor').checked) roles.push('teacher');
@@ -34,22 +32,15 @@ async function createUser() {
     return;
   }
 
-  /*if (!userNumber) {
-    alert("El número de usuario es obligatorio");
-    return;
-  }*/
-
   const res = await fetch('/users', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     credentials: 'include',
-    //body: JSON.stringify({ username, userNumber, roles })
     body: JSON.stringify({ username, roles })
   });
 
   const data = await res.json();
 
-  //console.log(data);
 
   if (data.tempPassword){
     alert(`
@@ -95,23 +86,12 @@ ${translations[currentLang].admin}
 
 </td>
       <td>
-        <button onclick="deleteUser(${user.id})">${translations[currentLang].eliminate}</button>
-        <button onclick="resetPassword(${user.id})">
+        <button onclick="deleteUser(${user.id})" class="delete-btn">${translations[currentLang].eliminate}</button>
+        <button onclick="resetPassword(${user.id})" class="login-btn">
           ${translations[currentLang].resetPasswd}
         </button>
       </td>
     `;
-  /*
-  </td>
-      <td>${user.activo ? 'Activo' : 'Inactivo'}</td>
-      <td>
-        <button onclick="toggleStatus(${user.id})">Activar/Desactivar</button>
-        <button onclick="deleteUser(${user.id})">${translations[currentLang].eliminate}</button>
-        <button onclick="resetPassword(${user.id})">
-          ${translations[currentLang].resetPasswd}
-        </button>
-      </td>
-  */ 
 
     table.appendChild(tr);
   });
@@ -119,8 +99,6 @@ ${translations[currentLang].admin}
 
 //delete
 async function deleteUser(id) {
-
-  //const confirmDelete = confirm("¿Seguro que quieres eliminar este usuario?");
   const confirmDelete = confirm("¿Seguro que quieres Desactivar este usuario?");
 
   if (!confirmDelete) return;
@@ -203,20 +181,11 @@ async function restoreUser(id) {
   loadUsers();
 }
 
-//??
-/*
-async function toggleStatus(id) {
-  await fetch(`/users/${id}/status`, { 
-    method: 'PATCH' });
-  loadUsers();
-}*/
-
 //eventos sin boton
 document.getElementById("searchUser").addEventListener("input", loadUsers);
 document.getElementById("filterRole").addEventListener("change", loadUsers);
 
 //Quill ##########
-
 const quillLicencia = new Quill('#editorLicencia', {
   theme: 'snow'
 });
@@ -229,14 +198,11 @@ const quillContribucion = new Quill('#editorContribucion', {
 async function loadContent() {
   const res = await fetch('/content');
   data = await res.json();
-
-  //updateEditors();
 }
 
 //Guardar licencia
 async function saveLicencia() {
   const text = quillLicencia.root.innerHTML;
-  console.log("CLICK GUARDAR");
 
   try {
     const res = await fetch('/content/licencia', {
@@ -244,16 +210,12 @@ async function saveLicencia() {
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
       body: JSON.stringify({
-        //lang: currentLang,
         lang: document.getElementById("langLicencia").value.trim(),
         text
       })
     });
 
-    console.log("RESPUESTA STATUS:", res.status);
-
     const data = await res.json();
-    console.log("DATA:", data);
     alert("Licencia guardada correctamente");
 
   } catch (err) {
@@ -288,18 +250,11 @@ async function saveContribucion() {
   loadContent();
 }
 
-//Cambiar contenido editor idiomas
-/*function updateEditors() {
-  quillLicencia.root.innerHTML = data.licencia[currentLang] || "";
-  quillContribucion.root.innerHTML = data.quillContribucion[currentLang] || "";
-}*/
-
 document.getElementById("langLicencia").addEventListener("change", updateEditorLicencia);
 document.getElementById("langContribution").addEventListener("change", updateEditorContribution);
 
 function updateEditorLicencia(event){
   const lang = event.target.value;
-  console.log(data);
   quillLicencia.root.innerHTML = data.licencia[lang] || "";
 }
 
@@ -339,8 +294,6 @@ async function saveSettings() {
     siteName: document.getElementById("siteName").value,
     defaultLang: document.getElementById("defaultLang").value,
     articlesPerPage: parseInt(document.getElementById("articlesPerPage").value),
-    //logo: document.getElementById("logo").value,
-    //favicon: document.getElementById("favicon").value
   };
 
   const res = await fetch("/settings", {
@@ -394,7 +347,6 @@ async function uploadFavicon() {
 
 //cambiar roles
 window.toggleRole = async function(id, role, checked) {
-
   const user = usersData.find(u => u.id === id);
 
   let roles = [...user.roles];
@@ -410,9 +362,6 @@ window.toggleRole = async function(id, role, checked) {
     loadUsers();
     return;
   }
-  //console.log("MMMMMMMMMMMMMMMMMMMMMMMMMMM");
-  //console.log(roles);
-  //console.log(id);
 
   const res = await fetch(`/users/${id}/roles`, {
     method: "PUT",
@@ -424,13 +373,11 @@ window.toggleRole = async function(id, role, checked) {
   const data = await res.json();
 
   alert(data.message);
-
   loadUsers();
 };
 
 //reset contraseña
 window.resetPassword = async function(id) {
-
 
   const res = await fetch(`/users/${id}/password`, {
     method: "PUT",
@@ -438,14 +385,10 @@ window.resetPassword = async function(id) {
       "Content-Type": "application/json"
     },
     credentials: "include",
-    //body: JSON.stringify({
-    //  password: newPassword
-    //})
   });
 
   const data = await res.json();
 
-  //alert(data.message);
   alert(`
     ${data.message}
 
@@ -485,7 +428,6 @@ async function loadAdminArticles() {
   const start = (currentPage - 1) * articlesPerPage;
   const end = start + articlesPerPage;
   const visible = articles.slice(start, end);
-  //
 
   adminArticlesList.innerHTML = "";
 
@@ -494,16 +436,14 @@ async function loadAdminArticles() {
     return;
   }
 
-  //articles.forEach(article => {
   visible.forEach(article => {
     const div = document.createElement("div");
     div.classList.add("admin-article-item");
 
-    //console.log(currentLang);
-
+    
     div.innerHTML = `
       <strong>${article.title}</strong> - ${article.tags.join(", ")}
-      <button onclick="deleteArticle(${article.id})">${translations[currentLang].clear2}</button>
+      <button onclick="deleteArticle(${article.id})" class="delete-btn">${translations[currentLang].clear2}</button>
     `;
     adminArticlesList.appendChild(div);
 
@@ -517,7 +457,7 @@ async function loadAdminArticles() {
   });
 }
 
-// ⬅️➡️ EVENTOS
+// <- ->EVENTOS
 document.getElementById("prevBtn").addEventListener("click", () => {
   currentPage--;
   loadAdminArticles();
@@ -530,7 +470,6 @@ document.getElementById("nextBtn").addEventListener("click", () => {
 
 //borrar lecciones
 async function deleteArticle(id) {
-  //if (!confirm("¿Borrar lección?")) return;
   if (!confirm(translations[currentLang].deleteLesson)) return;
 
   await fetch(`/api/articles/${id}`, { method: "DELETE" });
@@ -543,7 +482,6 @@ document
    .addEventListener("click", async () => {
 
       try {
-
          const response = await fetch(
             "/backups/create",
             {
@@ -556,25 +494,18 @@ document
          }
 
          const blob = await response.blob();
-
          const url = window.URL.createObjectURL(blob);
-
          const a = document.createElement("a");
 
          a.href = url;
-
          a.download = "backup.zip";
-
          document.body.appendChild(a);
 
          a.click();
-
          a.remove();
 
       } catch (error) {
-
          console.error(error);
-
          alert("Error creating backup");
 
       }
@@ -589,5 +520,4 @@ loadContent();
 loadUsers();
 loadSettings();
 loadDeletedUsers();
-//----
 loadAdminArticles();

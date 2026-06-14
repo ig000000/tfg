@@ -71,6 +71,7 @@ const translations = {
     // textos
     mandatory: "Todos los campos son obligatorios",
     errsave: "Error al guardar",
+    errDelete: "Error al eliminar",
     lsave: "Artículo guardado correctamente",
     nolessons: "No se encontraron lecciones",
     noclessons: "No se pudo cargar la lección",
@@ -93,6 +94,8 @@ const translations = {
     existIdeas: "Ideas existentes",
     mandatoryIdea:"Título y descripción obligatorios",
     deleteIdea: "¿Borrar esta idea?",
+    saveIdea: "La idea se ha guardado correctamente",
+    deleteIdeacorrect: "La idea se ha eliminado correctamente",
 
     // Contribution page
     contributeTitle: "Cómo contribuir",
@@ -245,6 +248,7 @@ const translations = {
     // textos
     mandatory: "All fields are required",
     errsave: "Error saving",
+    errDelete: "Error deleting",
     lsave: "Lesson saved successfully",
     nolessons: "No lessons found",
     noclessons: "The lesson could not be loaded",
@@ -267,6 +271,8 @@ const translations = {
     existIdeas: "Existing ideas",
     mandatoryIdea:"Title and description required",
     deleteIdea: "Delete this idea?",
+    saveIdea: "The idea has been saved successfully",
+    deleteIdeacorrect: "The idea has been successfully deleted",
 
     // Contribution page
     contributeTitle: "How to Contribute",
@@ -419,6 +425,7 @@ const translations = {
     // textos
     mandatory: "Eremu guztiak beharrezkoak dira",
     errsave: "Errore bat gertatu da gordetzean",
+    errDelete: "Errore bat gertatu da ezabatzerakoan",
     lsave: "Ikasgaia behar bezala gorde da",
     nolessons: "Ez da ikasgairik aurkitu",
     noclessons: "Ezin izan da ikasgaia kargatu",
@@ -441,6 +448,8 @@ const translations = {
     existIdeas: "Dauden ideiak",
     mandatoryIdea:"Izenburua eta deskribapena beharrezkoak",
     deleteIdea: "Ideia hau ezabatu?",
+    saveIdea: "Ideia behar bezala gorde da",
+    deleteIdeacorrect: "Ideia behar bezala ezabatu da",
 
     // Contribution page
     contributeTitle: "Nola lagundu",

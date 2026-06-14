@@ -126,7 +126,6 @@ function aply(){
 document.addEventListener("DOMContentLoaded", () => {
   // Recuperar idioma almacenado o usar ES por defecto
   const savedLang = localStorage.getItem("preferredLanguage");
-  console.log(!!savedLang);
   if (!savedLang){
     settings(!savedLang);
   } else {

@@ -10,8 +10,6 @@ async function editArticle(id) {
   const res = await fetch(`/api/articles/${id}`);
   const a = await res.json();
 
-  //console.log(a);
-
   document.getElementById("articleId").value = a.id;
   document.getElementById("title").value = a.title;
   document.getElementById("lang").value = a.tags[0]
@@ -61,22 +59,29 @@ document.getElementById("saveOtherlang").addEventListener("click", async () => {
 
   const id = document.getElementById("articleId").value;
 
+  let res;
+
   if (id) {
-    await fetch(`/api/articles/lang/${id}`, {
+    res = await fetch(`/api/articles/lang/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json"},
       body: JSON.stringify(article)
     });
   } else {
-    await fetch(`/api/articles`, {
+    res = await fetch(`/api/articles`, {
       method: "POST",
       headers: { "Content-Type": "application/json"},
       body: JSON.stringify(article)
     });
   }
 
-  clearForm();
-  loadAdminArticles();
+  if(!res.ok){
+    alert(translations[currentLang].errsave);
+  } else {
+    clearForm();
+    loadAdminArticles();
+    alert(translations[currentLang].lsave);
+  }
 })
 
 //guardar
@@ -112,22 +117,29 @@ document.getElementById("saveBtn").addEventListener("click", async () => {
 
   const id = document.getElementById("articleId").value;
 
+  let res;
+
   if (id) {
-    await fetch(`/api/articles/${id}`, {
+    res = await fetch(`/api/articles/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json"},
       body: JSON.stringify(article)
     });
   } else {
-    await fetch(`/api/articles`, {
+    res = await fetch(`/api/articles`, {
       method: "POST",
       headers: { "Content-Type": "application/json"},
       body: JSON.stringify(article)
     });
   }
 
-  clearForm();
-  loadAdminArticles();
+  if(!res.ok){
+    alert(translations[currentLang].errsave);
+  } else {
+    clearForm();
+    loadAdminArticles();
+    alert(translations[currentLang].lsave);
+  }
 });
 
 async function saveArticle() {
@@ -232,7 +244,7 @@ async function loadAdminArticles() {
 
     div.innerHTML = `
       <strong>${article.title}</strong> - ${article.tags.join(", ")}
-      <button onclick="editArticle(${article.id})">${translations[currentLang].select}</button>
+      <button onclick="editArticle(${article.id})" class="login-btn">${translations[currentLang].select}</button>
       <button onclick="deleteArticle(${article.id})" class="delete-btn">${translations[currentLang].clear2}</button>
     `;
     adminArticlesList.appendChild(div);
@@ -349,23 +361,27 @@ async function loadIdeasAdmin() {
       <p>${i.description}</p>
       <small>${i.date}</small>
       <br>
-      <button data-id="${i.id}" class="deleteIdeaBtn">🗑 ${translations[currentLang].clear2}</button>
+      <button onclick="deleteIdea(${i.id})" data-id="${i.id}" class="delete-btn">🗑 ${translations[currentLang].clear2}</button>
     `;
 
     adminIdeasList.appendChild(div);
   });
+}
 
-  document.querySelectorAll(".deleteIdeaBtn").forEach(btn => {
-    btn.addEventListener("click", async () => {
-      if (!confirm(translations[currentLang].deleteIdea)) return;
+async function deleteIdea(id) {
+  if (!confirm(translations[currentLang].deleteIdea)) return;
 
-      await fetch(`/api/ideas/${btn.dataset.id}`, {
-        method: "DELETE"
-      });
-
-      loadIdeasAdmin();
-    });
+  const res = await fetch(`/api/ideas/${id}`, {
+    method: "DELETE"
   });
+
+  if (!res.ok) {
+    alert(translations[currentLang].errDelete);
+    return;
+  } else {
+    alert(translations[currentLang].deleteIdeacorrect);
+    loadIdeasAdmin();
+  }
 }
 
 addIdeaBtn.addEventListener("click", async () => {
@@ -375,7 +391,7 @@ addIdeaBtn.addEventListener("click", async () => {
     return;
   }
 
-  await fetch("/api/ideas", {
+  const res = await fetch("/api/ideas", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     credentials: "include",
@@ -385,10 +401,16 @@ addIdeaBtn.addEventListener("click", async () => {
     })
   });
 
-  ideaTitle.value = "";
-  ideaDescription.value = "";
+  if(!res.ok){
+    alert(translations[currentLang].errsave);
+  } else {
+    ideaTitle.value = "";
+    ideaDescription.value = "";
 
-  loadIdeasAdmin();
+    alert(translations[currentLang].saveIdea)
+
+    loadIdeasAdmin();
+  }
 });
 
 //DOM
