@@ -56,7 +56,7 @@ document.getElementById("sendComment").addEventListener("click", async () => {
   const comment = document.getElementById("comment").value.trim();
 
   if (!name || !comment) {
-    alert("Rellena todo");
+    alert(translations[currentLang].fillEverithig);
     return;
   }
 

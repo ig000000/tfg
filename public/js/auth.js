@@ -35,6 +35,3 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
     }
   }
 });
-
-//logout
-//document.getElementById("")

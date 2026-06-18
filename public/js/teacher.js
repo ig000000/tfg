@@ -338,7 +338,6 @@ document.getElementById("linkLessonBtn").addEventListener("click", async () => {
   quill.format("link", `/article.html?id=${article.id}`);
 });
 
-//Posibles lecciones código
 /* ================= IDEAS ================= */
 
 const ideaTitle = document.getElementById("ideaTitle");

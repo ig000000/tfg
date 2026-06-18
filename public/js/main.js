@@ -11,10 +11,7 @@ const urlParams = new URLSearchParams(window.location.search);
 let selectedTopic = urlParams.get("topic");
 
 //funciones
-//async function loadArticles() {
 async function loadArticles(page = 1) {
-
-  //const url = `/api/articles?tag=${currentLang}&q=${encodeURIComponent(currentSearch)}&sort=${currentSort}&order=${currentOrder}`;
   let url = `/api/articles?tag=${currentLang}&q=${encodeURIComponent(currentSearch)}&sort=${currentSort}&order=${currentOrder}`;
 
   currentPage = page;
@@ -129,7 +126,6 @@ function applyTranslations() {
   });
 }
 
-
 // --- SISTEMA DE TABS ---
 const tabs = document.querySelectorAll(".tab");
 
@@ -184,7 +180,6 @@ function renderPagination(pagination) {
   }
 }
 
-//-------------PARA poner OTROS HTML ------------
 //settings poner
 async function settings(lang) {
   const res = await fetch("/settings");
@@ -199,7 +194,6 @@ async function settings(lang) {
 
 //idioma por defecto
 async function loadDefaultLang(settings) {
-  //currentLang = settings.defaultLang;
   changeLanguage(settings.defaultLang);
   aply();
 }

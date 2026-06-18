@@ -71,7 +71,7 @@ async function saveLinks() {
     body: JSON.stringify(settings)
   });
 
-  alert("Los cambios se han guardado");
+  alert(translations[currentLang].changesSave);
 }
 
 //4. MOSTRAR LINKS EN LA WEB
@@ -106,7 +106,7 @@ async function loadPublicLinks() {
 //Eliminar link
  function deleteLink(index) {
 
-  const confirmDelete = confirm("¿Seguro que quieres Eliminar este link?");
+  const confirmDelete = confirm(translations[currentLang].deleteLink);
   if (!confirmDelete) return;
 
   linksData.splice(index, 1);

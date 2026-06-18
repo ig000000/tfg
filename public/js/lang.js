@@ -171,9 +171,34 @@ const translations = {
     logo: "Logo",
     Favicon: "favicon",
     saveLogo: "subir logo",
-    savefavicon: "subir favicon"
-  },
+    savefavicon: "subir favicon",
 
+    //Admin messages
+    selectRol: "Debes seleccionar al menos un rol",
+    usrAdm: "Usuario:",
+    userCretedCorrect: "Usuario creado correctamente",
+    tempPassword:"Usuario creado correctamente",
+    userMustChangePasswd: "El usuario deberá cambiarla al iniciar sesión.",
+    errDeleteUsr: "Error al eliminar usuario",
+    deletePermnanently: "Eliminar permanentemente?",
+    restoreUser: "¿Restaurar este usuario?",
+    saveLicenciaCorrectly: "Licencia guardada correctamente",
+    saveContributionCorrectly: "Cotrbución guardada correctamente",
+    updatedLogo: "Logo actualizado",
+    updatedFavicon: "Favicon actualizado",
+    userMusrRole: "El usuario debe tener al menos un rol",
+    tempPasswd: "Contraseña temporal:",
+    errBackup: "Error al crear copia de seguridad",
+    updatesPswd: "Contraseña actualizada",
+
+    //linksOfInterest
+    changesSave:"Los cambios se han guardado",
+    deleteLink:"¿Seguro que quieres Eliminar este link?",
+
+    //comments
+    fillEverithig: "Rellena todo"
+  },
+//############################################################
   EN: {
     //navegación
     //appTitle: "📘 Educational Blog",
@@ -349,9 +374,34 @@ const translations = {
     logo: "Logo",
     Favicon: "Favicon",
     saveLogo: "Upload logo",
-    savefavicon: "Upload favicon"
-  },
+    savefavicon: "Upload favicon",
 
+    // Admin messages
+    selectRol: "You must select at least one role",
+    usrAdm: "User:",
+    userCretedCorrect: "User created successfully",
+    tempPassword: "User created successfully",
+    userMustChangePasswd: "The user must change it when logging in.",
+    errDeleteUsr: "Error deleting user",
+    deletePermnanently: "Delete permanently?",
+    restoreUser: "Restore this user?",
+    saveLicenciaCorrectly: "License saved successfully",
+    saveContributionCorrectly: "Contribution saved successfully",
+    updatedLogo: "Logo updated",
+    updatedFavicon: "Favicon updated",
+    userMusrRole: "The user must have at least one role",
+    tempPasswd: "Temporary password:",
+    errBackup: "Error creating backup",
+    updatesPswd: "Password updated",
+
+    // linksOfInterest.js
+    changesSave: "Changes have been saved",
+    deleteLink: "Are you sure you want to delete this link?",
+
+    // comments
+    fillEverithig: "Please fill in all fields"
+  },
+//############################################################
   EU: {
     //navegación
     //appTitle: "📘 Hezkuntza Bloga",
@@ -527,5 +577,30 @@ const translations = {
     Favicon: "Favicon",
     saveLogo: "Logoa igo",
     savefavicon: "Favicon igo",
+
+    // Admin - mezuak
+    selectRol: "Gutxienez rol bat hautatu behar duzu",
+    usrAdm: "Erabiltzailea:",
+    userCretedCorrect: "Erabiltzailea ondo sortu da",
+    tempPassword: "Erabiltzailea ondo sortu da",
+    userMustChangePasswd: "Erabiltzaileak saioa hasten duenean aldatu beharko du.",
+    errDeleteUsr: "Errorea erabiltzailea ezabatzean",
+    deletePermnanently: "Betiko ezabatu?",
+    restoreUser: "Erabiltzaile hau berreskuratu?",
+    saveLicenciaCorrectly: "Lizentzia ondo gorde da",
+    saveContributionCorrectly: "Ekarpena ondo gorde da",
+    updatedLogo: "Logoa eguneratu da",
+    updatedFavicon: "Favicona eguneratu da",
+    userMusrRole: "Erabiltzaileak gutxienez rol bat izan behar du",
+    tempPasswd: "Aldi baterako pasahitza:",
+    errBackup: "Errorea babeskopia sortzean",
+    updatesPswd: "Pasahitza eguneratu da",
+
+    // linksOfInterest.js
+    changesSave: "Aldaketak gorde dira",
+    deleteLink: "Ziur al zaude esteka hau ezabatu nahi duzula?",
+
+    // iruzkinak
+    fillEverithig: "Bete eremu guztiak"
   }
 };

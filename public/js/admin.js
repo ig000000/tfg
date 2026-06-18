@@ -28,7 +28,7 @@ async function createUser() {
   if (document.getElementById('roleAdmin').checked) roles.push('admin');
 
   if (roles.length === 0) {
-    alert("Debes seleccionar al menos un rol");
+    alert(ranslations[currentLang].selectRol);
     return;
   }
 
@@ -44,12 +44,12 @@ async function createUser() {
 
   if (data.tempPassword){
     alert(`
-    Usuario creado correctamente
+    ${ranslations[currentLang].userCretedCorrect}
 
-    Usuario: ${username}
-    Contraseña temporal: ${data.tempPassword}
+    ${ranslations[currentLang].usrAdm} ${username}
+    ${ranslations[currentLang].tempPasswd} ${data.tempPassword}
 
-    El usuario deberá cambiarla al iniciar sesión.
+    ${ranslations[currentLang].userMustChangePasswd}
   `);
   }
   
@@ -109,7 +109,7 @@ async function deleteUser(id) {
   if (!res.ok) {
     const text = await res.text();
     console.error("Error backend:", text);
-    alert("Error al eliminar usuario");
+    alert(translations[currentLang].errDeleteUsr);
     return;
   }
 
@@ -160,7 +160,7 @@ async function loadDeletedUsers() {
 
 //borrar usuarios permanentemente
 async function deletePermanent(id) {
-  if (!confirm("Eliminar permanentemente?")) return;
+  if (!confirm(translations[currentLang].deletePermnanently)) return;
 
   await fetch(`/users/permanent/${id}`, {
     method: "DELETE"
@@ -185,7 +185,7 @@ async function restoreUser(id) {
 document.getElementById("searchUser").addEventListener("input", loadUsers);
 document.getElementById("filterRole").addEventListener("change", loadUsers);
 
-//Quill ##########
+//Quill 
 const quillLicencia = new Quill('#editorLicencia', {
   theme: 'snow'
 });
@@ -216,7 +216,7 @@ async function saveLicencia() {
     });
 
     const data = await res.json();
-    alert("Licencia guardada correctamente");
+    alert(translations[currentLang].saveLicenciaCorrectly);
 
   } catch (err) {
     console.error("ERROR:", err);
@@ -241,7 +241,7 @@ async function saveContribucion() {
         })
       });
 
-    alert("Cotrbución guardada correctamente");
+    alert(translations[currentLang].saveContributionCorrectly);
 
   } catch (err) {
     console.error("ERROR:", err);
@@ -266,7 +266,6 @@ function updateEditorContribution(event){
 //idioma
 document.querySelectorAll(".tab").forEach(btn => {
   btn.addEventListener("click", () => {
-    //updateEditors();
     loadUsers();
     loadDeletedUsers();
   });
@@ -323,7 +322,7 @@ async function uploadLogo() {
 
   const data = await res.json();
 
-  alert("Logo actualizado");
+  alert(translations[currentLang].updatedLogo);
 }
 
 //subir favicon
@@ -342,7 +341,7 @@ async function uploadFavicon() {
 
   const data = await res.json();
 
-  alert("Favicon actualizado");
+  alert(translations[currentLang].updatedFavicon);
 }
 
 //cambiar roles
@@ -358,7 +357,7 @@ window.toggleRole = async function(id, role, checked) {
   }
 
   if (roles.length === 0) {
-    alert("El usuario debe tener al menos un rol");
+    alert(translations[currentLang].userMusrRole);
     loadUsers();
     return;
   }
@@ -390,16 +389,15 @@ window.resetPassword = async function(id) {
   const data = await res.json();
 
   alert(`
-    ${data.message}
+    ${translations[currentLang].updatesPswd}
 
-    Contraseña temporal: ${data.tempPassword}
+    ${translations[currentLang].tempPasswd} ${data.tempPassword}
 
-    El usuario deberá cambiarla al iniciar sesión.
+    ${translations[currentLang].userMustChangePasswd}
   `);
 
 };
 
-//________________________________________________________
 //Leciones cargar
 //filtro
 const adminLangFilter = document.getElementById("adminLangFilter");
@@ -457,7 +455,7 @@ async function loadAdminArticles() {
   });
 }
 
-// <- ->EVENTOS
+// <- -> EVENTOS
 document.getElementById("prevBtn").addEventListener("click", () => {
   currentPage--;
   loadAdminArticles();

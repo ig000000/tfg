@@ -45,7 +45,6 @@ function changeLanguage(lang) {
   // Guardar idioma en localStorage
   localStorage.setItem("preferredLanguage", currentLang);
   applyTranslations();
-  //loadArticles();          // Cargar las lecciones
 }
 
 

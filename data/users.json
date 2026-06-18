@@ -43,13 +43,13 @@
     "id": 4,
     "username": "yo",
     "userNumber": "1234",
-    "password": "$2b$10$a9f7XMvFAsPJEMVaCgDPoer.VLsQwNbRsD/Wgzf1FO5G6AE1MJYMi",
+    "password": "$2b$10$IpZdfHoyQ/ASVCt1DSVS.ObH0s9hM/7HKlfbnatV8yHGtC3f3.mPy",
     "roles": [
       "teacher"
     ],
     "active": true,
     "deleted": false,
-    "mustChangePassword": false,
+    "mustChangePassword": true,
     "deletedAt": null
   },
   {
