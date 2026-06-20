@@ -35,17 +35,18 @@ document.getElementById("saveOtherlang").addEventListener("click", async () => {
   const dateValue = date.value.trim();
   const summaryValue = summary.value.trim();
 
-  if (!lang || !titleValue || !authorValue || !dateValue) {
-    alert(translations[currentLang].mandatory)
-    return;
-  }
-
-   // Procesar tags → añadir idioma como PRIMER tag
+  //Procesar tags 
   const extraTags = tags.value
     .split(",")
     .map(t => t.trim())
     .filter(t => t.length > 0);
 
+  if (!lang || !titleValue || !authorValue || !dateValue || !extraTags) {
+    alert(translations[currentLang].mandatory)
+    return;
+  }
+
+   // añadir idioma como PRIMER tag
   const finalTags = [lang, ...extraTags];
 
   const article = {
@@ -93,17 +94,18 @@ document.getElementById("saveBtn").addEventListener("click", async () => {
   const dateValue = date.value.trim();
   const summaryValue = summary.value.trim();
 
-  if (!lang || !titleValue || !authorValue || !dateValue) {
-    alert(translations[currentLang].mandatory)
-    return;
-  }
-
-  // Procesar tags → añadir idioma como PRIMER tag
+  //Procesar tags
   const extraTags = tags.value
     .split(",")
     .map(t => t.trim())
     .filter(t => t.length > 0);
 
+  if (!lang || !titleValue || !authorValue || !dateValue || !extraTags) {
+    alert(translations[currentLang].mandatory)
+    return;
+  }
+
+  //  → añadir idioma como PRIMER tag
   const finalTags = [lang, ...extraTags];
 
   const article = {

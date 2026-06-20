@@ -173,8 +173,6 @@ router.post("/", requireRole("teacher"),(req, res) => {
   }
 
   //generar trasnlationgroup
- // const finalTranslationGroupId = createTranslationGroupId();
-
   const newArticle = {
     id: data.length ? data[data.length - 1].id + 1 : 1,
     title,
@@ -182,8 +180,7 @@ router.post("/", requireRole("teacher"),(req, res) => {
     author,
     summary,
     content,
-    tags,
- //   translationGroupId
+    tags
   };
 
   data.push(newArticle);
@@ -262,8 +259,7 @@ router.put("/lang/:id", (req, res) => {
       author,
       summary,
       content,
-      tags,
- //     translationGroupId
+      tags
     };
 
     data.push(newArticle);
@@ -291,19 +287,15 @@ router.delete("/:id", (req, res) => {
 
 // Obtener temáticas (tags sin idioma)
 router.get("/topics/all", (req, res) => {
-//  const filePath = path.join(__dirname, "../../data/articles.json");
-//  const data = JSON.parse(fs.readFileSync(filePath));
   const datas = getArticles();
 
   const LANG = (req.query.lang || "ES").toUpperCase();
   let data = datas.filter(article => article.tags[0] == LANG)
 
-  //const LANGS = ["ES", "EU", "EN"];
   const topicsSet = new Set();
 
   data.forEach(article => {
     article.tags.forEach(tag => {
-      //if (!LANGS.includes(tag)) {
       if (!LANG.includes(tag)) {
         topicsSet.add(tag);
       }

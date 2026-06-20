@@ -38,7 +38,7 @@ router.post("/", requireRole("admin"), async (req, res) => {
   if (!username) {
     return res.status(400).json({
       //error: "Username, password y número de usuario son obligatorios"
-      error: "Username es obligatorios"
+      error: "Username es obligatorio"
     });
   }
 

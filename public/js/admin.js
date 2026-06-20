@@ -28,7 +28,7 @@ async function createUser() {
   if (document.getElementById('roleAdmin').checked) roles.push('admin');
 
   if (roles.length === 0) {
-    alert(ranslations[currentLang].selectRol);
+    alert(translations[currentLang].selectRol);
     return;
   }
 
@@ -44,17 +44,18 @@ async function createUser() {
 
   if (data.tempPassword){
     alert(`
-    ${ranslations[currentLang].userCretedCorrect}
+    ${translations[currentLang].userCretedCorrect}
 
-    ${ranslations[currentLang].usrAdm} ${username}
-    ${ranslations[currentLang].tempPasswd} ${data.tempPassword}
+    ${translations[currentLang].usrAdm} ${username}
+    ${translations[currentLang].tempPasswd} ${data.tempPassword}
 
-    ${ranslations[currentLang].userMustChangePasswd}
+    ${translations[currentLang].userMustChangePasswd}
   `);
   }
   
   if(data.error){
     alert(data.error);
+    //alert(translations[currentLang].errUser)
   }
 
   loadUsers();

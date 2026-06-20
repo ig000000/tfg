@@ -64,5 +64,28 @@
     "mustChangePassword": false,
     "createdAt": "2026-06-01T21:16:17.956Z",
     "deletedAt": "2026-06-13T22:50:03.480Z"
+  },
+  {
+    "id": 6,
+    "username": "prueba",
+    "password": "$2b$10$fbPfKmc3z228YNDJe8THLuolmkfaqF.MQA6Ud3lhuIOTZutVP580O",
+    "roles": [
+      "teacher"
+    ],
+    "deleted": true,
+    "mustChangePassword": true,
+    "createdAt": "2026-06-19T22:46:33.066Z",
+    "deletedAt": "2026-06-19T22:48:34.671Z"
+  },
+  {
+    "id": 7,
+    "username": "pruebas",
+    "password": "$2b$10$/ufEV6DEJSnPZG7Z8feZheBm/Mg588bLiQgHHKw4a2/1NvZPnyXIm",
+    "roles": [
+      "teacher"
+    ],
+    "deleted": false,
+    "mustChangePassword": true,
+    "createdAt": "2026-06-19T22:47:59.976Z"
   }
 ]

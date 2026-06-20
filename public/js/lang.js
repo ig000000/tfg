@@ -7,6 +7,10 @@ const translations = {
     license: " License & Quoting Guidelines",
     home: "Inicio",
 
+    //Project Knowledge 14
+    projectKnowledge14msg: "Esta plataforma alberga las nuevas lecciones del proyecto. Parte del contenido generado en años anteriores continúa disponible en la plataforma original.",
+    projectKnowledge14Link: "Consultar plataforma original",
+
     //buscador
     srchLessons: "Buscar leciones...",
     serch: "Buscar",
@@ -196,7 +200,10 @@ const translations = {
     deleteLink:"¿Seguro que quieres Eliminar este link?",
 
     //comments
-    fillEverithig: "Rellena todo"
+    fillEverithig: "Rellena todo",
+
+    //errores - Admin
+    errUser: "El nombre de usuario es obligatorio"
   },
 //############################################################
   EN: {
@@ -206,6 +213,10 @@ const translations = {
     contribution: "Contribution Guidelines",
     license: "License & Quoting Guidelines",
     home: "Home",
+
+    // Project Knowledge 14
+    projectKnowledge14msg: "This platform hosts the new lessons from the project. Some content created in previous years is available on the original platform.",
+    projectKnowledge14Link: "View original platform",
 
     //buscador
     srchLessons: "Search lessons...",
@@ -399,7 +410,10 @@ const translations = {
     deleteLink: "Are you sure you want to delete this link?",
 
     // comments
-    fillEverithig: "Please fill in all fields"
+    fillEverithig: "Please fill in all fields",
+
+    //errores - Admin
+    errUser: "Username is required"
   },
 //############################################################
   EU: {
@@ -409,6 +423,10 @@ const translations = {
     contribution: "Ekartze Gidalerroak",
     license: "Lizentzia eta Aipamen Araudia",
     home: "Hasiera",
+
+    // Project Knowledge 14
+    projectKnowledge14msg: "Plataforma honek proiektuko ikasgai berriak biltzen ditu. Aurreko urteetan sortutako edukiaren zati bat jatorrizko plataforman eskuragarri dago oraindik.",
+    projectKnowledge14Link: "Jatorrizko plataforma kontsultatu",
 
     //buscador
     srchLessons: "Ikasgaiak bilatu...",
@@ -601,6 +619,9 @@ const translations = {
     deleteLink: "Ziur al zaude esteka hau ezabatu nahi duzula?",
 
     // iruzkinak
-    fillEverithig: "Bete eremu guztiak"
+    fillEverithig: "Bete eremu guztiak",
+
+    //errores - Admin
+    errUser: "Erabiltzaile-izena beharrezkoa da"
   }
 };

@@ -52,7 +52,7 @@ async function loadComments() {
 
 // Enviar comentario
 document.getElementById("sendComment").addEventListener("click", async () => {
-  const name = document.getElementById("name").value.trim();
+  const name = document.getElementById("nameComment").value.trim();
   const comment = document.getElementById("comment").value.trim();
 
   if (!name || !comment) {
@@ -66,7 +66,7 @@ document.getElementById("sendComment").addEventListener("click", async () => {
     body: JSON.stringify({ name, comment })
   });
 
-  document.getElementById("name").value = "";
+  document.getElementById("nameComment").value = "";
   document.getElementById("comment").value = "";
 
   loadComments();
