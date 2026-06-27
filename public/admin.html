@@ -56,12 +56,22 @@
 
     <input type="text" id="newUsername" data-i18n-placeholder="userNamel">
 
+    <!--
     <label>
-      <input type="checkbox" id="roleProfesor"> Profesor
+      <input type="checkbox" id="roleProfesor" data-i18n="teacher"> Profesor
     </label>
 
     <label>
       <input type="checkbox" id="roleAdmin"> Admin
+    </label>-->
+    <label>
+      <input type="checkbox" id="roleProfesor">
+      <span data-i18n="teacher">Profesor</span>
+    </label>
+
+    <label>
+      <input type="checkbox" id="roleAdmin">
+      <span data-i18n="admin">Admin</span>
     </label>
 
     <button onclick="createUser()" data-i18n="createUserl" class="login-btn">Crear</button>

@@ -1,7 +1,7 @@
 {
   "siteName": "Project Knowledge 26",
   "defaultLang": "ES",
-  "articlesPerPage": 2,
+  "articlesPerPage": 10,
   "logo": "/uploads/logo/logo.png",
   "favicon": "/uploads/favicon/favicon.png",
   "links": [
@@ -14,6 +14,11 @@
       "title": "titulo",
       "url": "https://es.wikipedia.org/wiki/Solanum_tuberosum",
       "visible": true
+    },
+    {
+      "title": "titulo",
+      "url": "url",
+      "visible": false
     }
   ]
 }

@@ -20,7 +20,9 @@ router.put("/",  (req, res) => {
 
   saveSettings(updated);
 
-  res.json({ message: "Settings actualizados" });
+  res.json({ message: "Settings actualizados", 
+              ok: true
+  });
 });
 
 module.exports = router;

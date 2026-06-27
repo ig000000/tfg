@@ -1,31 +1,5 @@
 [
   {
-    "id": 1,
-    "username": "teacher",
-    "userNumber": "U1001",
-    "password": "$2b$10$SlScmpsfmnFU483FjT20z.2u/ODfFjHQMuOXwYpTIfPO13SowTLyC",
-    "roles": [
-      "teacher"
-    ],
-    "active": true,
-    "deleted": false,
-    "mustChangePassword": false,
-    "deletedAt": null
-  },
-  {
-    "id": 2,
-    "username": "admin",
-    "userNumber": "U1002",
-    "password": "$2b$10$Niytx1Qj9XKp.mkeFleaXek0kz9ukGSZlh6d8GUxfc3ds6d3vm9lC",
-    "roles": [
-      "admin"
-    ],
-    "active": true,
-    "deleted": false,
-    "mustChangePassword": false,
-    "deletedAt": null
-  },
-  {
     "id": 3,
     "username": "paquito",
     "userNumber": "U1003",
@@ -41,51 +15,26 @@
   },
   {
     "id": 4,
-    "username": "yo",
-    "userNumber": "1234",
-    "password": "$2b$10$IpZdfHoyQ/ASVCt1DSVS.ObH0s9hM/7HKlfbnatV8yHGtC3f3.mPy",
+    "username": "admin",
+    "password": "$2b$10$bkYQjx.wwo09dugNjlDioOseBafhk06QJW2MO69w0XpHuySUaELeq",
     "roles": [
       "teacher"
     ],
-    "active": true,
-    "deleted": false,
+    "deleted": true,
     "mustChangePassword": true,
-    "deletedAt": null
+    "createdAt": "2026-06-27T22:45:08.661Z",
+    "deletedAt": "2026-06-27T22:46:05.745Z"
   },
   {
     "id": 5,
-    "username": "panza",
-    "password": "$2b$10$OZK5pN8lgTgYGbr6vuybX.XQrA21oFfkmOh0IXYw7/zCQZPgVJrX6",
+    "username": "admines",
+    "password": "$2b$10$F4WKkJfo4TfoKptS1NbKKOpVwGADU8iBC3BWw.FBLdWwwadtaPfJu",
     "roles": [
-      "teacher"
-    ],
-    "active": true,
-    "deleted": true,
-    "mustChangePassword": false,
-    "createdAt": "2026-06-01T21:16:17.956Z",
-    "deletedAt": "2026-06-13T22:50:03.480Z"
-  },
-  {
-    "id": 6,
-    "username": "prueba",
-    "password": "$2b$10$fbPfKmc3z228YNDJe8THLuolmkfaqF.MQA6Ud3lhuIOTZutVP580O",
-    "roles": [
-      "teacher"
+      "admin"
     ],
     "deleted": true,
     "mustChangePassword": true,
-    "createdAt": "2026-06-19T22:46:33.066Z",
-    "deletedAt": "2026-06-19T22:48:34.671Z"
-  },
-  {
-    "id": 7,
-    "username": "pruebas",
-    "password": "$2b$10$/ufEV6DEJSnPZG7Z8feZheBm/Mg588bLiQgHHKw4a2/1NvZPnyXIm",
-    "roles": [
-      "teacher"
-    ],
-    "deleted": false,
-    "mustChangePassword": true,
-    "createdAt": "2026-06-19T22:47:59.976Z"
+    "createdAt": "2026-06-27T22:45:55.860Z",
+    "deletedAt": "2026-06-27T22:46:11.736Z"
   }
 ]

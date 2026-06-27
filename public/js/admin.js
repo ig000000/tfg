@@ -53,9 +53,11 @@ async function createUser() {
   `);
   }
   
-  if(data.error){
+  if(data.err = 1){
+    alert(translations[currentLang].existUserName);
+  }
+  else{
     alert(data.error);
-    //alert(translations[currentLang].errUser)
   }
 
   loadUsers();
@@ -100,7 +102,7 @@ ${translations[currentLang].admin}
 
 //delete
 async function deleteUser(id) {
-  const confirmDelete = confirm("¿Seguro que quieres Desactivar este usuario?");
+  const confirmDelete = confirm(translations[currentLang].eliminateUserSure);
 
   if (!confirmDelete) return;
 
@@ -172,7 +174,7 @@ async function deletePermanent(id) {
 
 //boton restaurar usuarios
 async function restoreUser(id) {
-  if (!confirm("¿Restaurar este usuario?")) return;
+  if (!confirm(translations[currentLang].restoreUser)) return;
 
   await fetch(`/users/restore/${id}`, {
     method: "PUT"
@@ -304,7 +306,14 @@ async function saveSettings() {
   });
 
   const data = await res.json();
-  alert(data.message);
+  console.log(data);
+  if (data.ok){
+    alert(translations[currentLang].saveSettingsConfirm)
+  }
+  else{
+    alert(translations[currentLang].error);
+  }
+
 }
 
 //Subir logo
@@ -372,8 +381,14 @@ window.toggleRole = async function(id, role, checked) {
 
   const data = await res.json();
 
-  alert(data.message);
-  loadUsers();
+  if (data.ok){
+    alert(translations[currentLang].rolesUpdated);
+    loadUsers();
+  }
+  else{
+    alert(translations[currentLang].error);
+  }
+
 };
 
 //reset contraseña

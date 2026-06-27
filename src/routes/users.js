@@ -31,26 +31,26 @@ router.get("/", requireRole("admin"), (req, res) => {
 router.post("/", requireRole("admin"), async (req, res) => {
   const users = getUsers();
 
-  //const { username, roles, userNumber} = req.body;
   const { username, roles} = req.body;
 
-  //if (!username || !userNumber) {
   if (!username) {
     return res.status(400).json({
-      //error: "Username, password y número de usuario son obligatorios"
-      error: "Username es obligatorio"
+      error: "Username es obligatorio",
+      err: 0
     });
   }
 
   if (!roles || roles.length === 0) {
     return res.status(400).json({
-      error: "El usuario debe tener al menos un rol"
+      error: "El usuario debe tener al menos un rol",
+      err: 2
     });
   }
 
   if(userExists(username)){
     return res.status(400).json({
-      error: "Ya existe un usuario con ese nombre"
+      error: "Ya existe un usuario con ese nombre",
+      err:1
     });
   }
 
@@ -60,10 +60,8 @@ router.post("/", requireRole("admin"), async (req, res) => {
   const newUser = {
     id: users.length ? users[users.length - 1].id + 1 : 1,
     username,
-    //userNumber,
     password: hashedPassword,
     roles,
-    //active: true,
     deleted: false,
     mustChangePassword: true,
     createdAt: new Date().toISOString()
@@ -90,6 +88,13 @@ async function passwordBcript(password) {
   return await bcrypt.hash(password, 10);
 }
 
+//aux, mirar cantidad admins activos
+function getActiveAdmins(users) {
+  return users.filter(
+    u => !u.deleted && u.roles.includes("admin")
+  );
+}
+
 // Eliminar usuario (con protección admin)
 router.delete("/:id", requireRole("admin"), (req, res) => {
   const users = getUsers();
@@ -100,9 +105,12 @@ router.delete("/:id", requireRole("admin"), (req, res) => {
     return res.status(404).json({ message: "Usuario no encontrado" });
   }
 
-  const admins = users.filter(u => u.roles.includes("admin"));
+  //const admins = users.filter(u => u.roles.includes("admin"));
+  const admins = getActiveAdmins(users);
 
-  if (admins.length === 1 && user.roles.includes("admin")) {
+  console.log(admins);
+
+  if (admins.length === 1 && user.roles.includes("admin") && !user.deleted) {
     return res.status(400).json({ message: "No puedes eliminar el último admin" });
   }
 
@@ -127,6 +135,18 @@ router.delete("/permanent/:id", requireRole("admin"), (req, res) => {
   if (!user.deleted) {
     return res.status(400).json({
       message: "Primero debe enviarse a la papelera"
+    });
+  }
+
+   const activeAdmins = getActiveAdmins(users);
+
+  // Si es el último administrador (aunque esté en la papelera)
+  if (
+    user.roles.includes("admin") &&
+    activeAdmins.length === 0
+  ) {
+    return res.status(400).json({
+      message: "No puedes eliminar permanentemente el último administrador."
     });
   }
 
@@ -160,23 +180,6 @@ router.get('/deleted', (req, res) => {
   res.json(users.filter(u => u.deleted));
 });
 
-// Activar / desactivar
-/*
-router.patch("/:id/status", requireRole("admin"), (req, res) => {
-  const users = getUsers();
-  const id = parseInt(req.params.id);
-
-  const user = users.find(u => u.id === id);
-  if (!user) {
-    return res.status(404).json({ message: "Usuario no encontrado" });
-  }
-
-  user.active = !user.active;
-
-  saveUsers(users);
-  res.json(user);
-});*/
-
 
 //Cambiar user roles
 router.put("/:id/roles", (req, res) => {
@@ -204,7 +207,8 @@ router.put("/:id/roles", (req, res) => {
   saveUsers(users);
 
   res.json({
-    message: "Roles actualizados"
+    message: "Roles actualizados",
+    ok: true
   });
 
 });
@@ -257,14 +261,15 @@ router.put('/change-password-first', requireAuth, async (req, res) => {
   const user = users.find(u => u.id == req.session.user.id);
 
   if (!user) {
-    return res.status(404).json({ message: "Usuario no encontrado" });
+    return res.status(404).json({ message: "Usuario no encontrado", errmsg: 1 });
   }
 
   const strongPassword = strongPasswordfunction(newPassword);
 
   if (!strongPassword) {
     return res.status(400).json({
-      message: "Debe tener 8 caracteres, una mayúscula, una minúscula y un número"
+      message: "Debe tener 8 caracteres, una mayúscula, una minúscula y un número",
+      errmsg: 2
     });
   }
 
@@ -276,6 +281,7 @@ router.put('/change-password-first', requireAuth, async (req, res) => {
   saveUsers(users);
 
   res.json({ message: "Contraseña actualizada",
+             errmsg: 3,
              roles: user.roles,
    });
 });
@@ -287,7 +293,7 @@ router.put('/change-password', requireAuth, async (req, res) => {
   const user = users.find(u => u.id == req.session.user.id);
 
   if (!user) {
-    return res.status(404).json({ message: "Usuario no encontrado" });
+    return res.status(404).json({ message: "Usuario no encontrado", errmsg: 1  });
   }
 
   if (newPassword !== repeatPassword) {
@@ -295,18 +301,18 @@ router.put('/change-password', requireAuth, async (req, res) => {
   }
 
   if(!newPassword || !currentPassword || !repeatPassword){
-    return res.status(404).json({ message: "Hay que completar todas las casillas"});
+    return res.status(404).json({ message: "Hay que completar todas las casillas", errmsg: 3});
   }
 
   if( newPassword == currentPassword){
-    return res.status(404).json({ message: "No puedes repetir las contraseñas"});
+    return res.status(404).json({ message: "No puedes repetir las contraseñas", errmsg: 2});
   }
 
   const strongPassword = strongPasswordfunction(newPassword);
 
   if (!strongPassword) {
     return res.status(400).json({
-    message: "Debe tener 8 caracteres, una mayúscula, una minúscula y un número"
+    message: "Debe tener 8 caracteres, una mayúscula, una minúscula y un número",errmsg: 4
     });
   }
 
@@ -326,6 +332,7 @@ router.put('/change-password', requireAuth, async (req, res) => {
   const activeRole = req.session.user.activeRole;
 
   res.json({ message: "Contraseña cambiada correctamente",
+              errmsg: 5,
              activeRole: activeRole
    });
 });

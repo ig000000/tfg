@@ -39,6 +39,8 @@ const translations = {
     errorLogin: "Usuario o contraseña incorrecto",
     error: "Error",
     changePassword:"Cambiar contraseña",
+    
+
 
     //lecciones
     readMore:"Leer más...",
@@ -124,6 +126,7 @@ const translations = {
     //roles
     teacher: "profesor",
     admin: "administrador",
+    rolesUpdated: "Roles actualizados",
 
     //contaseña
     passwdText: "Cambiar contraseña",
@@ -131,6 +134,12 @@ const translations = {
     passwdNwePasswd: "Nueva Contraseña",
     passwdRepeat: "Repetir nueva contraseña",
     resetPasswd: "Restablecer contraseña",
+    noSamePasswd: "Las contraseñas no coinciden",
+    passRequir: "Debe tener 8 caracteres, una mayúscula, una minúscula y un número",
+    noUserfound: "Usuario no encontrado",
+    fillPaswd: "Hay que completar todas las casillas",
+    noRepeatPasswd: "No puedes repetir las contraseñas",
+    passChanged: "Contraseña cambiada correctamente",
 
     //admin-usuarios
     userSearch: "Buscar usuario...",
@@ -149,6 +158,8 @@ const translations = {
     eliminatedPermanently: "Eliminar permanentemente",
     noUsersTrash:"No hay usuarios en la papelera.",
     eliminate: "Eliminar",
+    eliminateUserSure: "¿Seguro que quieres Desactivar este usuario?",
+    existUserName: "Ya existe un usuario con ese nombre",
 
     //admin-content
     saveLicencia: "Guardar Licencia",
@@ -162,6 +173,7 @@ const translations = {
     defaultLanguage: "Idioma por defecto",
     paginator: "Artículos por página",
     saveSettings: "Guardar Configuración",
+    saveSettingsConfirm: "Configuración  actualizada",
 
     //Admin - links
     visible: "Visible",
@@ -334,6 +346,7 @@ const translations = {
     // roles
     teacher: "teacher",
     admin: "administrator",
+    rolesUpdated: "Updated roles",
 
     // Password
     passwdText: "Change password",
@@ -341,6 +354,12 @@ const translations = {
     passwdNwePasswd: "New password",
     passwdRepeat: "Confirm new password",
     resetPasswd: "Reset password",
+    noSamePasswd: "Passwords do not match",
+    passRequir: "It must contain at least 8 characters, one uppercase letter, one lowercase letter, and one number",
+    noUserfound: "User not found",
+    fillPaswd: "All fields must be completed",
+    noRepeatPasswd: "You cannot reuse the same password",
+    passChanged: "Password changed successfully",
 
     // Admin - Users
     userSearch: "Search user...",
@@ -359,6 +378,8 @@ const translations = {
     eliminatedPermanently: "Permanently delete",
     noUsersTrash: "There are no users in the trash.",
     eliminate: "Delete",
+    eliminateUserSure: "Are you sure you want to deactivate this user?",
+    existUserName: "A user with that name already exists",
 
     // Admin - Content
     saveLicencia: "Save license",
@@ -372,6 +393,7 @@ const translations = {
     defaultLanguage: "Default language",
     paginator: "Articles per page",
     saveSettings: "Save settings",
+    saveSettingsConfirm: "Settings updated",
 
     // Admin - Links
     visible: "Visible",
@@ -543,6 +565,7 @@ const translations = {
     //roles
     teacher: "irakaslea",
     admin: "administratzailea",
+    rolesUpdated: "Rolak eguneratuak",
 
     // Pasahitza
     passwdText: "Pasahitza aldatu",
@@ -550,6 +573,12 @@ const translations = {
     passwdNwePasswd: "Pasahitz berria",
     passwdRepeat: "Pasahitz berria errepikatu",
     resetPasswd: "Pasahitza berrezarri ",
+    noSamePasswd: "Pasahitzak ez datoz bat",
+    passRequir: "Gutxienez 8 karaktere, letra larri bat, letra xehe bat eta zenbaki bat izan behar ditu",
+    noUserfound: "Ez da erabiltzailerik aurkitu",
+    fillPaswd: "Eremu guztiak bete behar dira",
+    noRepeatPasswd: "Ezin duzu pasahitz bera berriro erabili",
+    passChanged: "Pasahitza behar bezala aldatu da",
 
     // Admin - Erabiltzaileak
     userSearch: "Bilatu erabiltzailea...",
@@ -568,6 +597,8 @@ const translations = {
     eliminatedPermanently: "Betiko ezabatu",
     noUsersTrash: "Ez dago erabiltzailerik zakarrontzian.",
     eliminate: "Ezabatu",
+    eliminateUserSure: "Ziur al zaude erabiltzaile hau desaktibatu nahi duzula?",
+    existUserName: "Izen hori duen erabiltzaile bat existitzen da",
 
     // Admin - Edukia
     saveLicencia: "Lizentzia gorde",
@@ -581,6 +612,7 @@ const translations = {
     defaultLanguage: "Lehenetsitako hizkuntza",
     paginator: "Artikuluak orrialde bakoitzeko",
     saveSettings: "Konfigurazioa gorde",
+    saveSettingsConfirm: "Konfigurazioa eguneratu da",
 
    // Admin - Estekak
     visible: "Ikusgai",
