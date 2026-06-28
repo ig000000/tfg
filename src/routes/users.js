@@ -108,8 +108,6 @@ router.delete("/:id", requireRole("admin"), (req, res) => {
   //const admins = users.filter(u => u.roles.includes("admin"));
   const admins = getActiveAdmins(users);
 
-  console.log(admins);
-
   if (admins.length === 1 && user.roles.includes("admin") && !user.deleted) {
     return res.status(400).json({ message: "No puedes eliminar el último admin" });
   }

@@ -22,7 +22,6 @@ async function changePassword() {
 
   const data = await res.json();
 
-  //document.getElementById("msg").innerText = data.message;
   let docMsg = document.getElementById("msg");
     switch (data.errmsg){
       case 1:

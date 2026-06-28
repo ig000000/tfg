@@ -37,7 +37,6 @@ async function loadComments() {
     container.innerHTML = `<p>${translations[currentLang].noComments}</p>`;
     return;
   }
-  //<p>No hay comentarios todavía.</p>
 
   comments.forEach(c => {
     container.innerHTML += `

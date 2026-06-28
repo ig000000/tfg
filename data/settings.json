@@ -1,24 +1,54 @@
 {
   "siteName": "Project Knowledge 26",
   "defaultLang": "ES",
-  "articlesPerPage": 10,
+  "articlesPerPage": 2,
   "logo": "/uploads/logo/logo.png",
   "favicon": "/uploads/favicon/favicon.png",
   "links": [
     {
-      "title": "web",
-      "url": "https://es.wikipedia.org/wiki/Solanum_tuberosum",
+      "title": "AEIPRO: Asociación Española de Dirección e Ingeniería de Proyectos",
+      "url": "https://es.wikipedia.orghttps://aeipro.com/",
       "visible": true
     },
     {
-      "title": "titulo",
-      "url": "https://es.wikipedia.org/wiki/Solanum_tuberosum",
+      "title": "INTECO: Instituto Nacional de Tecnologías de la Comunicación",
+      "url": "https://www.incibe.es/",
       "visible": true
     },
     {
-      "title": "titulo",
-      "url": "url",
-      "visible": false
+      "title": "ALI: Asociación de Titulados Universitarios Oficiales en Informática",
+      "url": "https://www.ali.es/",
+      "visible": true
+    },
+    {
+      "title": "ATI: Asociación de Técnicos de Informática",
+      "url": "https://www.ati.es/es_es/",
+      "visible": true
+    },
+    {
+      "title": "ACM: Association for Computing Machinery",
+      "url": "https://www.acm.org/",
+      "visible": true
+    },
+    {
+      "title": "IEEE: Institute of Electrical and Electronics Engineers",
+      "url": "https://www.ieee.org/",
+      "visible": true
+    },
+    {
+      "title": "Blog de Enrique Dans",
+      "url": "https://www.enriquedans.com/",
+      "visible": true
+    },
+    {
+      "title": "Blog de Mikel Niño",
+      "url": "https://www.mikelnino.com/",
+      "visible": true
+    },
+    {
+      "title": "Blog de Ibai Valencia",
+      "url": "https://www.ibaivalencia.com/",
+      "visible": true
     }
   ]
 }

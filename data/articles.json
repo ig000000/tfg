@@ -1,190 +1,68 @@
 [
   {
-    "id": 1,
-    "title": "prueba",
-    "date": "2026-06-19",
-    "author": "yo mismo",
-    "summary": "esto es una prueba para saber que todo funciona correctamente.",
-    "content": "<p>esto es una prueba para saber que todo funciona correctamente.</p><p><br></p><p>Esto no tiene que entrar en el resumen.</p>",
-    "tags": [
-      "ES",
-      "prueba"
-    ]
-  },
-  {
-    "id": 2,
-    "title": "n",
-    "date": "2026-06-19",
-    "author": "n",
-    "summary": "nnnnnnnnn n n n n n n n n nnnnn n n n",
-    "content": "<p>nnnnnnnnn n n n n n n n n nnnnn n n n</p><p>nnnn n n n n nn</p><p>nn  n n nn</p><p>nn  n n n<a href=\"/article.html?id=1\" rel=\"noopener noreferrer\" target=\"_blank\"> n n</a></p>",
-    "tags": [
-      "EN",
-      "n",
-      "manta"
-    ]
-  },
-  {
-    "id": 3,
-    "title": "n",
-    "date": "2026-06-19",
-    "author": "n",
-    "summary": "nnnnnnnnn n n n n n n n n nnnnn n n n",
-    "content": "<p>nnnnnnnnn n n n n n n n n nnnnn n n n</p><p>nnnn n n n n nn</p><p>nn  n n nn</p><p>nn  n n n<a href=\"/article.html?id=1\" rel=\"noopener noreferrer\" target=\"_blank\"> n n</a></p>",
+    "id": 12,
+    "title": "berotze globala",
+    "date": "2026-06-26",
+    "author": "Peneloe",
+    "summary": "Klimatologian, berotze globala Lurraren klima-sistemako batez besteko tenperatura atmosferikoak epe luzera jasaten duen igoera da, berotegi-efektuaren areagotzearen ondorioz.",
+    "content": "<p>Klimatologian, berotze globala Lurraren klima-sistemako batez besteko tenperatura atmosferikoak epe luzera jasaten duen igoera da, berotegi-efektuaren areagotzearen ondorioz.</p><p><br></p><p>Aqui da igual.</p>",
     "tags": [
       "EU",
-      "n",
-      "manta"
-    ]
-  },
-  {
-    "id": 5,
-    "title": "n",
-    "date": "2026-06-20",
-    "author": "n",
-    "summary": "n",
-    "content": "<p>n</p>",
-    "tags": [
-      "ES",
-      "n"
-    ]
-  },
-  {
-    "id": 6,
-    "title": "n",
-    "date": "2026-06-20",
-    "author": "n",
-    "summary": "n",
-    "content": "<p>n</p>",
-    "tags": [
-      "ES"
-    ]
-  },
-  {
-    "id": 8,
-    "title": "n",
-    "date": "2026-06-20",
-    "author": "n",
-    "summary": "n",
-    "content": "<p>n</p>",
-    "tags": [
-      "ES"
-    ]
-  },
-  {
-    "id": 9,
-    "title": "z",
-    "date": "2026-06-20",
-    "author": "z",
-    "summary": "z",
-    "content": "<p>z</p>",
-    "tags": [
-      "ES"
-    ]
-  },
-  {
-    "id": 10,
-    "title": "b",
-    "date": "2026-06-20",
-    "author": "v",
-    "summary": "v",
-    "content": "<p>v</p>",
-    "tags": [
-      "ES"
-    ]
-  },
-  {
-    "id": 11,
-    "title": "q",
-    "date": "2026-06-20",
-    "author": "q",
-    "summary": "q",
-    "content": "<p>q</p>",
-    "tags": [
-      "ES",
-      "q"
-    ]
-  },
-  {
-    "id": 12,
-    "title": "caletmiento globa",
-    "date": "2026-06-26",
-    "author": "peneloe",
-    "summary": "El calentamiento global es malo. ;)",
-    "content": "<p>El calentamiento global es malo. ;)</p>",
-    "tags": [
-      "ES",
-      "clantemiento gloal",
-      "clanetamiento",
-      "global",
-      "calor"
+      "berotze globala",
+      "globala",
+      "beroa"
     ]
   },
   {
     "id": 13,
-    "title": "golbala kalentamendua",
+    "title": "Calentamiento global",
     "date": "2026-06-26",
-    "author": "peneloe",
-    "summary": "Kalentamendo globala txarra da.",
-    "content": "<p>Kalentamendo globala txarra da.</p><p><br></p><p>bai.</p>",
+    "author": "Peneloe",
+    "summary": "En climatología, el calentamiento global es el aumento a largo plazo de la temperatura atmosférica media del sistema climático de la Tierra debido a la intensificación del efecto invernadero.",
+    "content": "<p>En climatología, el calentamiento global es el <strong>aumento a largo plazo de la temperatura atmosférica media del sistema climático de la Tierra debido a la intensificación del efecto invernadero</strong>.</p><p><br></p><p>Aqui da igual.</p>",
     "tags": [
-      "EN",
-      "kalorea",
-      "globala"
+      "ES",
+      "calentamiento global",
+      "calor",
+      "global"
     ]
   },
   {
     "id": 14,
-    "title": "menso",
-    "date": "2026-06-27",
-    "author": "yo mismo",
-    "summary": "contenido, Esto aparece en el resumen.",
-    "content": "<p>contenido, Esto aparece en el resumen.</p><p><br></p><p>esto no.</p><p>pan.</p>",
+    "title": "cosa",
+    "date": "2026-06-28",
+    "author": "Lola Montero",
+    "summary": "cosa cosa cosa cosa cosa cosa cosa cosa cosa cosa",
+    "content": "<p>cosa cosa cosa cosa cosa cosa cosa cosa cosa cosa</p><p>cosa cosa cosa cosa cosa cosa cosa cosa cosa cosa</p><p>cosa cosa cosa cosa cosa cosa cosa cosa cosa cosacosa cosa cosa cosa cosa cosa cosa cosa cosa cosacosa cosa cosa cosa cosa cosa cosa cosa cosa cosacosa cosa cosa cosa cosa cosa cosa cosa cosa cosa</p><p><br></p><p>cosa cosa cosa cosa cosa cosa cosa cosa cosa cosacosa cosa cosa cosa cosa cosa cosa cosa cosa cosa</p>",
     "tags": [
       "ES",
-      "yo",
-      "menso",
-      "casi"
+      "cosa"
     ]
   },
   {
     "id": 15,
-    "title": "menso",
-    "date": "2026-06-27",
-    "author": "yo mismo",
-    "summary": "contenido, Esto aparece en el resumen.",
-    "content": "<p>contenido, Esto aparece en el resumen.</p><p><br></p><p>esto no.</p><p>pan. ;)</p>",
+    "title": "Colors",
+    "date": "2026-06-28",
+    "author": "Roberto Cortiñas",
+    "summary": "Color is a visual perception generated in our brain when the eyes capture and interpret light.",
+    "content": "<p>Color is a visual perception generated in our brain when the eyes capture and interpret light. </p><p><br></p><p>In reality, the world around us is colorless; what we call \"color\" is our visual system's reaction to different wavelengths of light.</p>",
     "tags": [
-      "EU",
-      "yo",
-      "menso",
-      "casi"
+      "EN",
+      "color"
     ]
   },
   {
     "id": 16,
-    "title": "casa",
-    "date": "2026-06-27",
-    "author": "yo",
-    "summary": "linka  otra leción",
-    "content": "<p>linka  otra leción</p><p><a href=\"/article.html?id=7\" rel=\"noopener noreferrer\" target=\"_blank\">???</a></p>",
+    "title": "IA en la Gestión de Proyectos:",
+    "date": "2026-06-28",
+    "author": "Maria Dolores Delano",
+    "summary": "Definimos la \"ventana de contexto\" de un modelo de lenguaje como la cantidad de contexto que puede mantener razonablemente, sin empezar a olvidar o a inventarse detalles. Las ventanas de contexto útiles son limitadas (a día de esta redacción, ~256K tokens llevándolo al límite, aunque se anuncien 1M tokens) y, a partir de cierta cantidad de texto, es mucho más probable que el modelo alucine o pierda rigor en la tarea original[1]. Además, en cuanto comete un error, está estudiado uno de sus mayores problemas: tiende a redoblar la apuesta, reafirmándose implícitamente en sus propios fallos",
+    "content": "<p>Definimos la \"ventana de contexto\" de un modelo de lenguaje como la cantidad de contexto que puede mantener razonablemente, sin empezar a olvidar o a inventarse detalles. Las ventanas de contexto útiles son limitadas (a día de esta redacción, ~256K tokens llevándolo al límite, aunque se anuncien 1M tokens) y, a partir de cierta cantidad de texto, es mucho más probable que el modelo alucine o pierda rigor en la tarea original<sup>[1]</sup>. Además, en cuanto comete un error, está estudiado uno de sus mayores problemas: tiende a redoblar la apuesta, reafirmándose implícitamente en sus propios fallos</p>",
     "tags": [
       "ES",
-      "vitro",
-      "ceramica"
-    ]
-  },
-  {
-    "id": 17,
-    "title": "nn",
-    "date": "2026-06-27",
-    "author": "n",
-    "summary": "nn",
-    "content": "<p>nn</p>",
-    "tags": [
-      "ES",
-      "n",
-      "n"
+      "IA",
+      "proyectos",
+      "gestión de proyectos"
     ]
   }
 ]

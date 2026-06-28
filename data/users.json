@@ -15,26 +15,25 @@
   },
   {
     "id": 4,
-    "username": "admin",
-    "password": "$2b$10$bkYQjx.wwo09dugNjlDioOseBafhk06QJW2MO69w0XpHuySUaELeq",
-    "roles": [
-      "teacher"
-    ],
-    "deleted": true,
-    "mustChangePassword": true,
-    "createdAt": "2026-06-27T22:45:08.661Z",
-    "deletedAt": "2026-06-27T22:46:05.745Z"
-  },
-  {
-    "id": 5,
-    "username": "admines",
-    "password": "$2b$10$F4WKkJfo4TfoKptS1NbKKOpVwGADU8iBC3BWw.FBLdWwwadtaPfJu",
+    "username": "admin eliminado",
+    "password": "$2b$10$L3YculHPa6EShf2f91FZKOk2pLWD549EuNK0t0U5a79pFpzE.pdva",
     "roles": [
       "admin"
     ],
     "deleted": true,
     "mustChangePassword": true,
-    "createdAt": "2026-06-27T22:45:55.860Z",
-    "deletedAt": "2026-06-27T22:46:11.736Z"
+    "createdAt": "2026-06-28T21:47:20.629Z",
+    "deletedAt": "2026-06-28T21:47:37.170Z"
+  },
+  {
+    "id": 5,
+    "username": "profesor para eliminar",
+    "password": "$2b$10$rlQJalkZqBPnskccD/c9Mu/ml7Ph6WTiLyUMNxTWmyvqQqhuV2sAi",
+    "roles": [
+      "teacher"
+    ],
+    "deleted": false,
+    "mustChangePassword": true,
+    "createdAt": "2026-06-28T21:47:59.278Z"
   }
 ]

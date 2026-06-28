@@ -5,7 +5,6 @@ const commentsPath = path.join(__dirname, "../../data/comments.json");
 
 // Obtener comentarios de un artículo
 function getComments(){
-    console.log(commentsPath);
     return JSON.parse(fs.readFileSync(commentsPath));
 }
 

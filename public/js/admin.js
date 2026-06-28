@@ -3,7 +3,7 @@ let data;
 let usersData = [];
 ///
 let currentPage = 1;
-const articlesPerPage = 5;
+const articlesPerPage = 10;
 
 //cargar usuarios
 async function loadUsers() {
@@ -52,14 +52,15 @@ async function createUser() {
     ${translations[currentLang].userMustChangePasswd}
   `);
   }
+  else {
+    if(data.err = 1){
+      alert(translations[currentLang].existUserName);
+    }
+    else{
+      alert(data.error);
+    }
+  }
   
-  if(data.err = 1){
-    alert(translations[currentLang].existUserName);
-  }
-  else{
-    alert(data.error);
-  }
-
   loadUsers();
 }
 
@@ -306,7 +307,7 @@ async function saveSettings() {
   });
 
   const data = await res.json();
-  console.log(data);
+
   if (data.ok){
     alert(translations[currentLang].saveSettingsConfirm)
   }
