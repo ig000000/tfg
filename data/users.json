@@ -12,28 +12,5 @@
     "deleted": false,
     "mustChangePassword": false,
     "deletedAt": null
-  },
-  {
-    "id": 4,
-    "username": "admin eliminado",
-    "password": "$2b$10$L3YculHPa6EShf2f91FZKOk2pLWD549EuNK0t0U5a79pFpzE.pdva",
-    "roles": [
-      "admin"
-    ],
-    "deleted": true,
-    "mustChangePassword": true,
-    "createdAt": "2026-06-28T21:47:20.629Z",
-    "deletedAt": "2026-06-28T21:47:37.170Z"
-  },
-  {
-    "id": 5,
-    "username": "profesor para eliminar",
-    "password": "$2b$10$rlQJalkZqBPnskccD/c9Mu/ml7Ph6WTiLyUMNxTWmyvqQqhuV2sAi",
-    "roles": [
-      "teacher"
-    ],
-    "deleted": false,
-    "mustChangePassword": true,
-    "createdAt": "2026-06-28T21:47:59.278Z"
   }
 ]

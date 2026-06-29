@@ -2,7 +2,7 @@
 let box;
 let quill;
 let currentPage = 1;
-const articlesPerPage = 3;
+const articlesPerPage = 10;
 
 
 //editar lección
