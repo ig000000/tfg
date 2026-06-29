@@ -1,10 +1,17 @@
 const express = require("express");
 const path = require("path");
+const fs = require("fs");
 const session = require("express-session");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 //npm run dev
+
+const sessionsPath = path.join(__dirname, "../sessions");
+
+if (!fs.existsSync(sessionsPath)) {
+  fs.mkdirSync(sessionsPath, { recursive: true });
+}
 
 const FileStore = require("session-file-store")(session);
 
@@ -14,7 +21,7 @@ app.use(express.static(path.join(__dirname, "../public")));
 app.use(
   session({
     store: new FileStore({
-       path: "./sessions" 
+       path: sessionsPath 
     }),
     secret: "super_secret_key",
     //secret: process.env.SESSION_SECRET, Mejor esto en el futuro
